@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: techofay-backend-api
+    env: node
+    plan: free
+    region: singapore # Closest low-latency free region to India
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        sync: false # Set in Render Dashboard from free MongoDB Atlas cluster
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: admin@techofay.com
+      - key: ADMIN_PASSWORD
+        value: Techofay@2025!

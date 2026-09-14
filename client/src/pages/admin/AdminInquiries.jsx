@@ -1,0 +1,506 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Inbox, 
+  Search, 
+  Download, 
+  Trash2, 
+  CheckCircle, 
+  Mail, 
+  Send, 
+  Eye, 
+  Clock, 
+  Filter,
+  FileText,
+  Radio,
+  RefreshCw,
+  Sparkles
+} from 'lucide-react';
+import api from '../../utils/api';
+import Modal from '../../components/common/Modal';
+import { useRealtime } from '../../context/SocketContext';
+
+export default function AdminInquiries() {
+  const [inquiries, setInquiries] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [statusFilter, setStatusFilter] = useState('All');
+  const [serviceFilter, setServiceFilter] = useState('All');
+  const [search, setSearch] = useState('');
+  
+  const [selectedInquiry, setSelectedInquiry] = useState(null);
+  const [replyModalInquiry, setReplyModalInquiry] = useState(null);
+  const [replyMessage, setReplyMessage] = useState('');
+  const [replySending, setReplySending] = useState(false);
+
+  const { realtimeAlerts, isConnected } = useRealtime();
+
+  const fetchInquiries = async () => {
+    try {
+      setLoading(true);
+      const res = await api.get('/contact', {
+        params: { status: statusFilter, service: serviceFilter, search }
+      });
+      const data = Array.isArray(res.data) ? res.data : (res.data?.inquiries || []);
+      setInquiries(data);
+    } catch (err) {
+      console.error('[Fetch Inquiries Error]:', err);
+      // Ensure state is never undefined or non-array
+      setInquiries((prev) => (Array.isArray(prev) ? prev : []));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchInquiries();
+  }, [statusFilter, serviceFilter]);
+
+  // Real-time socket ingestion: whenever a new inquiry arrives, prepend live
+  useEffect(() => {
+    if (realtimeAlerts.length > 0 && realtimeAlerts[0]?.type === 'inquiry') {
+      const newInq = realtimeAlerts[0].data;
+      if (newInq) {
+        const id = newInq._id || newInq.id || `inq-${Date.now()}`;
+        setInquiries((prev) => {
+          const list = Array.isArray(prev) ? prev : [];
+          const exists = list.some((item) => String(item._id) === String(id));
+          if (exists) return list;
+          return [{ ...newInq, _id: id, isLiveArrival: true }, ...list];
+        });
+      }
+    }
+  }, [realtimeAlerts]);
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    fetchInquiries();
+  };
+
+  const handleStatusChange = async (id, newStatus) => {
+    try {
+      await api.patch(`/contact/${id}`, { status: newStatus });
+      setInquiries((prev) =>
+        (Array.isArray(prev) ? prev : []).map((item) => (item._id === id ? { ...item, status: newStatus } : item))
+      );
+      if (selectedInquiry?._id === id) {
+        setSelectedInquiry((prev) => ({ ...prev, status: newStatus }));
+      }
+    } catch (err) {
+      console.error('[Update Status Error]:', err);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure you want to permanently delete this inquiry?')) return;
+    try {
+      await api.delete(`/contact/${id}`);
+      setInquiries((prev) => (Array.isArray(prev) ? prev : []).filter((item) => item._id !== id));
+      if (selectedInquiry?._id === id) setSelectedInquiry(null);
+    } catch (err) {
+      console.error('[Delete Error]:', err);
+    }
+  };
+
+  const handleSendReply = async (e) => {
+    e.preventDefault();
+    if (!replyMessage || !replyModalInquiry) return;
+    setReplySending(true);
+
+    try {
+      await api.post(`/contact/${replyModalInquiry._id}/reply`, { replyMessage });
+      alert('Reply logged and dispatched to customer email.');
+      setReplyModalInquiry(null);
+      setReplyMessage('');
+      fetchInquiries();
+    } catch (err) {
+      console.error('[Reply Error]:', err);
+      alert('Failed to send reply');
+    } finally {
+      setReplySending(false);
+    }
+  };
+
+  const handleExportCsv = () => {
+    window.open('/api/contact/export-csv', '_blank');
+  };
+
+  const servicesList = [
+    'All',
+    'ERP Management Software',
+    'Hospital Management System (HMS)',
+    'School Management Software',
+    'Hotel Management Software (HMS)',
+    'Transport & Fleet Management Software',
+    'Cybersecurity & Zero Trust',
+    'Engineering & QA Testing',
+    'AI & Autonomous Systems',
+    'Growth Marketing & SEO',
+    'Cloud Architecture & DevOps',
+    'General Consultation'
+  ];
+
+  return (
+    <div className="space-y-6">
+      {/* Header & CSV Export */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#00D4FF]">
+              CLIENT PIPELINE
+            </span>
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0B1530] border border-white/10 text-[10px] font-mono">
+              <span className={`w-1.5 h-1.5 rounded-full ${isConnected ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`} />
+              <span className="text-[#8B9AB5]">{isConnected ? 'Live WebSockets' : 'Connecting'}</span>
+              <span className="text-[#00D4FF]">({inquiries.length})</span>
+            </div>
+          </div>
+          <h1 className="font-orbitron font-extrabold text-2xl text-white mt-1">
+            Enterprise Inquiries
+          </h1>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <button
+            onClick={fetchInquiries}
+            className="p-2.5 rounded-xl text-xs font-semibold text-[#8B9AB5] hover:text-white glass-card hover:border-[#00D4FF] transition-all flex items-center gap-1.5"
+            title="Refresh Inquiries"
+          >
+            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-[#00D4FF]' : ''}`} />
+          </button>
+          <button
+            onClick={handleExportCsv}
+            className="px-4 py-2.5 rounded-xl text-xs font-semibold text-white glass-card hover:border-[#00D4FF] hover:text-[#00D4FF] transition-all flex items-center gap-2 self-start sm:self-auto"
+          >
+            <Download className="w-4 h-4" />
+            <span>Export CSV</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Filter and Search Toolbar */}
+      <div className="glass-panel p-4 rounded-2xl border border-[rgba(43,110,250,0.25)] flex flex-col md:flex-row items-center justify-between gap-4">
+        <form onSubmit={handleSearchSubmit} className="relative w-full md:w-80">
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8B9AB5]" />
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search name, company, email..."
+            className="w-full pl-10 pr-4 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.3)] text-xs text-white placeholder:text-[#55688a] focus:outline-none focus:border-[#00D4FF]"
+          />
+        </form>
+
+        <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
+          {/* Status Filter */}
+          <select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+            className="px-3 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.3)] text-xs text-white focus:outline-none focus:border-[#00D4FF]"
+          >
+            <option value="All">Status: All</option>
+            <option value="New">Status: New</option>
+            <option value="In Progress">Status: In Progress</option>
+            <option value="Resolved">Status: Resolved</option>
+            <option value="Spam">Status: Spam</option>
+          </select>
+
+          {/* Service Filter */}
+          <select
+            value={serviceFilter}
+            onChange={(e) => setServiceFilter(e.target.value)}
+            className="px-3 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.3)] text-xs text-white focus:outline-none focus:border-[#00D4FF]"
+          >
+            {servicesList.map((s) => (
+              <option key={s} value={s}>Vertical: {s}</option>
+            ))}
+          </select>
+
+          {(statusFilter !== 'All' || serviceFilter !== 'All' || search) && (
+            <button
+              onClick={() => {
+                setStatusFilter('All');
+                setServiceFilter('All');
+                setSearch('');
+              }}
+              className="text-[11px] text-[#00D4FF] hover:underline px-2 py-1"
+            >
+              Reset Filters
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Main Table */}
+      <div className="glass-panel rounded-2xl border border-[rgba(43,110,250,0.25)] overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-xs">
+            <thead className="bg-[#050B1F]/80 text-[#8B9AB5] uppercase font-mono text-[10px] border-b border-white/5">
+              <tr>
+                <th className="px-5 py-3.5">Client & Company</th>
+                <th className="px-5 py-3.5">Vertical</th>
+                <th className="px-5 py-3.5">Budget & Timeline</th>
+                <th className="px-5 py-3.5">Submitted</th>
+                <th className="px-5 py-3.5">Status</th>
+                <th className="px-5 py-3.5 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {loading ? (
+                <tr>
+                  <td colSpan={6} className="px-5 py-12 text-center text-xs font-mono text-[#00D4FF] animate-pulse">
+                    SYNCHRONIZING ENTERPRISE INQUIRY PIPELINE...
+                  </td>
+                </tr>
+              ) : inquiries.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="px-5 py-12 text-center text-xs text-[#8B9AB5]">
+                    <Inbox className="w-8 h-8 text-[#55698b] mx-auto mb-2 opacity-50" />
+                    <p className="font-semibold text-white">No inquiries found matching your filters.</p>
+                    <p className="text-[11px] text-[#55698b] mt-1">
+                      Inquiries submitted from the public contact page will appear here automatically via live WebSockets.
+                    </p>
+                    <button
+                      onClick={() => {
+                        setStatusFilter('All');
+                        setServiceFilter('All');
+                        setSearch('');
+                        fetchInquiries();
+                      }}
+                      className="mt-3 px-4 py-1.5 rounded-lg bg-white/5 hover:bg-[#2B6EFA]/20 text-[#00D4FF] text-xs font-medium border border-[rgba(0,212,255,0.3)] transition-all"
+                    >
+                      Reset Filters & Refresh
+                    </button>
+                  </td>
+                </tr>
+              ) : (
+                inquiries.map((inq) => (
+                  <tr key={inq._id} className="hover:bg-white/5 transition-colors">
+                    <td className="px-5 py-4">
+                      <div className="flex items-center gap-1.5">
+                        {inq.isLiveArrival && (
+                          <span className="px-1.5 py-0.5 rounded text-[8px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 animate-pulse uppercase">
+                            LIVE
+                          </span>
+                        )}
+                        <div className="font-semibold text-white text-xs">
+                          {inq.fullName || inq.name || 'Anonymous Client'}
+                        </div>
+                      </div>
+                      <div className="text-[11px] text-[#8B9AB5]">
+                        {inq.companyName || inq.company || inq.email || 'Individual Account'}
+                      </div>
+                      {inq.phone && <div className="text-[10px] text-[#55698b] font-mono">{inq.phone}</div>}
+                    </td>
+
+                    <td className="px-5 py-4 font-medium text-[#cad7ec]">
+                      <span className="px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-[11px]">
+                        {inq.service || 'General Consultation'}
+                      </span>
+                    </td>
+
+                    <td className="px-5 py-4">
+                      <div className="text-[#00D4FF] font-mono font-medium">
+                        {inq.budget || 'Custom / Flexible'}
+                      </div>
+                      <div className="text-[10px] text-[#8B9AB5]">
+                        {inq.timeline || '1 - 3 Months'}
+                      </div>
+                    </td>
+
+                    <td className="px-5 py-4 text-[#8B9AB5] whitespace-nowrap">
+                      {inq.createdAt ? new Date(inq.createdAt).toLocaleDateString() : 'Today'}
+                    </td>
+
+                    <td className="px-5 py-4">
+                      <select
+                        value={inq.status || 'New'}
+                        onChange={(e) => handleStatusChange(inq._id, e.target.value)}
+                        className={`text-[10px] font-semibold px-2 py-1 rounded-lg bg-[#050B1F] border focus:outline-none cursor-pointer ${
+                          inq.status === 'New'
+                            ? 'text-cyan-400 border-cyan-500/40'
+                            : inq.status === 'In Progress'
+                            ? 'text-amber-400 border-amber-500/40'
+                            : inq.status === 'Resolved'
+                            ? 'text-green-400 border-green-500/40'
+                            : 'text-red-400 border-red-500/40'
+                        }`}
+                      >
+                        <option value="New">New</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                        <option value="Spam">Spam</option>
+                      </select>
+                    </td>
+
+                    <td className="px-5 py-4 text-right">
+                      <div className="flex items-center justify-end gap-2">
+                        <button
+                          onClick={() => setSelectedInquiry(inq)}
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-[#2B6EFA]/20 text-[#00D4FF] hover:text-white transition-colors"
+                          title="View Full Scope"
+                        >
+                          <Eye className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => setReplyModalInquiry(inq)}
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-[#2B6EFA]/20 text-white hover:text-[#00D4FF] transition-colors"
+                          title="Send Direct Reply"
+                        >
+                          <Mail className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(inq._id)}
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-red-500/20 text-[#8B9AB5] hover:text-red-400 transition-colors"
+                          title="Delete Inquiry"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Inquiry Detail Modal */}
+      <Modal
+        isOpen={!!selectedInquiry}
+        onClose={() => setSelectedInquiry(null)}
+        title={`Inquiry: ${selectedInquiry?.fullName || selectedInquiry?.name || 'Client Scope'}`}
+        subtitle={`Submitted on ${selectedInquiry?.createdAt ? new Date(selectedInquiry.createdAt).toLocaleString() : 'Recent'}`}
+      >
+        {selectedInquiry && (
+          <div className="space-y-4 text-xs text-[#8B9AB5]">
+            <div className="grid grid-cols-2 gap-4 p-4 rounded-xl bg-[#050B1F] border border-white/5">
+              <div>
+                <span className="text-[10px] uppercase font-mono block text-[#55698b]">Email Address</span>
+                <a href={`mailto:${selectedInquiry.email}`} className="text-white font-medium hover:text-[#00D4FF]">
+                  {selectedInquiry.email || 'N/A'}
+                </a>
+              </div>
+              <div>
+                <span className="text-[10px] uppercase font-mono block text-[#55698b]">Phone / WhatsApp</span>
+                <span className="text-white font-medium">{selectedInquiry.phone || 'N/A'}</span>
+              </div>
+              <div>
+                <span className="text-[10px] uppercase font-mono block text-[#55698b]">Company</span>
+                <span className="text-white font-medium">{selectedInquiry.companyName || selectedInquiry.company || 'Individual'}</span>
+              </div>
+              <div>
+                <span className="text-[10px] uppercase font-mono block text-[#55698b]">Service Vertical</span>
+                <span className="text-[#00D4FF] font-medium">{selectedInquiry.service || 'General Consultation'}</span>
+              </div>
+              <div>
+                <span className="text-[10px] uppercase font-mono block text-[#55698b]">Budget</span>
+                <span className="text-white font-mono">{selectedInquiry.budget || 'Custom / Flexible'}</span>
+              </div>
+              <div>
+                <span className="text-[10px] uppercase font-mono block text-[#55698b]">Timeline</span>
+                <span className="text-white">{selectedInquiry.timeline || '1 - 3 Months'}</span>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-[#050B1F] border border-white/5">
+              <span className="text-[10px] uppercase font-mono block text-[#00D4FF] mb-1">
+                Project Scope Message:
+              </span>
+              <p className="text-white text-xs leading-relaxed whitespace-pre-wrap">
+                {selectedInquiry.message || 'No project description provided.'}
+              </p>
+            </div>
+
+            {selectedInquiry.attachment && (
+              <div className="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+                <div className="flex items-center gap-2 text-white text-xs">
+                  <FileText className="w-4 h-4 text-[#00D4FF]" />
+                  <span>Project Attachment / RFQ</span>
+                </div>
+                <a
+                  href={selectedInquiry.attachment}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs text-[#00D4FF] hover:underline"
+                >
+                  Download / View &rarr;
+                </a>
+              </div>
+            )}
+
+            {/* Replies Log */}
+            {selectedInquiry.replies && selectedInquiry.replies.length > 0 && (
+              <div className="space-y-2 pt-2">
+                <span className="text-[10px] uppercase font-mono text-[#00D4FF] block">
+                  Logged Replies:
+                </span>
+                {selectedInquiry.replies.map((rep, idx) => (
+                  <div key={idx} className="p-3 rounded-lg bg-white/5 text-[11px] text-[#cad7ec]">
+                    <div className="flex justify-between text-[10px] text-[#55698b] mb-1">
+                      <span>{rep.sender}</span>
+                      <span>{new Date(rep.sentAt).toLocaleString()}</span>
+                    </div>
+                    <div>{rep.message}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="pt-4 border-t border-white/10 flex justify-end gap-3">
+              <button
+                onClick={() => {
+                  setReplyModalInquiry(selectedInquiry);
+                  setSelectedInquiry(null);
+                }}
+                className="px-4 py-2 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-[#2B6EFA] to-[#00D4FF] flex items-center gap-2"
+              >
+                <Mail className="w-3.5 h-3.5" />
+                Reply to Client
+              </button>
+            </div>
+          </div>
+        )}
+      </Modal>
+
+      {/* Reply Modal */}
+      <Modal
+        isOpen={!!replyModalInquiry}
+        onClose={() => setReplyModalInquiry(null)}
+        title={`Reply to ${replyModalInquiry?.fullName}`}
+        subtitle={`Dispatch email to ${replyModalInquiry?.email}`}
+      >
+        <form onSubmit={handleSendReply} className="space-y-4">
+          <div>
+            <label className="block text-xs font-medium text-[#8B9AB5] mb-1">Reply Message</label>
+            <textarea
+              required
+              rows={5}
+              value={replyMessage}
+              onChange={(e) => setReplyMessage(e.target.value)}
+              placeholder="Type your response to the enterprise client..."
+              className="w-full px-3.5 py-2.5 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.3)] text-white text-xs focus:outline-none focus:border-[#00D4FF]"
+            />
+          </div>
+
+          <div className="pt-2 flex justify-end gap-3">
+            <button
+              type="button"
+              onClick={() => setReplyModalInquiry(null)}
+              className="px-4 py-2 rounded-lg text-xs text-[#8B9AB5] hover:text-white"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              disabled={replySending}
+              className="px-5 py-2 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-[#2B6EFA] to-[#00D4FF] flex items-center gap-2"
+            >
+              {replySending ? 'Sending...' : 'Send & Log Reply'}
+              <Send className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </form>
+      </Modal>
+    </div>
+  );
+}
