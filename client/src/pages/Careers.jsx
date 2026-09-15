@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { jobsData, culturePerks } from '../data/jobsData';
 import Modal from '../components/common/Modal';
+import { Helmet } from 'react-helmet-async';
 import api from '../utils/api';
 import CtaBanner from '../components/home/CtaBanner';
 
@@ -89,6 +90,14 @@ export default function Careers() {
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-white">
+      <Helmet>
+        <title>Careers & Open Engineering Positions | TECHOFAY GLOBAL VENTURES</title>
+        <meta
+          name="description"
+          content="Join TECHOFAY GLOBAL VENTURES. Explore open positions in AI development, full-stack engineering, growth marketing, and enterprise solutions architecture."
+        />
+        <link rel="canonical" href="https://techofay.com/careers" />
+      </Helmet>
       {/* Header Banner */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 relative">
         <div className="text-center max-w-3xl mx-auto space-y-4">

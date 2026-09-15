@@ -4,18 +4,27 @@ export default function LoadingScreen({ onComplete }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // 6s absolute max timeout — never hang longer than this
+    const maxTimeout = setTimeout(() => {
+      onComplete();
+    }, 6000);
+
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
+          clearTimeout(maxTimeout);
           setTimeout(onComplete, 400);
           return 100;
         }
-        return prev + Math.floor(Math.random() * 15 + 10);
+        return Math.min(prev + Math.floor(Math.random() * 15 + 10), 100);
       });
     }, 80);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(maxTimeout);
+    };
   }, [onComplete]);
 
   return (

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Boxes, Search, Trash2, CheckCircle2, Clock } from 'lucide-react';
 import api from '../../utils/api';
+import EmptyState from '../../components/common/EmptyState';
 import { useRealtime } from '../../context/SocketContext';
 
 export default function AdminDemoRequests() {
@@ -95,8 +96,12 @@ export default function AdminDemoRequests() {
                 </tr>
               ) : demos.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-5 py-12 text-center text-xs text-[#8B9AB5]">
-                    No demo requests recorded yet.
+                  <td colSpan={6} className="px-5 py-6">
+                    <EmptyState
+                      icon={Boxes}
+                      title="No Demo Requests"
+                      description="No product demonstration requests have been logged yet."
+                    />
                   </td>
                 </tr>
               ) : (

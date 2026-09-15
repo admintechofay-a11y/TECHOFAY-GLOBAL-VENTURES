@@ -5,11 +5,17 @@ import { useTheme } from '../../context/ThemeContext';
 export default function ParticleField() {
   const containerRef = useRef(null);
   const { theme } = useTheme();
-  const isLight = theme === 'light';
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    // Check for very low-end device
+    const isMobile = window.innerWidth < 768;
+    const isLowEnd = typeof navigator !== 'undefined' && (navigator.hardwareConcurrency || 4) <= 2;
+    if (isMobile && isLowEnd) {
+      return; // Skip WebGL initialization on low-end mobile devices to preserve battery and RAM
+    }
 
     // Scene, Camera, Renderer
     const scene = new THREE.Scene();
@@ -23,11 +29,11 @@ export default function ParticleField() {
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
     renderer.setSize(container.clientWidth, container.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     container.appendChild(renderer.domElement);
 
-    // Particle Configuration
-    const particleCount = 130;
+    // Particle Configuration dynamically scaled to viewport
+    const particleCount = window.innerWidth < 1024 ? 60 : 130;
     const maxDistance = 90;
     const particlesData = [];
     const positions = new Float32Array(particleCount * 3);
@@ -54,9 +60,9 @@ export default function ParticleField() {
 
       particlesData.push({
         velocity: new THREE.Vector3(
-          (Math.random() - 0.5) * 0.45,
-          (Math.random() - 0.5) * 0.45,
-          (Math.random() - 0.5) * 0.45
+          (Math.random() - 0.5) * 0.4,
+          (Math.random() - 0.5) * 0.4,
+          (Math.random() - 0.5) * 0.4
         ),
         numConnections: 0,
       });
@@ -66,7 +72,7 @@ export default function ParticleField() {
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3).setUsage(THREE.DynamicDrawUsage));
     particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    // Particle Material - subtle floating green particle dots (opacity 0.3)
+    // Particle Material - subtle floating green particle dots
     const pMaterial = new THREE.PointsMaterial({
       size: 3.5,
       vertexColors: true,
@@ -97,8 +103,6 @@ export default function ParticleField() {
     scene.add(linesMesh);
 
     // Mouse Interaction
-    let mouseX = 0;
-    let mouseY = 0;
     let targetX = 0;
     let targetY = 0;
 
@@ -129,16 +133,10 @@ export default function ParticleField() {
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
 
-      // Smooth camera parallax
-      mouseX += (targetX - mouseX) * 0.05;
-      mouseY += (targetY - mouseY) * 0.05;
-      camera.position.x = mouseX;
-      camera.position.y = mouseY;
+      // Smooth camera sway
+      camera.position.x += (targetX - camera.position.x) * 0.03;
+      camera.position.y += (targetY - camera.position.y) * 0.03;
       camera.lookAt(scene.position);
-
-      // Rotate group gently
-      pointCloud.rotation.y += 0.001;
-      linesMesh.rotation.y += 0.001;
 
       let vertexpos = 0;
       let colorpos = 0;
@@ -156,11 +154,11 @@ export default function ParticleField() {
         positions[i * 3 + 2] += pData.velocity.z;
 
         // Bounce off bounds
-        if (positions[i * 3] < -280 || positions[i * 3] > 280) pData.velocity.x = -pData.velocity.x;
-        if (positions[i * 3 + 1] < -180 || positions[i * 3 + 1] > 180) pData.velocity.y = -pData.velocity.y;
-        if (positions[i * 3 + 2] < -180 || positions[i * 3 + 2] > 180) pData.velocity.z = -pData.velocity.z;
+        if (positions[i * 3] < -275 || positions[i * 3] > 275) pData.velocity.x = -pData.velocity.x;
+        if (positions[i * 3 + 1] < -175 || positions[i * 3 + 1] > 175) pData.velocity.y = -pData.velocity.y;
+        if (positions[i * 3 + 2] < -175 || positions[i * 3 + 2] > 175) pData.velocity.z = -pData.velocity.z;
 
-        // Check distance to other particles
+        // Connect nearby particles
         for (let j = i + 1; j < particleCount; j++) {
           const dx = positions[i * 3] - positions[j * 3];
           const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
@@ -181,13 +179,13 @@ export default function ParticleField() {
             linePositions[vertexpos++] = positions[j * 3 + 1];
             linePositions[vertexpos++] = positions[j * 3 + 2];
 
-            lineColors[colorpos++] = 0.0;
-            lineColors[colorpos++] = 0.83 * alpha;
-            lineColors[colorpos++] = 1.0 * alpha;
+            lineColors[colorpos++] = 0.09;
+            lineColors[colorpos++] = 0.64 * alpha;
+            lineColors[colorpos++] = 0.29 * alpha;
 
-            lineColors[colorpos++] = 0.17 * alpha;
-            lineColors[colorpos++] = 0.43 * alpha;
-            lineColors[colorpos++] = 0.98 * alpha;
+            lineColors[colorpos++] = 0.13;
+            lineColors[colorpos++] = 0.77 * alpha;
+            lineColors[colorpos++] = 0.37 * alpha;
 
             numConnected++;
           }
@@ -208,10 +206,19 @@ export default function ParticleField() {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('mousemove', onMouseMove);
       window.removeEventListener('resize', onResize);
-      if (container && renderer.domElement) {
+
+      // Dispose Three.js objects to free GPU memory & WebGL context
+      particlesGeometry.dispose();
+      linesGeometry.dispose();
+      pMaterial.dispose();
+      lineMaterial.dispose();
+      scene.clear();
+      renderer.dispose();
+      renderer.forceContextLoss();
+
+      if (container && renderer.domElement?.parentNode === container) {
         container.removeChild(renderer.domElement);
       }
-      renderer.dispose();
     };
   }, [theme]);
 

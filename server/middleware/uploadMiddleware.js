@@ -16,24 +16,37 @@ const storage = multer.diskStorage({
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
     const sanitizedName = file.originalname.replace(/[^a-zA-Z0-9.-]/g, '_');
     cb(null, `${uniqueSuffix}-${sanitizedName}`);
-  }
+  },
 });
 
-const fileFilter = (req, file, cb) => {
-  // Disallow dangerous executable extensions
-  const dangerousExts = ['.exe', '.bat', '.cmd', '.sh', '.vbs', '.msi', '.ps1', '.dll', '.scr'];
-  const ext = path.extname(file.originalname).toLowerCase();
-  
-  if (dangerousExts.includes(ext)) {
-    return cb(new Error('Executable and script file uploads are prohibited for security.'), false);
-  }
+const ALLOWED_MIME_TYPES = new Set([
+  'application/pdf',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  'application/vnd.ms-excel',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  'image/jpeg',
+  'image/png',
+  'image/webp',
+  'text/plain',
+  'text/csv',
+]);
 
-  // Accept documents, specs (json, csv, txt, md), archives, and media
-  cb(null, true);
+const fileFilter = (req, file, cb) => {
+  if (ALLOWED_MIME_TYPES.has(file.mimetype)) {
+    cb(null, true);
+  } else {
+    cb(
+      new Error(
+        `File type "${file.mimetype}" not allowed. Upload PDF, DOC, DOCX, XLS, XLSX, JPG, PNG, WEBP, TXT, or CSV only.`
+      ),
+      false
+    );
+  }
 };
 
 export const upload = multer({
   storage: storage,
-  limits: { fileSize: 15 * 1024 * 1024 }, // 15 MB
-  fileFilter: fileFilter
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB max
+  fileFilter: fileFilter,
 });

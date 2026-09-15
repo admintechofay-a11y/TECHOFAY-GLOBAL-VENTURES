@@ -46,18 +46,26 @@ export const getDashboardMetrics = async (req, res) => {
 
     const inquiriesByVertical = verticals.map(v => {
       const count = inquiries.filter(i => i.service === v || (i.service && i.service.includes(v.split(' ')[0]))).length;
-      return { vertical: v, count: Math.max(count, Math.floor(Math.random() * 3 + 1)) };
+      return { vertical: v, count };
     });
 
-    // Monthly leads trend for Recharts
-    const monthlyLeadsTrend = [
-      { month: 'May', inquiries: 18, demos: 8 },
-      { month: 'Jun', inquiries: 29, demos: 14 },
-      { month: 'Jul', inquiries: 42, demos: 22 },
-      { month: 'Aug', inquiries: 56, demos: 31 },
-      { month: 'Sep', inquiries: Math.max(68, totalInquiries * 3), demos: Math.max(38, demoRequests.length * 4) },
-      { month: 'Oct', inquiries: 84, demos: 45 },
-    ];
+    // Monthly leads trend calculated accurately from recorded inquiries & demo requests
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const currentMonthIndex = now.getMonth();
+    const monthlyLeadsTrend = [];
+    for (let i = 5; i >= 0; i--) {
+      const targetDate = new Date(now.getFullYear(), currentMonthIndex - i, 1);
+      const mName = months[targetDate.getMonth()];
+      const inqCount = inquiries.filter(inq => {
+        const d = new Date(inq.createdAt);
+        return d.getMonth() === targetDate.getMonth() && d.getFullYear() === targetDate.getFullYear();
+      }).length;
+      const demoCount = demoRequests.filter(req => {
+        const d = new Date(req.createdAt);
+        return d.getMonth() === targetDate.getMonth() && d.getFullYear() === targetDate.getFullYear();
+      }).length;
+      monthlyLeadsTrend.push({ month: mName, inquiries: inqCount, demos: demoCount });
+    }
 
     // Safely formatted recent inquiries to guarantee no undefined values in the UI
     const formattedRecentInquiries = inquiries.slice(0, 8).map(inq => {

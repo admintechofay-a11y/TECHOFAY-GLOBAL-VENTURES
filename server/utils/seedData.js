@@ -187,59 +187,59 @@ const initialDemoRequests = [
 ];
 
 export const seedDatabase = async () => {
-  const adminEmail = process.env.ADMIN_EMAIL || 'admin@techofay.com';
+  const adminEmail = (process.env.ADMIN_EMAIL || 'admin@techofay.com').toLowerCase();
   const adminPassword = process.env.ADMIN_PASSWORD || 'Techofay@2025!';
 
-  if (isConnected) {
-    try {
-      // Seed Admin User
-      const userCount = await User.countDocuments();
-      if (userCount === 0) {
-        const adminUser = new User({
-          name: 'Super Admin',
-          email: adminEmail,
-          password: adminPassword,
-          role: 'admin'
-        });
-        await adminUser.save();
-        console.log(`[Seed] Created initial admin user: ${adminEmail}`);
+  try {
+    if (isConnected) {
+      const adminExists = await User.findOne({ email: adminEmail });
+      if (adminExists) {
+        console.log('[Seed] Admin account already exists. Skipping seed.');
+        return;
       }
+      const adminUser = new User({
+        name: 'Super Admin',
+        email: adminEmail,
+        password: adminPassword,
+        role: 'admin',
+      });
+      await adminUser.save();
+      console.log(`[Seed] Created initial admin user: ${adminEmail}`);
 
-      // Seed Blog Posts
       const blogCount = await BlogPost.countDocuments();
       if (blogCount === 0) {
         await BlogPost.insertMany(initialBlogPosts);
         console.log(`[Seed] Seeded ${initialBlogPosts.length} initial blog posts`);
       }
 
-      // Seed Inquiries
       const inquiryCount = await Inquiry.countDocuments();
       if (inquiryCount === 0) {
         await Inquiry.insertMany(initialInquiries);
         console.log(`[Seed] Seeded ${initialInquiries.length} initial inquiries`);
       }
 
-      // Seed Demo Requests
       const demoCount = await DemoRequest.countDocuments();
       if (demoCount === 0) {
         await DemoRequest.insertMany(initialDemoRequests);
         console.log(`[Seed] Seeded ${initialDemoRequests.length} initial demo requests`);
       }
-    } catch (err) {
-      console.error('[Seed Error] Failed to seed MongoDB:', err.message);
+    } else {
+      if (memoryStore.users.length > 0) return; // already seeded in memory
+      memoryStore.users = [
+        {
+          _id: 'mem-admin-1',
+          name: 'Super Admin',
+          email: adminEmail,
+          password: adminPassword,
+          role: 'admin',
+        },
+      ];
+      memoryStore.blogPosts = initialBlogPosts.map((p, idx) => ({ ...p, _id: `post-${idx + 1}` }));
+      memoryStore.inquiries = initialInquiries.map((i, idx) => ({ ...i, _id: `inq-${idx + 1}` }));
+      memoryStore.demoRequests = initialDemoRequests.map((d, idx) => ({ ...d, _id: `demo-${idx + 1}` }));
+      console.log('[Store] Resilient in-memory store initialized.');
     }
+  } catch (err) {
+    console.error('[Seed Error]:', err.message);
   }
-
-  // Populate memoryStore as fallback
-  memoryStore.users = [{
-    _id: 'mem-admin-1',
-    name: 'Super Admin',
-    email: adminEmail,
-    password: adminPassword, // will match in memory controller
-    role: 'admin'
-  }];
-  memoryStore.blogPosts = initialBlogPosts.map((p, idx) => ({ ...p, _id: `post-${idx + 1}` }));
-  memoryStore.inquiries = initialInquiries.map((i, idx) => ({ ...i, _id: `inq-${idx + 1}` }));
-  memoryStore.demoRequests = initialDemoRequests.map((d, idx) => ({ ...d, _id: `demo-${idx + 1}` }));
-  console.log('[Store] Resilient in-memory store initialized.');
 };

@@ -3,15 +3,23 @@ import { X } from 'lucide-react';
 
 export default function Modal({ isOpen, onClose, title, subtitle, children, maxWidth = 'max-w-2xl' }) {
   useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose?.();
+      }
+    };
+
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
     } else {
       document.body.style.overflow = 'unset';
     }
     return () => {
       document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -24,7 +32,11 @@ export default function Modal({ isOpen, onClose, title, subtitle, children, maxW
       />
 
       {/* Modal Dialog */}
-      <div className={`relative w-full ${maxWidth} glass-panel rounded-2xl p-6 sm:p-8 bg-[#0A1628]/95 border border-[rgba(0,212,255,0.3)] shadow-[0_20px_60px_rgba(0,0,0,0.8)] z-10 my-8`}>
+      <div 
+        role="dialog" 
+        aria-modal="true"
+        className={`relative w-full ${maxWidth} glass-panel rounded-2xl p-6 sm:p-8 bg-[#0A1628]/95 border border-[rgba(0,212,255,0.3)] shadow-[0_20px_60px_rgba(0,0,0,0.8)] z-10 my-8`}
+      >
         {/* Close Button */}
         <button
           onClick={onClose}

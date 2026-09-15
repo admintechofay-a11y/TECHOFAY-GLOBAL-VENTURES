@@ -48,11 +48,11 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
-    const cleanEmail = (email || '').trim().toLowerCase();
-    const isMasterAdmin = cleanEmail === 'admin@techofay.com' && password === 'Techofay@2025!';
-
     try {
-      const res = await api.post('/auth/login', { email: cleanEmail, password });
+      const res = await api.post('/auth/login', {
+        email: (email || '').trim().toLowerCase(),
+        password,
+      });
       const { token: receivedToken, ...userData } = res.data;
       localStorage.setItem('techofay_admin_token', receivedToken);
       localStorage.setItem('techofay_admin_user', JSON.stringify(userData));
@@ -60,32 +60,13 @@ export const AuthProvider = ({ children }) => {
       setUser(userData);
       return userData;
     } catch (err) {
-      console.warn('[AuthContext] Backend login error:', err.message, err.response?.status);
-
-      // If master admin credentials match, ALWAYS activate authenticated session
-      // (protects against backend being offline, proxy ECONNREFUSED, or server errors)
-      if (isMasterAdmin) {
-        console.log('[AuthContext] Master admin credentials authenticated with local fallback session.');
-        const fallbackUser = {
-          _id: 'master-admin-session',
-          name: 'Super Admin',
-          email: 'admin@techofay.com',
-          role: 'admin'
-        };
-        const fallbackToken = 'techofay_master_token_' + Date.now();
-        localStorage.setItem('techofay_admin_token', fallbackToken);
-        localStorage.setItem('techofay_admin_user', JSON.stringify(fallbackUser));
-        setToken(fallbackToken);
-        setUser(fallbackUser);
-        return fallbackUser;
-      }
-
-      // If server responded with a deliberate 401/400 message
-      if (err.response?.data?.message) {
-        throw new Error(err.response.data.message);
-      }
-
-      throw new Error('Authentication could not be completed. Backend server might be offline.');
+      // Never bypass — always show the real error
+      const message =
+        err.response?.data?.message ||
+        (err.code === 'ERR_NETWORK'
+          ? 'Cannot connect to server. Is the backend running?'
+          : 'Login failed. Check your credentials.');
+      throw new Error(message);
     }
   };
 

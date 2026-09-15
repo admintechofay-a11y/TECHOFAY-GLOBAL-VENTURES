@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import api from '../../utils/api';
 import Modal from '../../components/common/Modal';
+import EmptyState from '../../components/common/EmptyState';
 import { useRealtime } from '../../context/SocketContext';
 
 export default function AdminInquiries() {
@@ -252,23 +253,19 @@ export default function AdminInquiries() {
                 </tr>
               ) : inquiries.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-5 py-12 text-center text-xs text-[#8B9AB5]">
-                    <Inbox className="w-8 h-8 text-[#55698b] mx-auto mb-2 opacity-50" />
-                    <p className="font-semibold text-white">No inquiries found matching your filters.</p>
-                    <p className="text-[11px] text-[#55698b] mt-1">
-                      Inquiries submitted from the public contact page will appear here automatically via live WebSockets.
-                    </p>
-                    <button
-                      onClick={() => {
+                  <td colSpan={6} className="px-5 py-6">
+                    <EmptyState
+                      icon={Inbox}
+                      title="No Inquiries Found"
+                      description="No enterprise inquiries match your current search and filter parameters."
+                      actionText="Reset Filters"
+                      onAction={() => {
                         setStatusFilter('All');
                         setServiceFilter('All');
                         setSearch('');
                         fetchInquiries();
                       }}
-                      className="mt-3 px-4 py-1.5 rounded-lg bg-white/5 hover:bg-[#2B6EFA]/20 text-[#00D4FF] text-xs font-medium border border-[rgba(0,212,255,0.3)] transition-all"
-                    >
-                      Reset Filters & Refresh
-                    </button>
+                    />
                   </td>
                 </tr>
               ) : (

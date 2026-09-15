@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Search, Calendar, Clock, BookOpen, ArrowRight, Eye } from 'lucide-react';
 import api from '../utils/api';
 import { initialBlogData } from '../data/blogData';
@@ -40,6 +41,14 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-white">
+      <Helmet>
+        <title>Technical Insights & Whitepapers | TECHOFAY GLOBAL VENTURES</title>
+        <meta
+          name="description"
+          content="Read research whitepapers, architecture guides, and technical insights on custom AI, cybersecurity, and digital growth from TECHOFAY engineers."
+        />
+        <link rel="canonical" href="https://techofay.com/blog" />
+      </Helmet>
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 relative">
         <div className="text-center max-w-3xl mx-auto space-y-4">

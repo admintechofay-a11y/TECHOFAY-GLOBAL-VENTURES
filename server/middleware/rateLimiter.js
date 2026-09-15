@@ -1,11 +1,24 @@
 import rateLimit from 'express-rate-limit';
 
 export const contactRateLimiter = rateLimit({
-  windowMs: 60 * 60 * 1000, // 1 hour window
-  max: process.env.NODE_ENV === 'production' ? 100 : 1000, // Generous in development
+  windowMs: 60 * 60 * 1000,
+  max: process.env.NODE_ENV === 'production' ? 5 : 50,
   message: {
-    message: 'Too many inquiries submitted from this IP. Please wait an hour before submitting again or call our direct office.'
+    success: false,
+    message: 'Too many submissions from your IP. Please wait an hour or call us directly.',
   },
+  standardHeaders: true,
+  legacyHeaders: false,
+  skip: (req) => {
+    // Skip rate limiting for verified admin requests
+    return !!req.headers.authorization;
+  },
+});
+
+export const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 200,
+  message: { success: false, message: 'Too many requests. Please try again later.' },
   standardHeaders: true,
   legacyHeaders: false,
 });

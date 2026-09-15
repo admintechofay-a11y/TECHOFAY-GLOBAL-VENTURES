@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { 
   ShieldAlert, 
   Code2, 
@@ -39,6 +40,14 @@ export default function Services() {
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-[#F8FAF8]">
+      <Helmet>
+        <title>Enterprise Services & Engineering Verticals | TECHOFAY GLOBAL VENTURES</title>
+        <meta
+          name="description"
+          content="Explore TECHOFAY's specialized engineering practices: Custom AI, Website Development, Cybersecurity, Cloud DevOps, Performance Marketing, and Enterprise Systems."
+        />
+        <link rel="canonical" href="https://techofay.com/services" />
+      </Helmet>
       {/* Header Banner */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 relative">
         <div className="text-center max-w-3xl mx-auto space-y-4">

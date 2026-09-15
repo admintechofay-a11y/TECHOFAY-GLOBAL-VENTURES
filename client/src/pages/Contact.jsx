@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { Linkedin, Twitter, Github } from '../components/common/BrandIcons';
 
+import { Helmet } from 'react-helmet-async';
 import api from '../utils/api';
 
 export default function Contact() {
@@ -32,6 +33,7 @@ export default function Contact() {
     referralSource: 'Search Engine',
   });
 
+  const [formErrors, setFormErrors] = useState({});
   const [attachment, setAttachment] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -46,8 +48,28 @@ export default function Contact() {
     }
   }, [location.search]);
 
+  const validate = () => {
+    const errs = {};
+    if (!formData.fullName.trim() || formData.fullName.trim().length < 2) {
+      errs.fullName = 'Full name is required (min 2 characters)';
+    }
+    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      errs.email = 'Valid corporate email address is required';
+    }
+    if (!formData.message.trim() || formData.message.trim().length < 20) {
+      errs.message = 'Message must be at least 20 characters';
+    }
+    return errs;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length > 0) {
+      setFormErrors(errs);
+      return;
+    }
+    setFormErrors({});
     setSubmitting(true);
     setErrorMessage('');
 
@@ -68,28 +90,14 @@ export default function Contact() {
       window.scrollTo({ top: 100, behavior: 'smooth' });
     } catch (err) {
       console.error('[Contact Submit Error]:', err);
-      
-      // If network error / backend temporarily unreachable, store inquiry locally and still confirm receipt
-      if (!err.response || err.response.status >= 500) {
-        try {
-          const offlineInquiries = JSON.parse(localStorage.getItem('techofay_offline_inquiries') || '[]');
-          offlineInquiries.unshift({
-            ...formData,
-            attachmentName: attachment ? attachment.name : null,
-            savedAt: new Date().toISOString()
-          });
-          localStorage.setItem('techofay_offline_inquiries', JSON.stringify(offlineInquiries));
-          setSubmitted(true);
-          window.scrollTo({ top: 100, behavior: 'smooth' });
-          return;
-        } catch (storageErr) {
-          console.error('[Local Inquiries Cache Error]:', storageErr);
-        }
+      let userMessage = 'Failed to submit inquiry. Please verify your details and try again.';
+      if (!err.response) {
+        userMessage =
+          'Cannot connect to server. Please check your connection or contact us directly at info@techofay.com or +91-9359339000.';
+      } else if (err.response?.data?.message) {
+        userMessage = err.response.data.message;
       }
-
-      setErrorMessage(
-        err.response?.data?.message || 'Failed to submit inquiry. Please verify your details and try again.'
-      );
+      setErrorMessage(userMessage);
     } finally {
       setSubmitting(false);
     }
@@ -97,6 +105,15 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-white">
+      <Helmet>
+        <title>Contact TECHOFAY GLOBAL VENTURES | Enterprise Solutions & Intake</title>
+        <meta
+          name="description"
+          content="Connect with TECHOFAY GLOBAL VENTURES for enterprise software development, custom AI solutions, and digital growth strategies. Request a consultation."
+        />
+        <link rel="canonical" href="https://techofay.com/contact" />
+      </Helmet>
+
       {/* Header Banner */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 relative">
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -333,10 +350,16 @@ export default function Contact() {
                         type="text"
                         required
                         value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        onChange={(e) => {
+                          setFormData({ ...formData, fullName: e.target.value });
+                          if (formErrors.fullName) setFormErrors(prev => ({ ...prev, fullName: '' }));
+                        }}
                         placeholder="Johnathan Davis"
-                        className="w-full px-4 py-2.5 rounded-lg bg-[#F8FAF8] border border-[#E5E7EB] text-[#111827] text-xs focus:outline-none focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A]"
+                        className={`w-full px-4 py-2.5 rounded-lg bg-[#F8FAF8] border text-[#111827] text-xs focus:outline-none ${formErrors.fullName ? 'border-red-500 focus:border-red-500 ring-1 ring-red-500' : 'border-[#E5E7EB] focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A]'}`}
                       />
+                      {formErrors.fullName && (
+                        <p className="text-red-500 text-[11px] mt-1 font-medium">{formErrors.fullName}</p>
+                      )}
                     </div>
 
                     <div>
@@ -345,10 +368,16 @@ export default function Contact() {
                         type="email"
                         required
                         value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        onChange={(e) => {
+                          setFormData({ ...formData, email: e.target.value });
+                          if (formErrors.email) setFormErrors(prev => ({ ...prev, email: '' }));
+                        }}
                         placeholder="jdavis@enterprise.com"
-                        className="w-full px-4 py-2.5 rounded-lg bg-[#F8FAF8] border border-[#E5E7EB] text-[#111827] text-xs focus:outline-none focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A]"
+                        className={`w-full px-4 py-2.5 rounded-lg bg-[#F8FAF8] border text-[#111827] text-xs focus:outline-none ${formErrors.email ? 'border-red-500 focus:border-red-500 ring-1 ring-red-500' : 'border-[#E5E7EB] focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A]'}`}
                       />
+                      {formErrors.email && (
+                        <p className="text-red-500 text-[11px] mt-1 font-medium">{formErrors.email}</p>
+                      )}
                     </div>
                   </div>
 
@@ -465,10 +494,16 @@ export default function Contact() {
                       required
                       rows={4}
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) => {
+                        setFormData({ ...formData, message: e.target.value });
+                        if (formErrors.message) setFormErrors(prev => ({ ...prev, message: '' }));
+                      }}
                       placeholder="Outline your requirements, target goals, branding constraints, or technical questions..."
-                      className="w-full px-4 py-2.5 rounded-lg bg-[#F8FAF8] border border-[#E5E7EB] text-[#111827] text-xs focus:outline-none focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A] placeholder:text-[#6B7280]"
+                      className={`w-full px-4 py-2.5 rounded-lg bg-[#F8FAF8] border text-[#111827] text-xs focus:outline-none placeholder:text-[#6B7280] ${formErrors.message ? 'border-red-500 focus:border-red-500 ring-1 ring-red-500' : 'border-[#E5E7EB] focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A]'}`}
                     />
+                    {formErrors.message && (
+                      <p className="text-red-500 text-[11px] mt-1 font-medium">{formErrors.message}</p>
+                    )}
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

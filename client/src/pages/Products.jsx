@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { productsData } from '../data/productsData';
 import Modal from '../components/common/Modal';
+import { Helmet } from 'react-helmet-async';
 import api from '../utils/api';
 import CtaBanner from '../components/home/CtaBanner';
 import RoiCalculator from '../components/common/RoiCalculator';
@@ -126,6 +127,14 @@ export default function Products() {
 
   return (
     <div className="min-h-screen bg-white text-[#374151] pt-24">
+      <Helmet>
+        <title>Software Products Suite — ERP, Hospital, School, Hotel & Fleet | TECHOFAY</title>
+        <meta
+          name="description"
+          content="Explore TECHOFAY's institutional software platforms: Cloud ERP, Hospital Management (HMS), School ERP, Hotel PMS, and Fleet Management software."
+        />
+        <link rel="canonical" href="https://techofay.com/products" />
+      </Helmet>
       {/* Top Hero Banner */}
       <section className="relative py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center overflow-hidden">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] text-[#166534] text-xs font-semibold uppercase tracking-wider mb-4">

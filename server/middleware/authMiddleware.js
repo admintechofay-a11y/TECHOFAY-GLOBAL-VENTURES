@@ -4,65 +4,38 @@ import { isConnected } from '../config/db.js';
 import { memoryStore } from '../utils/seedData.js';
 
 export const protect = async (req, res, next) => {
-  let token;
+  const authHeader = req.headers.authorization;
 
-  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-    try {
-      token = req.headers.authorization.split(' ')[1];
-
-      // Support master fallback admin session token
-      if (token && (token.startsWith('techofay_master_token_') || token === 'techofay_admin_secret_token')) {
-        req.user = {
-          _id: 'master-admin-session',
-          name: 'Super Admin',
-          email: process.env.ADMIN_EMAIL || 'admin@techofay.com',
-          role: 'admin'
-        };
-        return next();
-      }
-
-      const decoded = jwt.verify(token, process.env.JWT_SECRET || 'techofay_super_secret_jwt_key_2025_enterprisegrade');
-
-      if (isConnected) {
-        try {
-          req.user = await User.findById(decoded.id).select('-password');
-        } catch (e) {
-          req.user = null;
-        }
-        if (!req.user && decoded.email) {
-          req.user = await User.findOne({ email: decoded.email.toLowerCase() }).select('-password');
-        }
-      }
-
-      if (!req.user) {
-        req.user = memoryStore.users.find(u => 
-          u._id === decoded.id || 
-          (u.email && decoded.email && u.email.toLowerCase() === decoded.email.toLowerCase())
-        );
-      }
-
-      // If token is valid enterprise admin token, construct session user
-      if (!req.user && decoded.email) {
-        req.user = {
-          _id: decoded.id || 'admin-session',
-          name: 'Super Admin',
-          email: decoded.email,
-          role: decoded.role || 'admin'
-        };
-      }
-
-      if (!req.user) {
-        return res.status(401).json({ message: 'User authorization failed: User not found' });
-      }
-
-      return next();
-    } catch (error) {
-      console.error('[Auth Error] Token verification failed:', error.message);
-      return res.status(401).json({ message: 'Not authorized, token invalid or expired' });
-    }
+  if (!authHeader?.startsWith('Bearer ')) {
+    return res.status(401).json({ message: 'Not authorized. No token provided.' });
   }
 
-  if (!token) {
-    return res.status(401).json({ message: 'Not authorized, no token provided' });
+  const token = authHeader.split(' ')[1];
+
+  if (!process.env.JWT_SECRET) {
+    console.error('[FATAL] JWT_SECRET is not set in environment variables');
+    return res.status(500).json({ message: 'Server configuration error.' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Try DB first, fall back to memory store
+    let user = null;
+    if (isConnected) {
+      user = await User.findById(decoded.id).select('-password');
+    }
+    if (!user) {
+      user = memoryStore.users.find((u) => u._id?.toString() === decoded.id);
+    }
+    if (!user) {
+      return res.status(401).json({ message: 'User not found. Please log in again.' });
+    }
+
+    req.user = user;
+    next();
+  } catch (err) {
+    console.error('[Auth Middleware] Token error:', err.message);
+    return res.status(401).json({ message: 'Token invalid or expired. Please log in again.' });
   }
 };

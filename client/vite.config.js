@@ -19,4 +19,26 @@ export default defineConfig({
       }
     },
   },
+  build: {
+    target: 'esnext',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'chunk-react': ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
+          'chunk-three': ['three'],
+          'chunk-animation': ['gsap', 'framer-motion', 'canvas-confetti'],
+          'chunk-charts': ['recharts'],
+          'chunk-icons': ['lucide-react'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 800,
+  },
 });

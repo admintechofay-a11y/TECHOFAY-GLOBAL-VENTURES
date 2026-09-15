@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import api from '../../utils/api';
 import Modal from '../../components/common/Modal';
+import EmptyState from '../../components/common/EmptyState';
 
 export default function AdminBlog() {
   const [posts, setPosts] = useState([]);
@@ -185,8 +186,14 @@ export default function AdminBlog() {
                 </tr>
               ) : posts.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-5 py-12 text-center text-xs text-[#8B9AB5]">
-                    No articles found. Click "Author New Article" to create one.
+                  <td colSpan={5} className="px-5 py-6">
+                    <EmptyState
+                      icon={FileText}
+                      title="No Articles Published"
+                      description="Your knowledge base and blog registry is currently empty."
+                      actionText="Author First Article"
+                      onAction={handleOpenCreate}
+                    />
                   </td>
                 </tr>
               ) : (

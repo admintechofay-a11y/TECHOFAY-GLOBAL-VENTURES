@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Users, Search, Download, Trash2, Eye, FileText, CheckCircle2 } from 'lucide-react';
 import api from '../../utils/api';
 import Modal from '../../components/common/Modal';
+import EmptyState from '../../components/common/EmptyState';
 
 export default function AdminCareers() {
   const [applications, setApplications] = useState([]);
@@ -99,8 +100,14 @@ export default function AdminCareers() {
                 </tr>
               ) : applications.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-5 py-12 text-center text-xs text-[#8B9AB5]">
-                    No applications currently under this filter.
+                  <td colSpan={6} className="px-5 py-6">
+                    <EmptyState
+                      icon={Users}
+                      title="No Applications Found"
+                      description="There are currently no job applications under the selected filter."
+                      actionText="Show All Candidates"
+                      onAction={() => setStatusFilter('All')}
+                    />
                   </td>
                 </tr>
               ) : (

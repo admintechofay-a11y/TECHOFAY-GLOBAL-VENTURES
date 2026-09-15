@@ -28,14 +28,18 @@ import { useRealtime } from '../../context/SocketContext';
 export default function AdminDashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { isConnected, latency, telemetry, realtimeAlerts } = useRealtime();
 
   const fetchMetrics = async () => {
+    setLoading(true);
+    setError(null);
     try {
       const res = await api.get('/settings/metrics');
       setData(res.data);
     } catch (err) {
       console.error('[Dashboard Metrics Error]:', err);
+      setError('Unable to load enterprise dashboard metrics. The backend server may be unreachable.');
     } finally {
       setLoading(false);
     }
@@ -52,52 +56,38 @@ export default function AdminDashboard() {
     }
   }, [realtimeAlerts]);
 
-  if (loading) {
+  if (loading && !data) {
     return (
-      <div className="py-20 text-center font-orbitron text-xs text-[#00D4FF] animate-pulse">
-        CALCULATING REAL-TIME ENTERPRISE METRICS...
+      <div className="py-24 text-center space-y-3">
+        <div className="inline-block w-8 h-8 border-2 border-[#00D4FF] border-t-transparent rounded-full animate-spin" />
+        <div className="font-orbitron text-xs text-[#00D4FF] tracking-widest">
+          CALCULATING REAL-TIME ENTERPRISE METRICS...
+        </div>
       </div>
     );
   }
 
-  const fallbackData = {
-    stats: {
-      totalInquiries: 28,
-      newInquiries: 9,
-      inProgressInquiries: 12,
-      closedInquiries: 7,
-      totalApplications: 22,
-      totalDemoRequests: 16,
-      conversionRate: '34.8%'
-    },
-    charts: {
-      inquiryTrends: [
-        { date: 'Mon', count: 4 },
-        { date: 'Tue', count: 6 },
-        { date: 'Wed', count: 5 },
-        { date: 'Thu', count: 8 },
-        { date: 'Fri', count: 7 },
-        { date: 'Sat', count: 3 },
-        { date: 'Sun', count: 5 },
-      ],
-      verticalDistribution: [
-        { name: 'Cybersecurity', count: 11 },
-        { name: 'AI Systems', count: 8 },
-        { name: 'Engineering', count: 5 },
-        { name: 'Cloud SRE', count: 4 },
-      ]
-    },
-    recentInquiries: [
-      { _id: 'demo-1', fullName: 'Alexander Wright', companyName: 'Apex Logistics Global', service: 'Cybersecurity & Zero Trust', budget: '₹5,00,000 - ₹20,00,000', status: 'New', createdAt: new Date() },
-      { _id: 'demo-2', fullName: 'Sophia Chen', companyName: 'Nexus FinTech Corp', service: 'AI & Autonomous Systems', budget: '₹1,00,000 - ₹5,00,000', status: 'In Progress', createdAt: new Date() },
-      { _id: 'demo-3', fullName: 'Marcus Vance', companyName: 'Strata Cloud Solutions', service: 'Cloud Architecture & DevOps', budget: '₹20,00,000+ Enterprise', status: 'Resolved', createdAt: new Date() }
-    ]
-  };
+  if (error && !data) {
+    return (
+      <div className="py-16 text-center space-y-4 glass-panel rounded-2xl border border-red-500/30 p-8 max-w-lg mx-auto my-12">
+        <div className="w-12 h-12 rounded-full bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 mx-auto">
+          <Clock className="w-6 h-6" />
+        </div>
+        <h3 className="font-orbitron font-bold text-white text-base">Telemetry Connection Failed</h3>
+        <p className="text-xs text-[#8B9AB5]">{error}</p>
+        <button
+          onClick={fetchMetrics}
+          className="px-5 py-2.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-[#2B6EFA] to-[#00D4FF] hover:opacity-90 transition-opacity cursor-pointer inline-flex items-center gap-2"
+        >
+          <span>Retry Connection</span>
+        </button>
+      </div>
+    );
+  }
 
-  const activeData = data || fallbackData;
-  const stats = activeData.stats || {};
-  const charts = activeData.charts || {};
-  const recentInquiries = activeData.recentInquiries || [];
+  const stats = data?.stats || {};
+  const charts = data?.charts || {};
+  const recentInquiries = data?.recentInquiries || [];
 
   return (
     <div className="space-y-8">

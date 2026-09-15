@@ -12,6 +12,7 @@ import {
   Tag
 } from 'lucide-react';
 import { Linkedin, Twitter } from '../components/common/BrandIcons';
+import { Helmet } from 'react-helmet-async';
 
 import api from '../utils/api';
 import { initialBlogData } from '../data/blogData';
@@ -70,6 +71,11 @@ export default function BlogPost() {
 
   return (
     <div className="min-h-screen pt-28 pb-20 bg-white">
+      <Helmet>
+        <title>{`${post.title} | TECHOFAY GLOBAL VENTURES`}</title>
+        <meta name="description" content={post.excerpt || post.title} />
+        <link rel="canonical" href={`https://techofay.com/blog/${post.slug}`} />
+      </Helmet>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16">
         
         {/* Back Link */}
