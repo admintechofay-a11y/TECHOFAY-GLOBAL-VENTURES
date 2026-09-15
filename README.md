@@ -71,14 +71,18 @@ cd ../client && npm install
 
 ### 2. Environment Variables
 
-Check `server/.env`:
+Create `server/.env` based on `server/.env.example`:
 ```env
 PORT=5000
 NODE_ENV=development
 MONGO_URI=mongodb://localhost:27017/techofay_db
-JWT_SECRET=techofay_super_secret_jwt_key_2025_enterprisegrade
-ADMIN_EMAIL=admin@techofay.com
-ADMIN_PASSWORD=Techofay@2025!
+JWT_SECRET=your_secure_random_64_char_hex_key
+ADMIN_EMAIL=admin@yourdomain.com
+ADMIN_PASSWORD=your_secure_admin_password
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password
 ```
 
 ### 3. Running Locally in Development
@@ -104,9 +108,7 @@ npm run dev
 
 Open your browser at:
 - **Public Website**: [http://localhost:3000](http://localhost:3000)
-- **Admin Console**: [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
-  - Email: `admin@techofay.com`
-  - Password: `Techofay@2025!`
+- **Admin Console**: [http://localhost:3000/admin/login](http://localhost:3000/admin/login) (Log in using `ADMIN_EMAIL` and `ADMIN_PASSWORD` defined in `server/.env`)
 - **API Health**: [http://localhost:5000/api/health](http://localhost:5000/api/health)
 
 ---
