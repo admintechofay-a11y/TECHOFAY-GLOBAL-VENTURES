@@ -1,0 +1,116 @@
+{
+    "techofay_service": {
+        "name": "techofay_service",
+        "label": "Services",
+        "singular_label": "Service",
+        "description": "Enterprise Services & Verticals",
+        "public": "true",
+        "publicly_queryable": "true",
+        "show_ui": "true",
+        "show_in_nav_menus": "true",
+        "show_in_rest": "true",
+        "has_archive": "services",
+        "has_archive_string": "services",
+        "exclude_from_search": "false",
+        "capability_type": "post",
+        "hierarchical": "false",
+        "rewrite": "true",
+        "rewrite_slug": "service",
+        "rewrite_withfront": "false",
+        "query_var": "true",
+        "menu_position": "5",
+        "menu_icon": "dashicons-shield",
+        "supports": [
+            "title",
+            "editor",
+            "thumbnail",
+            "excerpt",
+            "revisions"
+        ],
+        "taxonomies": [
+            "service_category"
+        ]
+    },
+    "techofay_product": {
+        "name": "techofay_product",
+        "label": "Products (SaaS)",
+        "singular_label": "Product",
+        "description": "Flagship SaaS Products",
+        "public": "true",
+        "publicly_queryable": "true",
+        "show_ui": "true",
+        "show_in_nav_menus": "true",
+        "show_in_rest": "true",
+        "has_archive": "products",
+        "has_archive_string": "products",
+        "exclude_from_search": "false",
+        "capability_type": "post",
+        "hierarchical": "false",
+        "rewrite": "true",
+        "rewrite_slug": "product",
+        "rewrite_withfront": "false",
+        "query_var": "true",
+        "menu_position": "6",
+        "menu_icon": "dashicons-cloud",
+        "supports": [
+            "title",
+            "editor",
+            "thumbnail",
+            "excerpt",
+            "revisions"
+        ],
+        "taxonomies": [
+            "product_category"
+        ]
+    },
+    "testimonial": {
+        "name": "testimonial",
+        "label": "Testimonials",
+        "singular_label": "Testimonial",
+        "public": "true",
+        "show_ui": "true",
+        "menu_icon": "dashicons-testimonial",
+        "supports": [
+            "title",
+            "editor",
+            "thumbnail"
+        ]
+    },
+    "team_member": {
+        "name": "team_member",
+        "label": "Team Members",
+        "singular_label": "Team Member",
+        "public": "true",
+        "show_ui": "true",
+        "menu_icon": "dashicons-groups",
+        "supports": [
+            "title",
+            "editor",
+            "thumbnail"
+        ]
+    },
+    "job_opening": {
+        "name": "job_opening",
+        "label": "Careers & Jobs",
+        "singular_label": "Job Opening",
+        "public": "true",
+        "show_ui": "true",
+        "menu_icon": "dashicons-businessperson",
+        "supports": [
+            "title",
+            "editor"
+        ]
+    },
+    "client_logo": {
+        "name": "client_logo",
+        "label": "Client Logos",
+        "singular_label": "Client Logo",
+        "public": "true",
+        "show_ui": "true",
+        "menu_icon": "dashicons-images-alt2",
+        "supports": [
+            "title",
+            "thumbnail"
+        ]
+    }
+}

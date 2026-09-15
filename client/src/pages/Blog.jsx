@@ -39,33 +39,33 @@ export default function Blog() {
   });
 
   return (
-    <div className="min-h-screen pt-28 pb-20 tech-grid-bg">
+    <div className="min-h-screen pt-28 pb-20 bg-white">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 relative">
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(43,110,250,0.12)] border border-[rgba(0,212,255,0.3)] shadow-glow-blue text-[#00D4FF] text-xs font-semibold uppercase tracking-wider">
-            <BookOpen className="w-3.5 h-3.5" />
-            Engineering Knowledge Hub
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] text-[#166534] text-xs font-semibold uppercase tracking-wider">
+            <BookOpen className="w-3.5 h-3.5 text-[#16A34A]" />
+            Knowledge & Insights Hub
           </div>
-          <h1 className="font-orbitron font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight">
-            Research & <span className="text-gradient">Technical Insights</span>
+          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#111827] tracking-tight">
+            Research & <span className="text-[#16A34A]">Technical Insights</span>
           </h1>
-          <p className="text-sm sm:text-base text-[#8B9AB5] leading-relaxed">
-            Rigorous engineering whitepapers, threat intelligence briefings, and distributed systems architecture guides written by Techofay specialists.
+          <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">
+            Rigorous engineering whitepapers, growth strategies, and custom AI development architecture guides written by Techofay specialists.
           </p>
         </div>
 
         {/* Filter Tabs and Search Bar */}
-        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-4 glass-panel p-3 rounded-2xl border border-[rgba(43,110,250,0.25)]">
+        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-4 bg-[#F8FAF8] p-3 rounded-2xl border border-[#E5E7EB] shadow-xs">
           <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                   selectedCategory === cat
-                    ? 'bg-gradient-to-r from-[#2B6EFA] to-[#00D4FF] text-white shadow-glow-blue'
-                    : 'text-[#8B9AB5] hover:text-white bg-white/5 hover:bg-white/10'
+                    ? 'bg-[#16A34A] text-white shadow-xs'
+                    : 'text-[#374151] hover:text-[#16A34A] bg-white border border-[#E5E7EB]'
                 }`}
               >
                 {cat}
@@ -74,13 +74,13 @@ export default function Blog() {
           </div>
 
           <div className="relative w-full md:w-80">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8B9AB5]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7280]" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search research, keywords, tags..."
-              className="w-full pl-10 pr-4 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.3)] text-xs text-white placeholder:text-[#55688a] focus:outline-none focus:border-[#00D4FF]"
+              className="w-full pl-10 pr-4 py-2 rounded-lg bg-white border border-[#E5E7EB] text-xs text-[#111827] placeholder:text-[#6B7280] focus:outline-none focus:border-[#16A34A]"
             />
           </div>
         </div>
@@ -89,8 +89,8 @@ export default function Blog() {
       {/* Blog Cards Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {filteredPosts.length === 0 ? (
-          <div className="p-16 text-center glass-panel rounded-2xl">
-            <p className="text-sm text-[#8B9AB5]">No articles matched your query. Try resetting your search or filter.</p>
+          <div className="p-16 text-center bg-[#F8FAF8] rounded-2xl border border-[#E5E7EB]">
+            <p className="text-sm text-[#6B7280]">No articles matched your query. Try resetting your search or filter.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -98,61 +98,60 @@ export default function Blog() {
               <Link
                 key={post._id || post.id}
                 to={`/blog/${post.slug}`}
-                className="group glass-card rounded-2xl overflow-hidden border border-[rgba(43,110,250,0.2)] hover:border-[#00D4FF] transition-all flex flex-col justify-between"
+                className="group bg-white rounded-2xl overflow-hidden border border-[#E5E7EB] hover:border-[#16A34A] hover:shadow-[0_8px_24px_rgba(22,163,74,0.08)] transition-all flex flex-col justify-between shadow-xs"
               >
                 <div>
-                  <div className="relative aspect-video w-full overflow-hidden bg-[#0A1628]">
+                  <div className="relative aspect-video w-full overflow-hidden bg-[#F0FDF4]">
                     <img
                       src={post.thumbnail}
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#050B1F] via-transparent to-transparent opacity-80" />
-                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono uppercase bg-[#050B1F]/90 text-[#00D4FF] border border-[rgba(0,212,255,0.3)] backdrop-blur-md">
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-mono uppercase bg-white/95 text-[#166534] border border-[#BBF7D0] backdrop-blur-md font-semibold">
                       {post.category}
                     </span>
                   </div>
 
                   <div className="p-6">
-                    <div className="flex items-center gap-4 text-xs text-[#8B9AB5] mb-3">
+                    <div className="flex items-center gap-4 text-xs text-[#6B7280] mb-3">
                       <span className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5" />
+                        <Calendar className="w-3.5 h-3.5 text-[#16A34A]" />
                         {post.publishedAt || new Date(post.createdAt).toLocaleDateString()}
                       </span>
                       <span className="flex items-center gap-1.5">
-                        <Clock className="w-3.5 h-3.5" />
+                        <Clock className="w-3.5 h-3.5 text-[#16A34A]" />
                         {post.readTime}
                       </span>
                       {post.views > 0 && (
-                        <span className="flex items-center gap-1 ml-auto text-[11px] font-mono text-[#00D4FF]">
+                        <span className="flex items-center gap-1 ml-auto text-[11px] font-mono text-[#16A34A]">
                           <Eye className="w-3 h-3" />
                           {post.views}
                         </span>
                       )}
                     </div>
 
-                    <h3 className="font-orbitron font-bold text-base sm:text-lg text-white mb-3 group-hover:text-[#00D4FF] transition-colors line-clamp-2">
+                    <h3 className="font-heading font-bold text-base sm:text-lg text-[#111827] mb-3 group-hover:text-[#16A34A] transition-colors line-clamp-2">
                       {post.title}
                     </h3>
 
-                    <p className="text-xs sm:text-sm text-[#8B9AB5] leading-relaxed line-clamp-2">
+                    <p className="text-xs sm:text-sm text-[#374151] leading-relaxed line-clamp-2">
                       {post.excerpt}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-6 pt-0 border-t border-white/5 flex items-center justify-between">
+                <div className="p-6 pt-0 border-t border-[#E5E7EB] flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
                     <img
                       src={post.author?.avatar}
                       alt={post.author?.name}
-                      className="w-7 h-7 rounded-full object-cover border border-[#2B6EFA]"
+                      className="w-7 h-7 rounded-full object-cover border border-[#16A34A]"
                     />
-                    <span className="text-xs font-medium text-white truncate max-w-[130px]">
+                    <span className="text-xs font-medium text-[#111827] truncate max-w-[130px]">
                       {post.author?.name}
                     </span>
                   </div>
-                  <span className="text-xs font-semibold text-[#00D4FF] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                  <span className="text-xs font-semibold text-[#16A34A] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
                     Read Article &rarr;
                   </span>
                 </div>
@@ -162,7 +161,9 @@ export default function Blog() {
         )}
       </div>
 
-      <CtaBanner />
+      <div className="mt-20">
+        <CtaBanner />
+      </div>
     </div>
   );
 }

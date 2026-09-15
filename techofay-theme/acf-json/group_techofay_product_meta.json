@@ -1,0 +1,115 @@
+{
+    "key": "group_techofay_product_meta",
+    "title": "SaaS Product Architecture & Pricing",
+    "fields": [
+        {
+            "key": "field_prd_tagline",
+            "label": "Tagline",
+            "name": "product_tagline",
+            "type": "text"
+        },
+        {
+            "key": "field_prd_badge",
+            "label": "Product Badge",
+            "name": "product_badge",
+            "type": "text"
+        },
+        {
+            "key": "field_prd_metric",
+            "label": "Assurance Metric",
+            "name": "product_metric",
+            "type": "text"
+        },
+        {
+            "key": "field_prd_icon",
+            "label": "Icon Identifier",
+            "name": "product_icon",
+            "type": "text",
+            "default_value": "Layers"
+        },
+        {
+            "key": "field_prd_features",
+            "label": "Features List",
+            "name": "product_features",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_prd_feat_item",
+                    "label": "Feature Bullet",
+                    "name": "feature_text",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_pricing_starter_price",
+            "label": "Starter Price",
+            "name": "pricing_starter_price",
+            "type": "text",
+            "default_value": "₹24,999"
+        },
+        {
+            "key": "field_pricing_starter_billing",
+            "label": "Starter Billing",
+            "name": "pricing_starter_billing",
+            "type": "text"
+        },
+        {
+            "key": "field_pricing_starter_features",
+            "label": "Starter Features",
+            "name": "pricing_starter_features",
+            "type": "textarea"
+        },
+        {
+            "key": "field_pricing_pro_price",
+            "label": "Pro Price",
+            "name": "pricing_pro_price",
+            "type": "text",
+            "default_value": "₹64,999"
+        },
+        {
+            "key": "field_pricing_pro_billing",
+            "label": "Pro Billing",
+            "name": "pricing_pro_billing",
+            "type": "text"
+        },
+        {
+            "key": "field_pricing_pro_features",
+            "label": "Pro Features",
+            "name": "pricing_pro_features",
+            "type": "textarea"
+        },
+        {
+            "key": "field_pricing_enterprise_price",
+            "label": "Enterprise Price",
+            "name": "pricing_enterprise_price",
+            "type": "text",
+            "default_value": "Custom"
+        },
+        {
+            "key": "field_pricing_enterprise_billing",
+            "label": "Enterprise Billing",
+            "name": "pricing_enterprise_billing",
+            "type": "text"
+        },
+        {
+            "key": "field_pricing_enterprise_features",
+            "label": "Enterprise Features",
+            "name": "pricing_enterprise_features",
+            "type": "textarea"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "techofay_product"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "active": true
+}

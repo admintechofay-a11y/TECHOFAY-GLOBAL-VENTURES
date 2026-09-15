@@ -5,15 +5,16 @@ export default function WhatsAppFloat() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTopic, setSelectedTopic] = useState('ERP Management Software');
   
-  // Official Techofay Indian Business WhatsApp Hotline
-  const whatsappNumber = '919876543210'; 
+  // Official Techofay Business Hotline & WhatsApp
+  const whatsappNumber = '919359339000'; 
 
   const quickTopics = [
-    { label: 'ERP Management Suite', msg: 'Hello Techofay Team, I would like to inquire about ERP Management Software pricing & demo.' },
-    { label: 'Hospital HMS System', msg: 'Hello Techofay Team, I want to explore Hospital Management System (HMS) for our healthcare facility.' },
-    { label: 'School ERP Software', msg: 'Hello Techofay Team, please share features and fee collection module details for School Management Software.' },
-    { label: 'Hotel Management HMS', msg: 'Hello Techofay Team, looking for cloud Hotel HMS with 2-way Channel Manager integration.' },
-    { label: 'Fleet & GPS Telematics', msg: 'Hello Techofay Team, interested in Fleet & Transport Telematics for our commercial vehicles.' }
+    { label: 'Complete Digital Growth', msg: 'Hello Techofay Team, I want complete digital growth solutions (Website, SEO, Digital Marketing) for my business.' },
+    { label: 'Custom AI Development', msg: 'Hello Techofay Team, I am interested in Custom Artificial Intelligence (AI) Development for my business.' },
+    { label: 'Website & App Development', msg: 'Hello Techofay Team, I need a high-performance website and mobile application built for our business.' },
+    { label: 'SEO & Social Media Marketing', msg: 'Hello Techofay Team, I want to scale our lead generation with SEO, Branding & Social Media marketing.' },
+    { label: 'Smart NFC Business Cards', msg: 'Hello Techofay Team, I would like to order Smart NFC Business Cards for our executive team.' },
+    { label: 'ERP & Enterprise Software', msg: 'Hello Techofay Team, I would like to inquire about Enterprise ERP, HMS, and School Software pricing & demo.' }
   ];
 
   const handleSend = (customMsg) => {

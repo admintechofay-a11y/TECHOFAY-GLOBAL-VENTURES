@@ -66,7 +66,7 @@ export const jobsData = [
     id: 'marketing-specialist',
     title: 'Digital Marketing & Growth Specialist',
     department: 'Marketing',
-    location: 'Hybrid (Delhi NCR / Mumbai)',
+    location: 'Hybrid (ETV Marathahalli Bangalore)',
     type: 'Full-time',
     salary: '₹18 - ₹28 LPA + High-Performance Incentives',
     description: 'Lead B2B demand generation, paid acquisition, and programmatic SEO initiatives for Techofay’s software products and enterprise consulting services across global markets.',

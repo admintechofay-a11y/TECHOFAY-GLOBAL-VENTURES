@@ -4,37 +4,37 @@ import { ShieldAlert, ArrowLeft, Home } from 'lucide-react';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen pt-32 pb-20 flex items-center justify-center tech-grid-bg text-center px-4">
-      <div className="glass-panel max-w-lg p-10 rounded-3xl border border-[rgba(0,212,255,0.3)] shadow-[0_20px_60px_rgba(0,0,0,0.8)] space-y-6">
-        <div className="w-16 h-16 rounded-2xl bg-[#00D4FF]/20 text-[#00D4FF] flex items-center justify-center mx-auto shadow-glow-cyan">
+    <div className="min-h-screen pt-32 pb-20 flex items-center justify-center bg-[#F8FAF8] text-center px-4">
+      <div className="bg-white max-w-lg p-10 rounded-3xl border border-[#E5E7EB] shadow-sm space-y-6">
+        <div className="w-16 h-16 rounded-full bg-[#DCFCE7] text-[#16A34A] flex items-center justify-center mx-auto">
           <ShieldAlert className="w-8 h-8" />
         </div>
 
-        <span className="text-xs font-mono text-[#00D4FF] uppercase tracking-widest block">
-          ERROR 404 &bull; SECURE GATEWAY EXCEPTION
+        <span className="text-xs font-mono text-[#166534] font-semibold uppercase tracking-widest block">
+          ERROR 404 &bull; PAGE NOT FOUND
         </span>
 
-        <h1 className="font-orbitron font-extrabold text-3xl sm:text-4xl text-white">
-          Quantum Coordinate <span className="text-gradient">Not Found</span>
+        <h1 className="font-heading font-extrabold text-3xl sm:text-4xl text-[#111827]">
+          Requested Page <span className="text-[#16A34A]">Not Found</span>
         </h1>
 
-        <p className="text-xs sm:text-sm text-[#8B9AB5] leading-relaxed">
-          The requested endpoint or architecture node does not exist in the TECHOFAY GLOBAL VENTURES directory. It may have been decommissioned or relocated.
+        <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed">
+          The requested page or resource does not exist in the TECHOFAY GLOBAL VENTURES directory. It may have been relocated or renamed.
         </p>
 
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             to="/"
-            className="w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-xs text-white bg-gradient-to-r from-[#2B6EFA] to-[#00D4FF] shadow-glow-blue flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-xs text-white bg-[#16A34A] hover:bg-[#166534] transition-colors shadow-sm flex items-center justify-center gap-2"
           >
             <Home className="w-4 h-4" />
-            <span>Return to Mission Control</span>
+            <span>Return to Homepage</span>
           </Link>
           <Link
             to="/services"
-            className="w-full sm:w-auto px-6 py-3 rounded-xl font-semibold text-xs text-[#8B9AB5] hover:text-white glass-card transition-colors"
+            className="w-full sm:w-auto px-6 py-3 rounded-lg font-semibold text-xs text-[#16A34A] bg-white border border-[#16A34A] hover:bg-[#F0FDF4] transition-colors"
           >
-            Browse Services
+            Browse Growth Services
           </Link>
         </div>
       </div>

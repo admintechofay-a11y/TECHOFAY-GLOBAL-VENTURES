@@ -6,13 +6,13 @@ import {
   Coins, 
   ShieldCheck, 
   ArrowRight, 
-  Sparkles,
-  CheckCircle2,
-  Layers,
-  Activity,
-  GraduationCap,
-  Building2,
-  Truck
+  Sparkles, 
+  CheckCircle2, 
+  Layers, 
+  Activity, 
+  GraduationCap, 
+  Building2, 
+  Truck 
 } from 'lucide-react';
 
 const productsConfig = [
@@ -103,7 +103,6 @@ export default function RoiCalculator({ onSelectProductForDemo }) {
 
   // Indian Rupee calculations
   const calculations = useMemo(() => {
-    // Subscription estimate
     let monthlySub = activeProduct.basePriceMonthly;
     if (units > activeProduct.defaultUnits) {
       const extra = units - activeProduct.defaultUnits;
@@ -111,16 +110,10 @@ export default function RoiCalculator({ onSelectProductForDemo }) {
       monthlySub += Math.round(extra * unitCost * 0.6);
     }
 
-    // Hours saved per month
     const totalHoursSaved = Math.round(units * activeProduct.hoursSavedPerUnitPerMonth);
-
-    // Direct cost savings in INR
     const monthlyGrossSavings = Math.round(totalHoursSaved * hourlyRate * activeProduct.efficiencyMultiplier);
-    
-    // Net monthly savings
     const netMonthlySavings = Math.max(0, monthlyGrossSavings - monthlySub);
 
-    // Annual figures
     const annualSub = monthlySub * 12;
     const annualSavings = netMonthlySavings * 12;
     const roiPercentage = Math.round((annualSavings / Math.max(1, annualSub)) * 100);
@@ -135,43 +128,38 @@ export default function RoiCalculator({ onSelectProductForDemo }) {
     };
   }, [activeProduct, units, hourlyRate]);
 
-  // Format currency into Indian Rupees (e.g. ₹1,45,000)
   const formatInr = (val) => {
     return '₹' + Number(val).toLocaleString('en-IN');
   };
 
   return (
-    <div className="w-full glass-panel rounded-3xl border border-[rgba(43,110,250,0.3)] p-6 sm:p-10 shadow-2xl relative overflow-hidden">
-      {/* Background Decorative Gradient Orbs */}
-      <div className="absolute -top-24 -right-24 w-80 h-80 bg-[#00D4FF]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#2B6EFA]/10 rounded-full blur-3xl pointer-events-none" />
-
+    <div className="w-full bg-white rounded-3xl border border-[#E5E7EB] p-6 sm:p-10 shadow-sm relative overflow-hidden">
       {/* Header */}
-      <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-white/10">
+      <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-[#E5E7EB]">
         <div>
-          <div className="flex items-center gap-2 text-[#00D4FF] font-mono text-xs uppercase tracking-widest mb-1.5">
-            <Calculator className="w-4 h-4 text-[#00D4FF]" />
+          <div className="flex items-center gap-2 text-[#166534] font-mono text-xs uppercase tracking-wider mb-1.5 bg-[#DCFCE7] border border-[#BBF7D0] px-3 py-1 rounded-full w-fit">
+            <Calculator className="w-4 h-4 text-[#16A34A]" />
             <span>Interactive ROI & Cost Model (INR ₹)</span>
           </div>
-          <h3 className="font-orbitron font-extrabold text-xl sm:text-2xl text-white">
+          <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-[#111827]">
             Enterprise Value & Savings Forecaster
           </h3>
-          <p className="text-xs sm:text-sm text-[#8B9AB5] mt-1 max-w-2xl">
+          <p className="text-xs sm:text-sm text-[#6B7280] mt-1 max-w-2xl">
             Simulate your estimated monthly operational cost savings, manual labor hours recovered, and 12-month net return on investment.
           </p>
         </div>
 
-        <div className="px-4 py-2 rounded-2xl bg-[#0B1530] border border-white/10 flex items-center gap-3">
-          <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="font-mono text-xs text-white">
-            Currency: <strong className="text-emerald-400">Indian Rupee (₹ INR)</strong>
+        <div className="px-4 py-2 rounded-xl bg-[#F8FAF8] border border-[#E5E7EB] flex items-center gap-3">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#16A34A] animate-pulse" />
+          <span className="text-xs text-[#374151]">
+            Currency: <strong className="text-[#166534]">Indian Rupee (₹ INR)</strong>
           </span>
         </div>
       </div>
 
       {/* Product Selection Tabs */}
       <div className="relative z-10 my-8">
-        <label className="block text-xs font-mono text-[#8B9AB5] uppercase tracking-wider mb-3">
+        <label className="block text-xs font-semibold text-[#111827] uppercase tracking-wider mb-3">
           1. Select Techofay Software System:
         </label>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
@@ -182,22 +170,24 @@ export default function RoiCalculator({ onSelectProductForDemo }) {
               <button
                 key={prod.id}
                 onClick={() => handleProductChange(prod.id)}
-                className={`p-3.5 rounded-2xl border text-left transition-all relative overflow-hidden flex flex-col gap-2 ${
+                className={`p-3.5 rounded-xl border text-left transition-all relative overflow-hidden flex flex-col gap-2 cursor-pointer ${
                   isSelected
-                    ? 'bg-gradient-to-br from-[#2B6EFA]/25 to-[#00D4FF]/15 border-[#00D4FF] text-white shadow-glow-cyan'
-                    : 'bg-[#070E24]/60 border-white/10 text-[#8B9AB5] hover:text-white hover:border-white/20'
+                    ? 'bg-[#F0FDF4] border-2 border-[#16A34A] text-[#111827] shadow-xs'
+                    : 'bg-white border-[#E5E7EB] text-[#374151] hover:border-[#BBF7D0]'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <Icon className={`w-5 h-5 ${isSelected ? 'text-[#00D4FF]' : 'text-[#8B9AB5]'}`} />
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isSelected ? 'bg-[#DCFCE7] text-[#16A34A]' : 'bg-[#F8FAF8] text-[#6B7280]'}`}>
+                    <Icon className="w-4 h-4" />
+                  </div>
                   {isSelected && (
-                    <CheckCircle2 className="w-4 h-4 text-[#00D4FF]" />
+                    <CheckCircle2 className="w-4 h-4 text-[#16A34A]" />
                   )}
                 </div>
-                <span className="font-orbitron font-bold text-xs leading-snug line-clamp-2">
+                <span className="font-heading font-bold text-xs leading-snug line-clamp-2 text-[#111827]">
                   {prod.name}
                 </span>
-                <span className="text-[10px] font-mono text-[#cad7ec]">
+                <span className="text-[10px] font-mono text-[#166534] font-semibold">
                   From {formatInr(prod.basePriceMonthly)}/mo
                 </span>
               </button>
@@ -209,16 +199,16 @@ export default function RoiCalculator({ onSelectProductForDemo }) {
       {/* Sliders & Calculation Results Grid */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         {/* Left Side: Parameters Sliders */}
-        <div className="lg:col-span-6 space-y-6 bg-[#070E24]/80 p-6 rounded-2xl border border-white/5">
-          <h4 className="font-orbitron font-bold text-sm text-white flex items-center gap-2">
+        <div className="lg:col-span-6 space-y-6 bg-[#F8FAF8] p-6 rounded-2xl border border-[#E5E7EB]">
+          <h4 className="font-heading font-bold text-sm text-[#111827] flex items-center gap-2">
             <span>2. Tune Operational Parameters</span>
           </h4>
 
           {/* Slider 1: Units Count */}
           <div>
             <div className="flex items-center justify-between text-xs mb-2">
-              <span className="text-[#8B9AB5] font-medium">{activeProduct.unitLabel}</span>
-              <span className="font-orbitron font-bold text-white text-sm px-2.5 py-0.5 rounded-lg bg-[#2B6EFA]/20 border border-[#00D4FF]/30">
+              <span className="text-[#374151] font-medium">{activeProduct.unitLabel}</span>
+              <span className="font-heading font-bold text-[#166534] text-sm px-2.5 py-0.5 rounded-lg bg-[#DCFCE7] border border-[#BBF7D0]">
                 {units.toLocaleString('en-IN')}
               </span>
             </div>
@@ -229,9 +219,9 @@ export default function RoiCalculator({ onSelectProductForDemo }) {
               step={activeProduct.maxUnits > 1000 ? 50 : 5}
               value={units}
               onChange={(e) => setUnits(Number(e.target.value))}
-              className="w-full h-2 bg-[#0B1530] rounded-lg appearance-none cursor-pointer accent-[#00D4FF]"
+              className="w-full h-2 bg-[#E5E7EB] rounded-lg appearance-none cursor-pointer accent-[#16A34A]"
             />
-            <div className="flex justify-between text-[10px] text-[#586c8f] mt-1 font-mono">
+            <div className="flex justify-between text-[10px] text-[#6B7280] mt-1 font-mono">
               <span>{activeProduct.minUnits}</span>
               <span>{activeProduct.maxUnits}</span>
             </div>
@@ -240,8 +230,8 @@ export default function RoiCalculator({ onSelectProductForDemo }) {
           {/* Slider 2: Average Employee Cost */}
           <div>
             <div className="flex items-center justify-between text-xs mb-2">
-              <span className="text-[#8B9AB5] font-medium">Avg. Hourly Cost per Staff Member</span>
-              <span className="font-orbitron font-bold text-white text-sm px-2.5 py-0.5 rounded-lg bg-[#2B6EFA]/20 border border-[#00D4FF]/30">
+              <span className="text-[#374151] font-medium">Avg. Hourly Cost per Staff Member</span>
+              <span className="font-heading font-bold text-[#166534] text-sm px-2.5 py-0.5 rounded-lg bg-[#DCFCE7] border border-[#BBF7D0]">
                 ₹{hourlyRate}/hr
               </span>
             </div>
@@ -252,17 +242,17 @@ export default function RoiCalculator({ onSelectProductForDemo }) {
               step={25}
               value={hourlyRate}
               onChange={(e) => setHourlyRate(Number(e.target.value))}
-              className="w-full h-2 bg-[#0B1530] rounded-lg appearance-none cursor-pointer accent-[#00D4FF]"
+              className="w-full h-2 bg-[#E5E7EB] rounded-lg appearance-none cursor-pointer accent-[#16A34A]"
             />
-            <div className="flex justify-between text-[10px] text-[#586c8f] mt-1 font-mono">
+            <div className="flex justify-between text-[10px] text-[#6B7280] mt-1 font-mono">
               <span>₹150/hr (Entry Staff)</span>
               <span>₹1,200/hr (Senior Specialist)</span>
             </div>
           </div>
 
           {/* System Assurance Note */}
-          <div className="p-3 rounded-xl bg-[#050B1F] border border-white/5 flex items-center gap-3 text-[11px] text-[#8B9AB5]">
-            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+          <div className="p-3 rounded-xl bg-white border border-[#E5E7EB] flex items-center gap-3 text-[11px] text-[#374151]">
+            <ShieldCheck className="w-4 h-4 text-[#16A34A] shrink-0" />
             <span>
               Includes zero-downtime data migration, GST automated compliance, and 24/7 dedicated Indian SLA hotline.
             </span>
@@ -271,47 +261,47 @@ export default function RoiCalculator({ onSelectProductForDemo }) {
 
         {/* Right Side: High-Impact ROI Metric Cards */}
         <div className="lg:col-span-6 space-y-4">
-          <div className="p-6 rounded-2xl bg-gradient-to-br from-[#0B1530] to-[#0E204E] border border-[rgba(0,212,255,0.3)] shadow-glow-cyan/20">
-            <div className="grid grid-cols-2 gap-4 pb-4 border-b border-white/10">
+          <div className="p-6 rounded-2xl bg-[#F0FDF4] border border-[#BBF7D0] shadow-xs">
+            <div className="grid grid-cols-2 gap-4 pb-4 border-b border-[#BBF7D0]">
               <div>
-                <span className="text-[10px] font-mono uppercase text-[#8B9AB5] block">
+                <span className="text-[10px] font-mono uppercase text-[#6B7280] block">
                   Est. Monthly Investment
                 </span>
-                <span className="font-orbitron font-extrabold text-xl text-white">
+                <span className="font-heading font-extrabold text-xl text-[#111827]">
                   {formatInr(calculations.monthlySub)}
                 </span>
-                <span className="text-[10px] text-[#8B9AB5] block">/month billed</span>
+                <span className="text-[10px] text-[#6B7280] block">/month billed</span>
               </div>
 
               <div>
-                <span className="text-[10px] font-mono uppercase text-emerald-400 block">
+                <span className="text-[10px] font-mono uppercase text-[#166534] font-semibold block">
                   Monthly Labor Recovered
                 </span>
-                <span className="font-orbitron font-extrabold text-xl text-emerald-400">
+                <span className="font-heading font-extrabold text-xl text-[#16A34A]">
                   {calculations.totalHoursSaved.toLocaleString('en-IN')} hrs
                 </span>
-                <span className="text-[10px] text-[#8B9AB5] block">eliminated manual work</span>
+                <span className="text-[10px] text-[#6B7280] block">eliminated manual work</span>
               </div>
             </div>
 
             <div className="pt-4 grid grid-cols-2 gap-4">
               <div>
-                <span className="text-[10px] font-mono uppercase text-[#00D4FF] block">
+                <span className="text-[10px] font-mono uppercase text-[#166534] font-semibold block">
                   Net Monthly Savings
                 </span>
-                <span className="font-orbitron font-black text-2xl text-[#00D4FF]">
+                <span className="font-heading font-black text-2xl text-[#16A34A]">
                   {formatInr(calculations.netMonthlySavings)}
                 </span>
-                <span className="text-[10px] text-[#8B9AB5] block">
+                <span className="text-[10px] text-[#6B7280] block">
                   Annual: {formatInr(calculations.annualSavings)}
                 </span>
               </div>
 
               <div className="flex flex-col justify-center items-start pl-2">
-                <span className="text-[10px] font-mono uppercase text-violet-300 block">
+                <span className="text-[10px] font-mono uppercase text-[#166534] font-semibold block">
                   Projected 12M ROI
                 </span>
-                <span className="font-orbitron font-black text-3xl bg-gradient-to-r from-[#00D4FF] via-emerald-400 to-white bg-clip-text text-transparent">
+                <span className="font-heading font-black text-3xl text-[#16A34A]">
                   +{calculations.roiPercentage}%
                 </span>
               </div>
@@ -321,9 +311,9 @@ export default function RoiCalculator({ onSelectProductForDemo }) {
           {/* Action Trigger */}
           <button
             onClick={() => onSelectProductForDemo && onSelectProductForDemo(activeProduct)}
-            className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#2B6EFA] via-[#00D4FF] to-[#2B6EFA] text-white font-orbitron font-bold text-xs uppercase tracking-wider shadow-glow-cyan hover:scale-[1.01] transition-transform flex items-center justify-center gap-2 group"
+            className="w-full py-4 px-6 rounded-xl bg-[#16A34A] hover:bg-[#166534] text-white font-heading font-bold text-xs uppercase tracking-wider shadow-sm transition-colors flex items-center justify-center gap-2 group cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-white animate-spin-slow" />
+            <Sparkles className="w-4 h-4 text-white" />
             <span>Lock In This Estimate & Book Live Interactive Demo</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>

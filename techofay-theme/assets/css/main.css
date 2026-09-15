@@ -1,0 +1,133 @@
+/**
+ * Main Theme CSS for Techofay Global Ventures
+ *
+ * Dark navy + electric blue enterprise styling, glassmorphism, responsive grid
+ *
+ * @package Techofay_Theme
+ */
+
+/* Root Variables */
+:root {
+    --bg-primary: #050B1F;
+    --bg-secondary: #0A1628;
+    --brand-blue: #2B6EFA;
+    --brand-cyan: #00D4FF;
+    --brand-violet: #7B2FBE;
+    --text-primary: #FFFFFF;
+    --text-secondary: #8B9AB5;
+    --border-subtle: rgba(43, 110, 250, 0.25);
+    --border-card: rgba(255, 255, 255, 0.08);
+}
+
+/* Base resets & typography */
+html {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.font-heading {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+
+.font-mono {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+    background: rgba(10, 22, 40, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-subtle);
+}
+
+.glass-card {
+    background: rgba(10, 22, 40, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-card);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+    border-color: rgba(0, 212, 255, 0.45);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0, 212, 255, 0.1);
+}
+
+/* Buttons */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg, #2B6EFA 0%, #00D4FF 100%);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 35px rgba(0, 212, 255, 0.65);
+    transform: translateY(-1px);
+    color: #ffffff;
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(0, 212, 255, 0.4);
+    color: #00D4FF;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050B1F;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1A2942;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2B6EFA;
+}
+
+/* Interactive Details / Accordions */
+details summary::-webkit-details-marker {
+    display: none;
+}

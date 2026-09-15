@@ -26,19 +26,19 @@ export default function About() {
   const [activeOffice, setActiveOffice] = useState(globalOffices[0]);
 
   return (
-    <div className="min-h-screen pt-28 pb-20 tech-grid-bg">
+    <div className="min-h-screen pt-28 pb-20 bg-white">
       {/* Hero Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 relative">
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(43,110,250,0.12)] border border-[rgba(0,212,255,0.3)] shadow-glow-blue text-[#00D4FF] text-xs font-semibold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] text-[#166534] text-xs font-semibold uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-[#16A34A]" />
             Our Corporate Heritage & Vision
           </div>
-          <h1 className="font-orbitron font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight">
-            Architecting the <span className="text-gradient">Next Century</span> of Enterprise Tech
+          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#111827] tracking-tight">
+            Architecting the <span className="text-[#16A34A]">Next Generation</span> of Enterprise Growth
           </h1>
-          <p className="text-sm sm:text-base text-[#8B9AB5] leading-relaxed">
-            TECHOFAY GLOBAL VENTURES was founded on a singular premise: modern enterprises deserve software, cybersecurity, and AI engineering that works flawlessly under extreme planetary pressure.
+          <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">
+            TECHOFAY GLOBAL VENTURES was founded on a singular premise: modern enterprises deserve digital growth, custom AI engineering, and software solutions backed by accountability and guaranteed performance.
           </p>
         </div>
       </div>
@@ -47,34 +47,36 @@ export default function About() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Mission */}
-          <div className="glass-panel rounded-3xl p-8 sm:p-10 border border-[rgba(43,110,250,0.3)] relative overflow-hidden">
-            <div className="w-12 h-12 rounded-xl bg-[#2B6EFA]/20 flex items-center justify-center text-[#00D4FF] mb-6">
+          <div className="bg-white rounded-2xl p-8 sm:p-10 border border-[#E5E7EB] relative overflow-hidden shadow-xs">
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#16A34A]" />
+            <div className="w-12 h-12 rounded-full bg-[#DCFCE7] flex items-center justify-center text-[#16A34A] mb-6">
               <Target className="w-6 h-6" />
             </div>
-            <span className="text-[10px] font-mono text-[#00D4FF] uppercase tracking-widest">
+            <span className="text-[10px] font-mono text-[#166534] font-semibold uppercase tracking-widest">
               OUR PURPOSE
             </span>
-            <h2 className="font-orbitron font-bold text-2xl text-white mt-1 mb-4">
+            <h2 className="font-heading font-bold text-2xl text-[#111827] mt-1 mb-4">
               The Enterprise Mission
             </h2>
-            <p className="text-sm text-[#8B9AB5] leading-relaxed">
-              To engineer and deploy impenetrable, high-concurrency digital systems that insulate global organizations against modern cyber warfare, empower knowledge workforces through autonomous AI, and unlock compounding economic value.
+            <p className="text-sm text-[#374151] leading-relaxed">
+              To engineer and deploy high-converting digital solutions, custom AI systems, and robust software architectures that empower organizations, generate predictable client pipelines, and unlock compounding economic value.
             </p>
           </div>
 
           {/* Vision */}
-          <div className="glass-panel rounded-3xl p-8 sm:p-10 border border-[rgba(0,212,255,0.3)] relative overflow-hidden">
-            <div className="w-12 h-12 rounded-xl bg-[#00D4FF]/20 flex items-center justify-center text-[#00D4FF] mb-6">
+          <div className="bg-white rounded-2xl p-8 sm:p-10 border border-[#E5E7EB] relative overflow-hidden shadow-xs">
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#16A34A]" />
+            <div className="w-12 h-12 rounded-full bg-[#DCFCE7] flex items-center justify-center text-[#16A34A] mb-6">
               <Eye className="w-6 h-6" />
             </div>
-            <span className="text-[10px] font-mono text-[#00D4FF] uppercase tracking-widest">
+            <span className="text-[10px] font-mono text-[#166534] font-semibold uppercase tracking-widest">
               OUR HORIZON
             </span>
-            <h2 className="font-orbitron font-bold text-2xl text-white mt-1 mb-4">
-              The 2030 Global Vision
+            <h2 className="font-heading font-bold text-2xl text-[#111827] mt-1 mb-4">
+              The Global Vision
             </h2>
-            <p className="text-sm text-[#8B9AB5] leading-relaxed">
-              To stand as the world’s benchmark for cognitive technology innovation and Zero Trust security, where organizations of every scale can deploy autonomous intelligence with absolute mathematical confidence and zero friction.
+            <p className="text-sm text-[#374151] leading-relaxed">
+              To stand as the world’s most trusted partner for enterprise transformation, where businesses of every size can scale with complete confidence, backed by our performance milestones and 100% money-back guarantee.
             </p>
           </div>
         </div>
@@ -83,30 +85,30 @@ export default function About() {
       {/* Story Timeline */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-mono text-[#00D4FF] uppercase tracking-wider">
+          <span className="text-xs font-mono text-[#166534] uppercase tracking-wider font-semibold">
             Milestones & Compounding Growth
           </span>
-          <h2 className="font-orbitron font-bold text-2xl sm:text-4xl text-white mt-1">
+          <h2 className="font-heading font-bold text-2xl sm:text-4xl text-[#111827] mt-1">
             The Journey So Far
           </h2>
         </div>
 
-        <div className="relative border-l-2 border-[rgba(43,110,250,0.3)] ml-4 sm:ml-32 space-y-12">
+        <div className="relative border-l-2 border-[#E5E7EB] ml-4 sm:ml-32 space-y-12">
           {companyTimeline.map((item, idx) => (
             <div key={idx} className="relative pl-8 sm:pl-12 group">
               {/* Timeline Marker */}
-              <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-[#050B1F] border-2 border-[#00D4FF] group-hover:bg-[#00D4FF] group-hover:shadow-glow-cyan transition-all" />
+              <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-white border-2 border-[#16A34A] group-hover:bg-[#16A34A] transition-all" />
               
               {/* Year Label */}
-              <div className="sm:absolute sm:-left-28 sm:top-1 font-orbitron font-extrabold text-sm sm:text-base text-[#00D4FF]">
+              <div className="sm:absolute sm:-left-28 sm:top-1 font-heading font-extrabold text-sm sm:text-base text-[#16A34A]">
                 {item.year}
               </div>
 
-              <div className="glass-card p-6 rounded-2xl border border-[rgba(43,110,250,0.2)] hover:border-[#00D4FF] transition-all">
-                <h3 className="font-orbitron font-bold text-base text-white mb-2">
+              <div className="bg-white p-6 rounded-xl border border-[#E5E7EB] hover:border-[#16A34A] hover:shadow-[0_8px_24px_rgba(22,163,74,0.08)] transition-all">
+                <h3 className="font-heading font-bold text-base text-[#111827] mb-2">
                   {item.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#8B9AB5] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed">
                   {item.desc}
                 </p>
               </div>
@@ -115,46 +117,48 @@ export default function About() {
         </div>
       </div>
 
-      {/* Core Values */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-mono text-[#00D4FF] uppercase tracking-wider">
-            Organizational DNA
-          </span>
-          <h2 className="font-orbitron font-bold text-2xl sm:text-4xl text-white mt-1">
-            Principles We Refuse to Compromise
-          </h2>
-        </div>
+      {/* Core Values - Alternating BG */}
+      <div className="bg-[#F8FAF8] border-y border-[#E5E7EB] py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-mono text-[#166534] font-semibold uppercase tracking-wider">
+              Organizational DNA
+            </span>
+            <h2 className="font-heading font-bold text-2xl sm:text-4xl text-[#111827] mt-1">
+              Principles We Refuse to Compromise
+            </h2>
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {coreValues.map((val, idx) => (
-            <div
-              key={idx}
-              className="glass-panel p-7 rounded-2xl border border-[rgba(43,110,250,0.25)] hover:border-[#00D4FF] transition-all flex flex-col justify-between"
-            >
-              <div>
-                <div className="font-mono text-2xl font-bold text-[#00D4FF] mb-4">
-                  0{idx + 1}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {coreValues.map((val, idx) => (
+              <div
+                key={idx}
+                className="bg-white p-7 rounded-xl border border-[#E5E7EB] border-l-4 border-l-[#16A34A] hover:shadow-[0_8px_24px_rgba(22,163,74,0.08)] transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="font-mono text-2xl font-bold text-[#16A34A] mb-4">
+                    0{idx + 1}
+                  </div>
+                  <h3 className="font-heading font-bold text-lg text-[#111827] mb-3">
+                    {val.title}
+                  </h3>
+                  <p className="text-xs text-[#6B7280] leading-relaxed">
+                    {val.desc}
+                  </p>
                 </div>
-                <h3 className="font-orbitron font-bold text-lg text-white mb-3">
-                  {val.title}
-                </h3>
-                <p className="text-xs text-[#8B9AB5] leading-relaxed">
-                  {val.desc}
-                </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Leadership Team */}
       <div id="leadership" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-mono text-[#00D4FF] uppercase tracking-wider">
+          <span className="text-xs font-mono text-[#166534] font-semibold uppercase tracking-wider">
             Executive & Engineering Leadership
           </span>
-          <h2 className="font-orbitron font-bold text-2xl sm:text-4xl text-white mt-1">
+          <h2 className="font-heading font-bold text-2xl sm:text-4xl text-[#111827] mt-1">
             Led by Practitioners & Systems Architects
           </h2>
         </div>
@@ -163,20 +167,19 @@ export default function About() {
           {teamData.map((member, idx) => (
             <div
               key={idx}
-              className="glass-card rounded-2xl overflow-hidden border border-[rgba(43,110,250,0.2)] hover:border-[#00D4FF] transition-all group"
+              className="bg-white rounded-2xl overflow-hidden border border-[#E5E7EB] hover:border-[#16A34A] hover:shadow-[0_8px_24px_rgba(22,163,74,0.08)] transition-all group"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-[#0A1628]">
+              <div className="relative aspect-[4/3] overflow-hidden bg-[#F0FDF4]">
                 <img
                   src={member.image}
                   alt={member.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050B1F] via-transparent to-transparent opacity-90" />
                 <a
                   href={member.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#050B1F]/80 border border-white/20 flex items-center justify-center text-white hover:text-[#00D4FF] hover:border-[#00D4FF] transition-colors backdrop-blur-md"
+                  className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 border border-[#E5E7EB] flex items-center justify-center text-[#374151] hover:text-[#16A34A] hover:border-[#16A34A] transition-colors shadow-xs"
                   title="LinkedIn Profile"
                 >
                   <Linkedin className="w-4 h-4" />
@@ -184,18 +187,18 @@ export default function About() {
               </div>
 
               <div className="p-6">
-                <h3 className="font-orbitron font-bold text-lg text-white mb-1">
+                <h3 className="font-heading font-bold text-lg text-[#111827] mb-1">
                   {member.name}
                 </h3>
-                <div className="text-xs font-medium text-[#00D4FF] mb-3">
+                <div className="text-xs font-semibold text-[#16A34A] mb-3">
                   {member.role}
                 </div>
-                <p className="text-xs text-[#8B9AB5] leading-relaxed mb-4">
+                <p className="text-xs text-[#6B7280] leading-relaxed mb-4">
                   {member.bio}
                 </p>
-                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-[#5f749a]">
+                <div className="pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-[11px] font-mono text-[#6B7280]">
                   <span>Focus:</span>
-                  <span className="text-[#cad7ec]">{member.expertise}</span>
+                  <span className="text-[#111827] font-semibold">{member.expertise}</span>
                 </div>
               </div>
             </div>
@@ -203,87 +206,96 @@ export default function About() {
         </div>
       </div>
 
-      {/* Global Offices Interactive Map Section */}
-      <div id="offices" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="glass-panel rounded-3xl p-8 sm:p-12 border border-[rgba(43,110,250,0.3)]">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-mono text-[#00D4FF] uppercase tracking-wider">
-              Worldwide Presence
-            </span>
-            <h2 className="font-orbitron font-bold text-2xl sm:text-3xl text-white mt-1">
-              Global Operating Centers
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Interactive SVG World Map Graphic */}
-            <div className="lg:col-span-8 relative aspect-[16/9] rounded-2xl bg-[#050B1F]/80 border border-white/5 overflow-hidden p-4 flex items-center justify-center">
-              {/* Stylized World Grid Map */}
-              <svg viewBox="0 0 1000 500" className="w-full h-full opacity-60">
-                <defs>
-                  <pattern id="dotPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                    <circle cx="2" cy="2" r="1.2" fill="#2B6EFA" fillOpacity="0.3" />
-                  </pattern>
-                </defs>
-                <rect width="1000" height="500" fill="url(#dotPattern)" />
-                
-                {/* Connecting Curved Vector Routes */}
-                <path d="M 280 180 Q 420 120 520 160" stroke="#00D4FF" strokeWidth="1.5" fill="none" strokeDasharray="4,4" opacity="0.7" />
-                <path d="M 520 160 Q 640 180 720 220" stroke="#00D4FF" strokeWidth="1.5" fill="none" strokeDasharray="4,4" opacity="0.7" />
-                <path d="M 520 160 Q 620 240 820 310" stroke="#7B2FBE" strokeWidth="1.5" fill="none" strokeDasharray="4,4" opacity="0.7" />
-
-                {/* Office Hub Pulsing Markers */}
-                {/* New York */}
-                <circle cx="280" cy="180" r="7" fill="#00D4FF" className="animate-ping" opacity="0.75" />
-                <circle cx="280" cy="180" r="4" fill="#FFFFFF" />
-                <text x="290" y="185" fill="#FFFFFF" fontSize="12" fontFamily="Orbitron" fontWeight="bold">New York (HQ)</text>
-
-                {/* London */}
-                <circle cx="520" cy="160" r="6" fill="#00D4FF" className="animate-ping" opacity="0.75" />
-                <circle cx="520" cy="160" r="4" fill="#FFFFFF" />
-                <text x="530" y="165" fill="#FFFFFF" fontSize="12" fontFamily="Orbitron" fontWeight="bold">London</text>
-
-                {/* Dubai */}
-                <circle cx="660" cy="230" r="6" fill="#00D4FF" className="animate-ping" opacity="0.75" />
-                <circle cx="660" cy="230" r="4" fill="#FFFFFF" />
-                <text x="670" y="235" fill="#FFFFFF" fontSize="12" fontFamily="Orbitron" fontWeight="bold">Dubai</text>
-
-                {/* Singapore */}
-                <circle cx="820" cy="310" r="6" fill="#00D4FF" className="animate-ping" opacity="0.75" />
-                <circle cx="820" cy="310" r="4" fill="#FFFFFF" />
-                <text x="830" y="315" fill="#FFFFFF" fontSize="12" fontFamily="Orbitron" fontWeight="bold">Singapore</text>
-              </svg>
+      {/* Global Offices Interactive Map Section - Alternating BG */}
+      <div id="offices" className="bg-[#F0FDF4] border-y border-[#BBF7D0] py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#E5E7EB] shadow-sm">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="text-xs font-mono text-[#166534] font-semibold uppercase tracking-wider">
+                Worldwide Presence
+              </span>
+              <h2 className="font-heading font-bold text-2xl sm:text-3xl text-[#111827] mt-1">
+                Global Operating Centers
+              </h2>
             </div>
 
-            {/* Office Cards Selector */}
-            <div className="lg:col-span-4 space-y-3">
-              {globalOffices.map((office, idx) => {
-                const isSelected = activeOffice.city === office.city;
-                return (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveOffice(office)}
-                    className={`w-full text-left p-4 rounded-xl border transition-all ${
-                      isSelected
-                        ? 'bg-[rgba(43,110,250,0.2)] border-[#00D4FF] shadow-glow-cyan'
-                        : 'glass-card border-[rgba(43,110,250,0.15)] hover:border-white/20'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-orbitron font-bold text-sm text-white">
-                        {office.city}, {office.country}
-                      </span>
-                      <MapPin className={`w-4 h-4 ${isSelected ? 'text-[#00D4FF]' : 'text-[#8B9AB5]'}`} />
-                    </div>
-                    <div className="text-[11px] text-[#00D4FF] font-medium mb-1">
-                      {office.type}
-                    </div>
-                    <div className="text-[11px] text-[#8B9AB5]">
-                      {office.address}
-                    </div>
-                  </button>
-                );
-              })}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Interactive SVG World Map Graphic */}
+              <div className="lg:col-span-8 relative aspect-[16/9] rounded-2xl bg-[#F8FAF8] border border-[#E5E7EB] overflow-hidden p-4 flex items-center justify-center">
+                {/* Stylized World Grid Map */}
+                <svg viewBox="0 0 1000 500" className="w-full h-full">
+                  <defs>
+                    <pattern id="dotPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                      <circle cx="2" cy="2" r="1.2" fill="#16A34A" fillOpacity="0.25" />
+                    </pattern>
+                  </defs>
+                  <rect width="1000" height="500" fill="url(#dotPattern)" />
+                  
+                  {/* Connecting Curved Vector Routes */}
+                  <path d="M 450 140 Q 560 170 660 255" stroke="#16A34A" strokeWidth="1.5" fill="none" strokeDasharray="4,4" opacity="0.6" />
+                  <path d="M 660 255 Q 670 240 680 235" stroke="#16A34A" strokeWidth="1.5" fill="none" strokeDasharray="4,4" opacity="0.6" />
+                  <path d="M 660 255 Q 670 270 680 280" stroke="#16A34A" strokeWidth="1.5" fill="none" strokeDasharray="4,4" opacity="0.6" />
+                  <path d="M 680 280 Q 690 285 700 295" stroke="#16A34A" strokeWidth="1.5" fill="none" strokeDasharray="4,4" opacity="0.6" />
+
+                  {/* Office Hub Markers */}
+                  {/* Edinburgh (UK) */}
+                  <circle cx="450" cy="140" r="5" fill="#16A34A" />
+                  <circle cx="450" cy="140" r="2.5" fill="#FFFFFF" />
+                  <text x="360" y="135" fill="#111827" fontSize="11" fontFamily="Plus Jakarta Sans" fontWeight="bold">Edinburgh (UK)</text>
+
+                  {/* Ganjdundwara */}
+                  <circle cx="680" cy="235" r="4.5" fill="#16A34A" />
+                  <circle cx="680" cy="235" r="2" fill="#FFFFFF" />
+                  <text x="695" y="238" fill="#374151" fontSize="10" fontFamily="Plus Jakarta Sans">Ganjdundwara</text>
+
+                  {/* Vadodara (HQ) */}
+                  <circle cx="660" cy="255" r="8" fill="#16A34A" opacity="0.3" className="animate-ping" />
+                  <circle cx="660" cy="255" r="6" fill="#16A34A" />
+                  <circle cx="660" cy="255" r="3" fill="#FFFFFF" />
+                  <text x="550" y="260" fill="#166534" fontSize="12" fontFamily="Plus Jakarta Sans" fontWeight="bold">Vadodara (HQ)</text>
+
+                  {/* ETV Marathahalli Bangalore */}
+                  <circle cx="680" cy="280" r="5" fill="#16A34A" />
+                  <circle cx="680" cy="280" r="2.5" fill="#FFFFFF" />
+                  <text x="695" y="278" fill="#111827" fontSize="10" fontFamily="Plus Jakarta Sans" fontWeight="bold">Bangalore (ETV)</text>
+
+                  {/* Chennai */}
+                  <circle cx="700" cy="295" r="4.5" fill="#16A34A" />
+                  <circle cx="700" cy="295" r="2" fill="#FFFFFF" />
+                  <text x="715" y="300" fill="#374151" fontSize="10" fontFamily="Plus Jakarta Sans">Chennai</text>
+                </svg>
+              </div>
+
+              {/* Office Cards Selector */}
+              <div className="lg:col-span-4 space-y-3">
+                {globalOffices.map((office, idx) => {
+                  const isSelected = activeOffice.city === office.city;
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveOffice(office)}
+                      className={`w-full text-left p-4 rounded-xl border transition-all cursor-pointer ${
+                        isSelected
+                          ? 'bg-[#F0FDF4] border-2 border-[#16A34A] shadow-xs'
+                          : 'bg-white border-[#E5E7EB] hover:border-[#BBF7D0]'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="font-heading font-bold text-sm text-[#111827]">
+                          {office.city}, {office.country}
+                        </span>
+                        <MapPin className={`w-4 h-4 ${isSelected ? 'text-[#16A34A]' : 'text-[#6B7280]'}`} />
+                      </div>
+                      <div className="text-[11px] text-[#166534] font-semibold mb-1">
+                        {office.type}
+                      </div>
+                      <div className="text-[11px] text-[#6B7280]">
+                        {office.address}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -292,10 +304,10 @@ export default function About() {
       {/* Certifications Row */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="text-center max-w-xl mx-auto mb-10">
-          <span className="text-xs font-mono text-[#00D4FF] uppercase tracking-wider">
+          <span className="text-xs font-mono text-[#166534] font-semibold uppercase tracking-wider">
             Verified Governance
           </span>
-          <h3 className="font-orbitron font-bold text-xl sm:text-2xl text-white mt-1">
+          <h3 className="font-heading font-bold text-xl sm:text-2xl text-[#111827] mt-1">
             Enterprise Compliance & Audits
           </h3>
         </div>
@@ -304,13 +316,13 @@ export default function About() {
           {certifications.map((cert, idx) => (
             <div
               key={idx}
-              className="glass-card p-4 rounded-xl border border-[rgba(43,110,250,0.2)] text-center flex flex-col justify-center items-center"
+              className="bg-white p-4 rounded-xl border border-[#E5E7EB] text-center flex flex-col justify-center items-center shadow-xs"
             >
-              <ShieldCheck className="w-6 h-6 text-[#00D4FF] mb-2" />
-              <div className="font-orbitron font-bold text-xs text-white mb-1">
+              <ShieldCheck className="w-6 h-6 text-[#16A34A] mb-2" />
+              <div className="font-heading font-bold text-xs text-[#111827] mb-1">
                 {cert.title}
               </div>
-              <div className="text-[10px] text-[#8B9AB5]">
+              <div className="text-[10px] text-[#6B7280]">
                 {cert.issuer}
               </div>
             </div>
@@ -320,17 +332,17 @@ export default function About() {
 
       {/* Join Our Team CTA */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-        <div className="p-8 sm:p-12 rounded-2xl glass-panel border border-[rgba(0,212,255,0.4)] text-center space-y-4">
-          <h3 className="font-orbitron font-bold text-2xl sm:text-3xl text-white">
+        <div className="p-8 sm:p-12 rounded-2xl bg-[#DCFCE7] border border-[#BBF7D0] text-center space-y-4">
+          <h3 className="font-heading font-bold text-2xl sm:text-3xl text-[#111827]">
             Want to Build the Future with Us?
           </h3>
-          <p className="text-xs sm:text-sm text-[#8B9AB5] max-w-lg mx-auto">
-            We are always scouting for world-class distributed systems engineers, offensive security researchers, and machine learning practitioners.
+          <p className="text-xs sm:text-sm text-[#374151] max-w-lg mx-auto">
+            We are always scouting for world-class web developers, digital marketers, AI engineers, and solutions architects.
           </p>
           <div className="pt-2">
             <Link
               to="/careers"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-[#2B6EFA] to-[#00D4FF] shadow-glow-blue"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg text-xs font-semibold text-white bg-[#16A34A] hover:bg-[#166534] transition-colors shadow-sm"
             >
               <span>Explore Open Roles at Techofay</span>
               <ArrowRight className="w-4 h-4" />

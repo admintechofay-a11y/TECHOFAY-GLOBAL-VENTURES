@@ -1,0 +1,45 @@
+====================================================================
+TECHOFAY GLOBAL VENTURES — WORDPRESS REQUIRED PLUGINS LIST
+====================================================================
+
+1. Advanced Custom Fields PRO (or free version)
+   - Plugin Slug: advanced-custom-fields / advanced-custom-fields-pro
+   - Purpose: Enables non-technical team to edit all hero headlines, services, products, FAQs, pricing tiers, and theme options directly from WP Admin.
+   - Install via WP-CLI: wp plugin install advanced-custom-fields --activate
+
+2. Custom Post Type UI
+   - Plugin Slug: custom-post-type-ui
+   - Purpose: UI visual manager for custom post types (Services, Products, Testimonials, Team, Jobs, Logos). Note: Our theme already registers all CPTs natively in PHP, so CPT UI is optional but supported via inc/cptui-export.json.
+   - Install via WP-CLI: wp plugin install custom-post-type-ui --activate
+
+3. WP Mail SMTP by WPForms
+   - Plugin Slug: wp-mail-smtp
+   - Purpose: Ensures 100% email deliverability for contact form submissions & career applications using SMTP (Gmail, SendGrid, Outlook, Amazon SES).
+   - Install via WP-CLI: wp plugin install wp-mail-smtp --activate
+
+4. Yoast SEO
+   - Plugin Slug: wordpress-seo
+   - Purpose: Manages meta titles, descriptions, OpenGraph social cards, XML sitemaps, and schema markup for all pages and CPTs.
+   - Install via WP-CLI: wp plugin install wordpress-seo --activate
+
+5. W3 Total Cache / WP Rocket
+   - Plugin Slug: w3-total-cache
+   - Purpose: Minification, page caching, browser caching, and CDN integration to ensure 60fps Three.js load speeds and PageSpeed score > 90.
+   - Install via WP-CLI: wp plugin install w3-total-cache --activate
+
+6. Wordfence Security
+   - Plugin Slug: wordfence
+   - Purpose: Endpoint firewall, malware scanner, brute force protection, 2FA for admin dashboard.
+   - Install via WP-CLI: wp plugin install wordfence --activate
+
+7. UpdraftPlus WordPress Backup Plugin
+   - Plugin Slug: updraftplus
+   - Purpose: Automated daily scheduled cloud backups to Google Drive, Dropbox, or S3.
+   - Install via WP-CLI: wp plugin install updraftplus --activate
+
+====================================================================
+ONE-LINE BULK INSTALLATION VIA WP-CLI
+====================================================================
+Run this in your WordPress root directory:
+
+wp plugin install advanced-custom-fields custom-post-type-ui wp-mail-smtp wordpress-seo w3-total-cache wordfence updraftplus --activate

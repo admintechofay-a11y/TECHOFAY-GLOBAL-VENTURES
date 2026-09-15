@@ -33,9 +33,9 @@ export default function ParticleField() {
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const color1 = isLight ? new THREE.Color('#0284C7') : new THREE.Color('#00D4FF'); // Sky/Cyan
-    const color2 = isLight ? new THREE.Color('#2563EB') : new THREE.Color('#2B6EFA'); // Electric Blue
-    const color3 = isLight ? new THREE.Color('#7C3AED') : new THREE.Color('#7B2FBE'); // Violet
+    const color1 = new THREE.Color('#16A34A'); // Forest Green
+    const color2 = new THREE.Color('#22C55E'); // Vibrant Green
+    const color3 = new THREE.Color('#4ADE80'); // Mint Green
 
     for (let i = 0; i < particleCount; i++) {
       const x = (Math.random() - 0.5) * 550;
@@ -66,13 +66,13 @@ export default function ParticleField() {
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3).setUsage(THREE.DynamicDrawUsage));
     particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    // Particle Material
+    // Particle Material - subtle floating green particle dots (opacity 0.3)
     const pMaterial = new THREE.PointsMaterial({
-      size: isLight ? 3.5 : 4,
+      size: 3.5,
       vertexColors: true,
       transparent: true,
-      opacity: isLight ? 0.75 : 0.85,
-      blending: isLight ? THREE.NormalBlending : THREE.AdditiveBlending,
+      opacity: 0.3,
+      blending: THREE.NormalBlending,
     });
 
     const pointCloud = new THREE.Points(particlesGeometry, pMaterial);
@@ -89,8 +89,8 @@ export default function ParticleField() {
     const lineMaterial = new THREE.LineBasicMaterial({
       vertexColors: true,
       transparent: true,
-      blending: isLight ? THREE.NormalBlending : THREE.AdditiveBlending,
-      opacity: isLight ? 0.25 : 0.4,
+      blending: THREE.NormalBlending,
+      opacity: 0.15,
     });
 
     const linesMesh = new THREE.LineSegments(linesGeometry, lineMaterial);

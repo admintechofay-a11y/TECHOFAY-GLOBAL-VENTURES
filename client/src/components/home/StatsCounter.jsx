@@ -72,55 +72,51 @@ export default function StatsCounter() {
       value: `${counts.clients}+`,
       label: 'Global Enterprise Clients',
       sublabel: 'Across North America, EMEA & APAC',
-      glow: 'text-[#00D4FF]',
     },
     {
       icon: Layers,
       value: `${counts.verticals}`,
       label: 'Specialized Verticals',
       sublabel: 'Full-spectrum deep tech delivery',
-      glow: 'text-[#2B6EFA]',
     },
     {
       icon: Globe,
       value: `${counts.countries}+`,
       label: 'Global Operating Markets',
       sublabel: 'Active international engineering nodes',
-      glow: 'text-violet-400',
     },
     {
       icon: HeartHandshake,
       value: `${counts.retention}%`,
       label: 'Client Retention Rate',
       sublabel: 'Multi-year enterprise contracts',
-      glow: 'text-[#00D4FF]',
     },
   ];
 
   return (
     <section ref={sectionRef} className="relative z-20 -mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-[rgba(0,212,255,0.3)] shadow-[0_15px_50px_rgba(0,0,0,0.7)] backdrop-blur-2xl relative overflow-hidden group">
-        {/* Top subtle radiant beam */}
-        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#00D4FF] to-transparent opacity-80" />
+      <div className="rounded-2xl p-6 sm:p-8 bg-[#F0FDF4] border border-[#BBF7D0] shadow-sm relative overflow-hidden group">
+        {/* Top subtle green accent line */}
+        <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#16A34A] opacity-70" />
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-[#BBF7D0]">
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
             return (
               <div key={idx} className={`pt-4 sm:pt-0 ${idx !== 0 ? 'sm:pl-6 lg:pl-8' : ''} group/stat hover:translate-y-[-2px] transition-transform`}>
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#0A1628] to-[#162744] border border-[rgba(43,110,250,0.3)] flex items-center justify-center text-[#00D4FF] group-hover/stat:shadow-glow-cyan transition-all">
+                  <div className="w-9 h-9 rounded-lg bg-[#DCFCE7] flex items-center justify-center text-[#16A34A] transition-all">
                     <Icon className="w-4 h-4" />
                   </div>
-                  <div className={`font-orbitron font-extrabold text-2xl sm:text-3xl lg:text-4xl ${stat.glow} flex items-center gap-1.5`}>
+                  <div className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#16A34A] flex items-center gap-1.5">
                     <span>{stat.value}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00D4FF] animate-ping" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A] animate-ping" />
                   </div>
                 </div>
-                <div className="font-semibold text-xs sm:text-sm text-white group-hover/stat:text-[#00D4FF] transition-colors">
+                <div className="font-semibold text-xs sm:text-sm text-[#111827] group-hover/stat:text-[#16A34A] transition-colors">
                   {stat.label}
                 </div>
-                <div className="text-[11px] text-[#94A3B8] mt-0.5">
+                <div className="text-[11px] text-[#6B7280] mt-0.5">
                   {stat.sublabel}
                 </div>
               </div>

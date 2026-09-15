@@ -1,0 +1,93 @@
+{
+    "key": "group_techofay_service_meta",
+    "title": "Service Details & Modules",
+    "fields": [
+        {
+            "key": "field_svc_icon",
+            "label": "Icon Identifier",
+            "name": "service_icon",
+            "type": "text",
+            "default_value": "ShieldCheck"
+        },
+        {
+            "key": "field_svc_badge",
+            "label": "Service Badge",
+            "name": "service_badge",
+            "type": "text",
+            "default_value": "Enterprise Solution"
+        },
+        {
+            "key": "field_svc_tagline",
+            "label": "Hero Tagline",
+            "name": "service_tagline",
+            "type": "text"
+        },
+        {
+            "key": "field_svc_modules",
+            "label": "Sub-Services & Modules",
+            "name": "service_modules",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_svc_mod_name",
+                    "label": "Module Name",
+                    "name": "name",
+                    "type": "text"
+                },
+                {
+                    "key": "field_svc_mod_desc",
+                    "label": "Module Description",
+                    "name": "desc",
+                    "type": "textarea"
+                }
+            ]
+        },
+        {
+            "key": "field_svc_tools",
+            "label": "Technologies & Tools",
+            "name": "service_tools",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_svc_tool_name",
+                    "label": "Tool Name",
+                    "name": "tool_name",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_svc_stats",
+            "label": "Key Metrics & Stats",
+            "name": "service_stats",
+            "type": "repeater",
+            "sub_fields": [
+                {
+                    "key": "field_svc_stat_label",
+                    "label": "Stat Label",
+                    "name": "label",
+                    "type": "text"
+                },
+                {
+                    "key": "field_svc_stat_val",
+                    "label": "Stat Value",
+                    "name": "value",
+                    "type": "text"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "techofay_service"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "active": true
+}

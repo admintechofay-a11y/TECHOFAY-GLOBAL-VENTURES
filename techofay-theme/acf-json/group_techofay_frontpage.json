@@ -1,0 +1,135 @@
+{
+    "key": "group_techofay_frontpage",
+    "title": "Homepage Content & Sections",
+    "fields": [
+        {
+            "key": "field_hero_badge_text",
+            "label": "Hero Badge Text",
+            "name": "hero_badge_text",
+            "type": "text",
+            "default_value": "Trusted by 500+ Global Enterprises & Scale-Ups"
+        },
+        {
+            "key": "field_hero_h1_line1",
+            "label": "Hero H1 Line 1",
+            "name": "hero_h1_line1",
+            "type": "text",
+            "default_value": "Engineering the"
+        },
+        {
+            "key": "field_hero_h1_accent_word",
+            "label": "Hero Accent Highlight Word",
+            "name": "hero_h1_accent_word",
+            "type": "text",
+            "default_value": "Future"
+        },
+        {
+            "key": "field_hero_h1_line2",
+            "label": "Hero H1 Line 2",
+            "name": "hero_h1_line2",
+            "type": "text",
+            "default_value": "One Solution at a Time."
+        },
+        {
+            "key": "field_hero_subtext",
+            "label": "Hero Subtext",
+            "name": "hero_subtext",
+            "type": "textarea",
+            "default_value": "TECHOFAY GLOBAL VENTURES empowers enterprise transformation with complete digital growth solutions — Websites, SEO, Social Media, Digital Marketing, Branding, Smart NFC Cards, Mobile Apps, and Custom AI Development."
+        },
+        {
+            "key": "field_hero_guarantee_text",
+            "label": "Guarantee Badge Text",
+            "name": "hero_guarantee_text",
+            "type": "text",
+            "default_value": "100% Money-Back Guarantee — If you don’t get clients, we refund you!"
+        },
+        {
+            "key": "field_hero_cta_primary_text",
+            "label": "Primary CTA Text",
+            "name": "hero_cta_primary_text",
+            "type": "text",
+            "default_value": "Explore Our Services"
+        },
+        {
+            "key": "field_hero_cta_primary_url",
+            "label": "Primary CTA URL",
+            "name": "hero_cta_primary_url",
+            "type": "text",
+            "default_value": "/services"
+        },
+        {
+            "key": "field_stat_1_number",
+            "label": "Stat 1 Number",
+            "name": "stat_1_number",
+            "type": "text",
+            "default_value": "500+"
+        },
+        {
+            "key": "field_stat_1_label",
+            "label": "Stat 1 Label",
+            "name": "stat_1_label",
+            "type": "text",
+            "default_value": "Global Enterprises Scaled"
+        },
+        {
+            "key": "field_stat_2_number",
+            "label": "Stat 2 Number",
+            "name": "stat_2_number",
+            "type": "text",
+            "default_value": "99.98%"
+        },
+        {
+            "key": "field_stat_2_label",
+            "label": "Stat 2 Label",
+            "name": "stat_2_label",
+            "type": "text",
+            "default_value": "System Uptime SLA"
+        },
+        {
+            "key": "field_stat_3_number",
+            "label": "Stat 3 Number",
+            "name": "stat_3_number",
+            "type": "text",
+            "default_value": "120+"
+        },
+        {
+            "key": "field_stat_3_label",
+            "label": "Stat 3 Label",
+            "name": "stat_3_label",
+            "type": "text",
+            "default_value": "AI & Cloud Patents/IP"
+        },
+        {
+            "key": "field_stat_4_number",
+            "label": "Stat 4 Number",
+            "name": "stat_4_number",
+            "type": "text",
+            "default_value": "5"
+        },
+        {
+            "key": "field_stat_4_label",
+            "label": "Stat 4 Label",
+            "name": "stat_4_label",
+            "type": "text",
+            "default_value": "Global Branch Hubs"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Hero & stats options for the homepage"
+}

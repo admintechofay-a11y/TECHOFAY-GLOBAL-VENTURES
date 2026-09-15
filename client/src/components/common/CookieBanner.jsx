@@ -26,28 +26,28 @@ export default function CookieBanner() {
 
   return (
     <div className="fixed bottom-4 left-4 right-4 sm:left-6 sm:right-auto sm:max-w-md z-50 animate-bounce-short">
-      <div className="glass-panel p-5 rounded-xl shadow-2xl border border-[rgba(0,212,255,0.3)] bg-[#0A1628]/95 backdrop-blur-xl">
+      <div className="p-5 rounded-xl shadow-xl border border-[#E5E7EB] bg-white">
         <div className="flex items-start gap-3">
-          <div className="w-8 h-8 rounded-lg bg-[#2B6EFA]/20 flex items-center justify-center shrink-0 text-[#00D4FF]">
+          <div className="w-8 h-8 rounded-lg bg-[#DCFCE7] flex items-center justify-center shrink-0 text-[#16A34A]">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <div className="flex-1">
-            <h4 className="font-orbitron text-xs font-bold text-white mb-1">
+            <h4 className="font-heading text-xs font-bold text-[#111827] mb-1">
               Data Privacy & Cookie Preferences
             </h4>
-            <p className="text-xs text-[#8B9AB5] leading-relaxed mb-3">
-              We use security cookies and telemetry to analyze traffic and provide high-assurance enterprise experiences in compliance with GDPR.
+            <p className="text-xs text-[#6B7280] leading-relaxed mb-3">
+              We use necessary cookies to analyze traffic and provide high-assurance enterprise growth experiences in compliance with global standards.
             </p>
             <div className="flex items-center gap-2">
               <button
                 onClick={handleAccept}
-                className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white bg-gradient-to-r from-[#2B6EFA] to-[#00D4FF] hover:shadow-glow-cyan transition-all"
+                className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white bg-[#16A34A] hover:bg-[#166534] transition-all cursor-pointer shadow-xs"
               >
                 Accept All
               </button>
               <button
                 onClick={handleDecline}
-                className="px-3 py-1.5 rounded-lg text-xs text-[#8B9AB5] hover:text-white bg-white/5 hover:bg-white/10 transition-colors"
+                className="px-3 py-1.5 rounded-lg text-xs text-[#374151] hover:text-[#16A34A] bg-[#F8FAF8] border border-[#E5E7EB] transition-colors cursor-pointer"
               >
                 Essential Only
               </button>
@@ -55,7 +55,7 @@ export default function CookieBanner() {
           </div>
           <button
             onClick={() => setVisible(false)}
-            className="text-[#8B9AB5] hover:text-white p-1"
+            className="text-[#6B7280] hover:text-[#111827] p-1 cursor-pointer"
             aria-label="Dismiss cookie notice"
           >
             <X className="w-4 h-4" />

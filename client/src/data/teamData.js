@@ -65,11 +65,11 @@ export const coreValues = [
 ];
 
 export const globalOffices = [
-  { city: 'Mumbai', country: 'India', address: 'Bandra-Kurla Complex (BKC), Tech Tower Level 14', coordinates: [19.0657, 72.8687], type: 'India Innovation & Engineering HQ' },
-  { city: 'Bengaluru', country: 'India', address: 'Outer Ring Road, Silicon Tech Park, Tower B', coordinates: [12.9249, 77.6837], type: 'AI & Cloud Development Center' },
-  { city: 'London', country: 'United Kingdom', address: '30 St Mary Axe (The Gherkin), Level 24', coordinates: [51.5074, -0.1278], type: 'European Enterprise Hub' },
-  { city: 'Singapore', country: 'Singapore', address: 'Marina Bay Financial Centre, Tower 2', coordinates: [1.3521, 103.8198], type: 'Asia-Pacific Gateway' },
-  { city: 'Dubai', country: 'United Arab Emirates', address: 'DIFC Gate Precinct 4, Level 5', coordinates: [25.2048, 55.2708], type: 'Middle East Operations' }
+  { city: 'Vadodara', state: 'Gujarat', country: 'India', address: 'Techofay Tower, Vadodara, Gujarat, India', coordinates: [22.3072, 73.1812], type: 'Global Corporate Headquarters' },
+  { city: 'ETV Marathahalli Bangalore', state: 'Karnataka', country: 'India', address: 'Embassy TechVillage (ETV), Marathahalli - Outer Ring Road, Bangalore, Karnataka', coordinates: [12.9352, 77.6946], type: 'Software & AI Development Hub' },
+  { city: 'Chennai', state: 'Tamil Nadu', country: 'India', address: 'OMR Technology Corridor, Chennai, Tamil Nadu', coordinates: [13.0827, 80.2707], type: 'Southern Regional Center' },
+  { city: 'Ganjdundwara', state: 'Uttar Pradesh', country: 'India', address: 'Regional Operations Center, Ganjdundwara, Uttar Pradesh', coordinates: [27.7333, 78.9333], type: 'Northern Regional Operations' },
+  { city: 'Edinburgh', country: 'United Kingdom', address: 'Edinburgh Technology Park, Edinburgh, Scotland, UK', coordinates: [55.9533, -3.1883], type: 'UK & European Gateway' }
 ];
 
 export const certifications = [

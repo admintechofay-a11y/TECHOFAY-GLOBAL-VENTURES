@@ -32,10 +32,10 @@ export default function TechGlobe() {
     const sphereRadius = 75;
     const sphereGeo = new THREE.SphereGeometry(sphereRadius, 36, 36);
     const sphereMat = new THREE.MeshBasicMaterial({
-      color: isLight ? 0x2563eb : 0x2b6efa,
+      color: 0x16a34a,
       wireframe: true,
       transparent: true,
-      opacity: isLight ? 0.22 : 0.15,
+      opacity: 0.18,
     });
     const sphere = new THREE.Mesh(sphereGeo, sphereMat);
     globeGroup.add(sphere);
@@ -45,9 +45,9 @@ export default function TechGlobe() {
     const pointsPositions = new Float32Array(pointsCount * 3);
     const pointsColors = new Float32Array(pointsCount * 3);
 
-    const cyan = isLight ? new THREE.Color('#0284C7') : new THREE.Color('#00D4FF');
-    const blue = isLight ? new THREE.Color('#2563EB') : new THREE.Color('#2B6EFA');
-    const violet = isLight ? new THREE.Color('#7C3AED') : new THREE.Color('#7B2FBE');
+    const cyan = new THREE.Color('#16A34A');
+    const blue = new THREE.Color('#22C55E');
+    const violet = new THREE.Color('#166534');
 
     for (let i = 0; i < pointsCount; i++) {
       // Golden spiral distribution on sphere
@@ -91,8 +91,8 @@ export default function TechGlobe() {
         color: colorHex,
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: isLight ? 0.45 : 0.4,
-        blending: isLight ? THREE.NormalBlending : THREE.AdditiveBlending,
+        opacity: 0.25,
+        blending: THREE.NormalBlending,
       });
       const ring = new THREE.Mesh(ringGeo, ringMat);
       ring.rotation.x = tiltX;
@@ -101,8 +101,8 @@ export default function TechGlobe() {
       // Add a satellite node on the ring
       const satGeo = new THREE.SphereGeometry(3, 16, 16);
       const satMat = new THREE.MeshBasicMaterial({ 
-        color: isLight ? 0x0284c7 : 0x00d4ff, 
-        blending: isLight ? THREE.NormalBlending : THREE.AdditiveBlending 
+        color: 0x16a34a, 
+        blending: THREE.NormalBlending 
       });
       const sat = new THREE.Mesh(satGeo, satMat);
       ring.add(sat);
@@ -110,9 +110,9 @@ export default function TechGlobe() {
       return { ring, speed, sat, radius };
     };
 
-    const ring1 = createOrbitRing(102, Math.PI / 3, Math.PI / 6, isLight ? 0x0284c7 : 0x00d4ff, 0.015);
-    const ring2 = createOrbitRing(116, -Math.PI / 4, Math.PI / 4, isLight ? 0x2563eb : 0x2b6efa, -0.01);
-    const ring3 = createOrbitRing(128, Math.PI / 2.2, -Math.PI / 5, isLight ? 0x7c3aed : 0x7b2fbe, 0.008);
+    const ring1 = createOrbitRing(102, Math.PI / 3, Math.PI / 6, 0x16a34a, 0.015);
+    const ring2 = createOrbitRing(116, -Math.PI / 4, Math.PI / 4, 0x22c55e, -0.01);
+    const ring3 = createOrbitRing(128, Math.PI / 2.2, -Math.PI / 5, 0x4ade80, 0.008);
 
     scene.add(ring1.ring);
     scene.add(ring2.ring);

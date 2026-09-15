@@ -4,27 +4,17 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   // Default to 'light' as requested by the user
-  const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem('techofay_theme');
-    return saved || 'light';
-  });
+  const [theme, setTheme] = useState('light');
 
   useEffect(() => {
-    localStorage.setItem('techofay_theme', theme);
+    localStorage.setItem('techofay_theme', 'light');
     const root = document.documentElement;
     const body = document.body;
 
-    if (theme === 'light') {
-      root.classList.remove('dark');
-      root.classList.add('light');
-      body.classList.remove('bg-[#050B1F]', 'text-white');
-      body.classList.add('bg-[#F8FAFC]', 'text-[#0F172A]');
-    } else {
-      root.classList.remove('light');
-      root.classList.add('dark');
-      body.classList.remove('bg-[#F8FAFC]', 'text-[#0F172A]');
-      body.classList.add('bg-[#050B1F]', 'text-white');
-    }
+    root.classList.remove('dark');
+    root.classList.add('light');
+    body.classList.remove('bg-[#050B1F]', 'text-white');
+    body.classList.add('bg-white', 'text-[#111827]');
   }, [theme]);
 
   const toggleTheme = () => {

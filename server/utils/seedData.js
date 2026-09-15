@@ -14,10 +14,10 @@ export const memoryStore = {
   demoRequests: [],
   settings: {
     companyName: 'TECHOFAY GLOBAL VENTURES',
-    tagline: 'Engineering the Future, One Solution at a Time',
-    email: 'contact@techofay.com',
-    phone: '+1 (800) 555-8324',
-    address: 'One World Trade Center, Suite 8500, New York, NY 10007',
+    tagline: 'Transform Your Business with Complete Digital Growth Solutions',
+    email: 'info@techofay.com',
+    phone: '+91-9359339000',
+    address: 'Vadodara, Gujarat, India (Corporate Headquarters)',
     smtpHost: 'smtp.gmail.com',
     smtpPort: '587',
     socials: {
