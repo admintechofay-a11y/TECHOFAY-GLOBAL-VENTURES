@@ -14,6 +14,50 @@ define( 'TECHOFAY_DIR', get_template_directory() );
 define( 'TECHOFAY_URI', get_template_directory_uri() );
 
 /**
+ * Safe fallbacks for Advanced Custom Fields (ACF) functions if ACF plugin is not yet active.
+ */
+if ( ! function_exists( 'get_field' ) ) {
+    function get_field( $selector, $post_id = false, $format_value = true ) {
+        if ( ! $post_id ) {
+            $post_id = get_the_ID();
+        }
+        if ( is_string( $post_id ) && strpos( $post_id, 'option' ) !== false ) {
+            return get_option( 'techofay_' . $selector, '' );
+        }
+        $val = get_post_meta( $post_id, $selector, true );
+        return ( $val !== '' && $val !== null ) ? $val : false;
+    }
+}
+if ( ! function_exists( 'the_field' ) ) {
+    function the_field( $selector, $post_id = false, $format_value = true ) {
+        echo esc_html( get_field( $selector, $post_id, $format_value ) );
+    }
+}
+if ( ! function_exists( 'have_rows' ) ) {
+    function have_rows( $selector, $post_id = false ) {
+        return false;
+    }
+}
+if ( ! function_exists( 'get_sub_field' ) ) {
+    function get_sub_field( $selector ) {
+        return '';
+    }
+}
+if ( ! function_exists( 'the_sub_field' ) ) {
+    function the_sub_field( $selector ) {
+        echo esc_html( get_sub_field( $selector ) );
+    }
+}
+if ( ! function_exists( 'update_field' ) ) {
+    function update_field( $selector, $value, $post_id = false ) {
+        if ( ! $post_id ) {
+            $post_id = get_the_ID();
+        }
+        return update_post_meta( $post_id, $selector, $value );
+    }
+}
+
+/**
  * Sets up theme defaults and registers support for various WordPress features.
  */
 function techofay_theme_setup() {
