@@ -336,6 +336,13 @@ function techofay_register_acf_field_groups() {
                     'value' => 'front_page',
                 ),
             ),
+            array(
+                array(
+                    'param' => 'page',
+                    'operator' => '==',
+                    'value' => '6',
+                ),
+            ),
         ),
     ) );
 

@@ -14,6 +14,18 @@ define( 'TECHOFAY_DIR', get_template_directory() );
 define( 'TECHOFAY_URI', get_template_directory_uri() );
 
 /**
+ * Auto-activate Advanced Custom Fields if installed
+ */
+add_action( 'admin_init', function() {
+    $active_plugins = get_option( 'active_plugins', array() );
+    $acf_plugin     = 'advanced-custom-fields/acf.php';
+    if ( ! in_array( $acf_plugin, $active_plugins, true ) && file_exists( WP_PLUGIN_DIR . '/' . $acf_plugin ) ) {
+        $active_plugins[] = $acf_plugin;
+        update_option( 'active_plugins', $active_plugins );
+    }
+} );
+
+/**
  * Safe fallbacks for Advanced Custom Fields (ACF) functions if ACF plugin is not yet active.
  */
 if ( ! function_exists( 'get_field' ) ) {
