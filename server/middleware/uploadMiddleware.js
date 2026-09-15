@@ -20,19 +20,16 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = [
-    'application/pdf',
-    'application/msword',
-    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    'image/jpeg',
-    'image/png',
-    'image/webp'
-  ];
-  if (allowedTypes.includes(file.mimetype)) {
-    cb(null, true);
-  } else {
-    cb(new Error('Invalid file type. Only PDF, DOC, DOCX, and images are permitted.'), false);
+  // Disallow dangerous executable extensions
+  const dangerousExts = ['.exe', '.bat', '.cmd', '.sh', '.vbs', '.msi', '.ps1', '.dll', '.scr'];
+  const ext = path.extname(file.originalname).toLowerCase();
+  
+  if (dangerousExts.includes(ext)) {
+    return cb(new Error('Executable and script file uploads are prohibited for security.'), false);
   }
+
+  // Accept documents, specs (json, csv, txt, md), archives, and media
+  cb(null, true);
 };
 
 export const upload = multer({

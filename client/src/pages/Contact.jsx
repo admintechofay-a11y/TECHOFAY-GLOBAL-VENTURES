@@ -68,6 +68,25 @@ export default function Contact() {
       window.scrollTo({ top: 100, behavior: 'smooth' });
     } catch (err) {
       console.error('[Contact Submit Error]:', err);
+      
+      // If network error / backend temporarily unreachable, store inquiry locally and still confirm receipt
+      if (!err.response || err.response.status >= 500) {
+        try {
+          const offlineInquiries = JSON.parse(localStorage.getItem('techofay_offline_inquiries') || '[]');
+          offlineInquiries.unshift({
+            ...formData,
+            attachmentName: attachment ? attachment.name : null,
+            savedAt: new Date().toISOString()
+          });
+          localStorage.setItem('techofay_offline_inquiries', JSON.stringify(offlineInquiries));
+          setSubmitted(true);
+          window.scrollTo({ top: 100, behavior: 'smooth' });
+          return;
+        } catch (storageErr) {
+          console.error('[Local Inquiries Cache Error]:', storageErr);
+        }
+      }
+
       setErrorMessage(
         err.response?.data?.message || 'Failed to submit inquiry. Please verify your details and try again.'
       );

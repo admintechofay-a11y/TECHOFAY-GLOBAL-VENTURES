@@ -19,6 +19,7 @@ server/.env
 client/.env
 
 # Uploads & User Generated Content
+uploads/
 server/uploads/*
 !server/uploads/.gitkeep
 
