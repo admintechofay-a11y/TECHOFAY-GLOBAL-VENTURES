@@ -1,6 +1,7 @@
 <?php
 /**
  * Template part: Why Choose Us Section
+ * Exactly matches client/src/components/home/WhyChooseUs.jsx 1-to-1
  *
  * @package Techofay_Theme
  */
@@ -9,83 +10,110 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-$why_heading = get_field( 'why_heading' ) ?: 'Why Forward-Thinking Enterprises Partner with TECHOFAY';
-$why_subtext = get_field( 'why_subtext' ) ?: 'We replace fragile legacy silos with resilient, sovereign, and scalable digital architectures.';
-$why_features = get_field( 'why_features' );
-
-$default_pillars = array(
+$points = array(
     array(
-        'title' => '100% Money-Back Guarantee',
-        'desc'  => 'We back our commercial outcomes with an ironclad guarantee: if your digital acquisition pipeline does not produce verified clients, we issue a 100% refund.',
-        'badge' => 'Risk Reversal',
-        'icon'  => '<svg class="w-6 h-6 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+        'title'     => 'Complete Digital Growth Under One Roof',
+        'desc'      => 'Website Development, SEO, Social Media, Digital Marketing, Branding, Smart NFC Cards, Mobile Apps, and Custom AI Development under a unified execution stack.',
+        'highlight' => 'Unified Growth Stack',
+        'icon'      => '<svg class="w-6 h-6 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>',
     ),
     array(
-        'title' => 'Military-Grade Sovereign Security',
-        'desc'  => 'Zero Trust architectures, continuous automated vulnerability scans, 24/7 SIEM monitoring, and strict ISO 27001 / SOC2 Type II compliance.',
-        'badge' => 'Sovereign Defense',
-        'icon'  => '<svg class="w-6 h-6 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>',
+        'title'     => 'Dedicated Enterprise Project Managers',
+        'desc'      => 'Direct access to senior Technical Account Managers and Solutions Architects who understand your business domain, compliance requirements, and sprint velocity.',
+        'highlight' => 'Single Point of Contact',
+        'icon'      => '<svg class="w-6 h-6 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>',
     ),
     array(
-        'title' => '99.98% High-Assurance Uptime SLA',
-        'desc'  => 'Redundant multi-region failover, containerized Kubernetes microservices, automated recovery scripts, and guaranteed 15-minute emergency response.',
-        'badge' => 'High Concurrency',
-        'icon'  => '<svg class="w-6 h-6 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>',
+        'title'     => '24/7/365 Proactive Support & Telemetry',
+        'desc'      => 'Continuous uptime monitoring, instant automated failover routines, and SLA-backed emergency response teams across global time zones.',
+        'highlight' => 'SLA Guarantee < 15min',
+        'icon'      => '<svg class="w-6 h-6 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
     ),
     array(
-        'title' => 'Global Decentralized Engineering Hubs',
-        'desc'  => 'Cross-border engineering squads spanning Vadodara (Global HQ), Bangalore (ETV Marathahalli), Chennai, Ganjdundwara, and Edinburgh (UK) delivering 24/7 agile cycles.',
-        'badge' => 'Global Footprint',
-        'icon'  => '<svg class="w-6 h-6 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+        'title'     => '100% Money-Back Guarantee on Growth',
+        'desc'      => 'If you don’t get clients through our complete digital growth campaigns, we refund you. Performance-driven milestones with zero risk.',
+        'highlight' => '100% Money-Back Guarantee',
+        'icon'      => '<svg class="w-6 h-6 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>',
     ),
 );
 ?>
 
-<section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
-    <div class="glass-panel rounded-3xl p-8 sm:p-12 lg:p-16 border border-[rgba(43,110,250,0.3)] bg-[#0A1628]/80 backdrop-blur-2xl relative overflow-hidden">
-        <!-- Ambient background accent -->
-        <div class="absolute -top-40 -right-40 w-96 h-96 bg-[#00D4FF]/10 rounded-full blur-3xl pointer-events-none"></div>
+<section class="relative py-24 sm:py-32 bg-[#F8FAF8] border-y border-[#E5E7EB] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            <!-- Left Column: Big Statement Headline & Story -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] text-[#166534] text-xs font-semibold uppercase tracking-wider">
+                    The Techofay Advantage
+                </div>
 
-        <div class="max-w-3xl mb-16 space-y-4">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#00D4FF]/10 border border-[#00D4FF]/30 text-xs font-semibold text-[#00D4FF]">
-                <span>DIFFERENTIATION</span>
-            </div>
-            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
-                <?php echo esc_html( $why_heading ); ?>
-            </h2>
-            <p class="text-sm sm:text-base text-[#8B9AB5] leading-relaxed">
-                <?php echo esc_html( $why_subtext ); ?>
-            </p>
-        </div>
+                <h2 class="font-heading font-extrabold text-2xl sm:text-4xl text-[#111827] tracking-tight leading-tight">
+                    Why Global Industry Leaders <span class="text-[#16A34A]">Choose Techofay</span>
+                </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <?php if ( ! empty( $why_features ) && is_array( $why_features ) ) : ?>
-                <?php foreach ( $why_features as $item ) : ?>
-                    <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00D4FF]/40 border-l-4 border-l-[#00D4FF] transition-all">
-                        <h3 class="font-heading font-bold text-lg text-white mb-2"><?php echo esc_html( $item['title'] ); ?></h3>
-                        <p class="text-xs sm:text-sm text-[#8B9AB5] leading-relaxed"><?php echo esc_html( $item['description'] ); ?></p>
+                <p class="text-sm sm:text-base text-[#374151] leading-relaxed">
+                    We do not treat technology as a commodity. We partner with forward-thinking enterprises as strategic digital co-founders, taking full ownership of security, scalability, lead generation, and technical execution.
+                </p>
+
+                <div class="space-y-3 pt-2">
+                    <div class="flex items-center gap-3 text-xs sm:text-sm text-[#166534] font-medium bg-[#DCFCE7] border border-[#BBF7D0] p-3 rounded-lg">
+                        <svg class="w-5 h-5 text-[#16A34A] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span>100% Money-Back Guarantee: If you don’t get clients, we refund you!</span>
                     </div>
-                <?php endforeach; ?>
-            <?php else : ?>
-                <?php foreach ( $default_pillars as $pillar ) : ?>
-                    <div class="p-6 sm:p-7 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#00D4FF]/50 border-l-4 border-l-[#00D4FF] transition-all group hover:bg-white/[0.06]">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-[#2B6EFA]/10 border border-[#2B6EFA]/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <?php echo $pillar['icon']; ?>
+                    <div class="flex items-center gap-3 text-xs sm:text-sm text-[#374151] font-medium">
+                        <svg class="w-5 h-5 text-[#16A34A] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span>Zero legacy technical debt — clean, modern, scalable codebases</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-xs sm:text-sm text-[#374151] font-medium">
+                        <svg class="w-5 h-5 text-[#16A34A] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span>Strict SOC 2 Type II and ISO 27001 compliance standards</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-xs sm:text-sm text-[#374151] font-medium">
+                        <svg class="w-5 h-5 text-[#16A34A] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span>Rigorous automated QA testing and continuous deployment</span>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <a
+                        href="<?php echo esc_url( home_url( '/about' ) ); ?>"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-xs text-white bg-[#16A34A] hover:bg-[#166534] transition-colors shadow-sm"
+                    >
+                        <span>Read Our Executive Story</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Column: 4 Feature Points with Green Left-Border Accent -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <?php foreach ( $points as $idx => $pt ) : ?>
+                    <div class="bg-white rounded-xl p-6 sm:p-7 flex flex-col justify-between border border-[#E5E7EB] border-l-4 border-l-[#16A34A] hover:shadow-[0_8px_24px_rgba(22,163,74,0.08)] transition-all duration-300 group">
+                        <div>
+                            <!-- Icon container: #DCFCE7 bg circle, #16A34A icon -->
+                            <div class="w-12 h-12 rounded-full bg-[#DCFCE7] flex items-center justify-center text-[#16A34A] group-hover:scale-105 transition-transform mb-5">
+                                <?php echo $pt['icon']; ?>
                             </div>
-                            <span class="text-[10px] uppercase tracking-wider font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#00D4FF]">
-                                <?php echo esc_html( $pillar['badge'] ); ?>
+                            <h3 class="font-heading font-bold text-base text-[#111827] mb-2 group-hover:text-[#16A34A] transition-colors">
+                                <?php echo esc_html( $pt['title'] ); ?>
+                            </h3>
+                            <p class="text-xs text-[#6B7280] leading-relaxed">
+                                <?php echo esc_html( $pt['desc'] ); ?>
+                            </p>
+                        </div>
+
+                        <div class="mt-5 pt-3 border-t border-[#E5E7EB] flex items-center justify-between">
+                            <span class="text-[11px] font-mono font-semibold text-[#16A34A]">
+                                <?php echo esc_html( $pt['highlight'] ); ?>
+                            </span>
+                            <span class="text-xs font-mono text-[#9CA3AF]">
+                                0<?php echo $idx + 1; ?>
                             </span>
                         </div>
-                        <h3 class="font-heading font-bold text-lg text-white mb-2 group-hover:text-[#00D4FF] transition-colors">
-                            <?php echo esc_html( $pillar['title'] ); ?>
-                        </h3>
-                        <p class="text-xs sm:text-sm text-[#8B9AB5] leading-relaxed">
-                            <?php echo esc_html( $pillar['desc'] ); ?>
-                        </p>
                     </div>
                 <?php endforeach; ?>
-            <?php endif; ?>
+            </div>
+
         </div>
     </div>
 </section>

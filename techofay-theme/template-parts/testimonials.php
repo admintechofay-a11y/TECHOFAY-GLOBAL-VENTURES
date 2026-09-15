@@ -1,6 +1,7 @@
 <?php
 /**
- * Template part: Testimonials Section
+ * Template part: Testimonials
+ * Exactly matches client/src/components/home/Testimonials.jsx 1-to-1
  *
  * @package Techofay_Theme
  */
@@ -9,110 +10,141 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-$testimonials_query = new WP_Query( array(
-    'post_type'      => 'testimonial',
-    'posts_per_page' => 3,
-    'post_status'    => 'publish',
-) );
-
-$fallback_testimonials = array(
+$testimonials = array(
     array(
-        'name'    => 'Vikramaditya Singhania',
-        'role'    => 'Group Chief Technology Officer',
-        'company' => 'Indus Global Logistics',
-        'text'    => 'TECHOFAY transformed our distributed supply chain with their ERP suite. We reduced inventory latency by 42% and their 100% money-back guarantee gave our executive board total confidence.',
-        'rating'  => 5,
+        'name'     => 'Alexander Wright',
+        'role'     => 'Chief Technology Officer',
+        'company'  => 'Apex Global Financial Group',
+        'avatar'   => 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80',
+        'stars'    => 5,
+        'quote'    => 'Techofay re-engineered our high-frequency trading gateway and Zero Trust network segmentation in under 90 days. Our latency plummeted by 42% while passing our SOC 2 Type II audit with zero findings. Their engineering depth is world-class.',
+        'vertical' => 'Cybersecurity & Infrastructure',
     ),
     array(
-        'name'    => 'Dr. Rachel MacIntyre',
-        'role'    => 'Director of Digital Health Operations',
-        'company' => 'Edinburgh Health Trust (UK)',
-        'text'    => 'The Hospital Management System (HMS) delivered by TECHOFAY is exceptional. HIPAA-compliant EMR workflows, zero-downtime pharmacy synchronization, and world-class 24/7 technical support.',
-        'rating'  => 5,
+        'name'     => 'Dr. Sarah Lin-Reynolds',
+        'role'     => 'Head of Clinical AI',
+        'company'  => 'NeuraHealth Therapeutics',
+        'avatar'   => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80',
+        'stars'    => 5,
+        'quote'    => 'Deploying custom AI automation into hospital workflows was seamless with Techofay. Their deterministic guardrails and vector pipelines achieved 99.4% diagnostic accuracy with zero hallucinations. Truly transformational.',
+        'vertical' => 'Custom AI & Automation',
     ),
     array(
-        'name'    => 'Rajeshwar Kulkarni',
-        'role'    => 'Managing Director',
-        'company' => 'Apex Educational Consortium',
-        'text'    => 'Managing 18,000 students across 14 campuses was chaotic until TECHOFAY deployed their School Management ERP. Automated fees, biometric attendance, and seamless parent communications.',
-        'rating'  => 5,
+        'name'     => 'Marcus Sterling',
+        'role'     => 'VP of Product & Growth',
+        'company'  => 'ScaleCommerce Cloud',
+        'avatar'   => 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&q=80',
+        'stars'    => 5,
+        'quote'    => 'Techofay delivered our complete digital growth solution: new high-converting web application, multi-channel SEO, and performance marketing. Their 100% money-back guarantee gave us complete confidence, and we 3x our enterprise inbound pipeline.',
+        'vertical' => 'Digital Growth & Development',
     ),
 );
 ?>
 
-<section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
-    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#00D4FF]/10 border border-[#00D4FF]/30 text-xs font-semibold text-[#00D4FF]">
-            <span>CLIENT ENDORSEMENTS</span>
-        </div>
-        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
-            Trusted by Enterprise Leaders Worldwide
-        </h2>
-        <p class="text-sm sm:text-base text-[#8B9AB5] leading-relaxed">
-            Real impact metrics and commercial acceleration delivered for global brands.
-        </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <?php if ( $testimonials_query->have_posts() ) : ?>
-            <?php while ( $testimonials_query->have_posts() ) : $testimonials_query->the_post(); ?>
-                <?php
-                $role    = get_field( 'client_role' ) ?: 'Executive';
-                $company = get_field( 'client_company' ) ?: 'Enterprise Client';
-                $rating  = get_field( 'star_rating' ) ?: 5;
-                ?>
-                <div class="glass-card rounded-2xl p-8 flex flex-col justify-between hover:border-[#00D4FF]/50 transition-all hover:-translate-y-1">
-                    <div>
-                        <!-- Stars -->
-                        <div class="flex items-center gap-1 text-[#00D4FF] mb-6">
-                            <?php for ( $i = 0; $i < $rating; $i++ ) : ?>
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <?php endfor; ?>
-                        </div>
-
-                        <p class="text-xs sm:text-sm text-white/90 leading-relaxed italic mb-6">
-                            &ldquo;<?php echo get_the_content(); ?>&rdquo;
-                        </p>
-                    </div>
-
-                    <div class="pt-4 border-t border-white/10 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#2B6EFA] to-[#00D4FF] flex items-center justify-center font-bold text-xs text-white">
-                            <?php echo esc_html( substr( get_the_title(), 0, 1 ) ); ?>
-                        </div>
-                        <div>
-                            <div class="font-heading font-bold text-sm text-white"><?php the_title(); ?></div>
-                            <div class="text-[11px] text-[#8B9AB5]"><?php echo esc_html( $role ); ?>, <span class="text-[#00D4FF]"><?php echo esc_html( $company ); ?></span></div>
-                        </div>
-                    </div>
+<section class="relative py-24 sm:py-32 bg-white border-b border-[#E5E7EB] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+            <div>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] text-[#166534] text-xs font-semibold uppercase tracking-wider mb-4">
+                    Client Validation
                 </div>
-            <?php endwhile; wp_reset_postdata(); ?>
-        <?php else : ?>
-            <?php foreach ( $fallback_testimonials as $item ) : ?>
-                <div class="glass-card rounded-2xl p-8 flex flex-col justify-between hover:border-[#00D4FF]/50 transition-all hover:-translate-y-1">
+                <h2 class="font-heading font-extrabold text-2xl sm:text-4xl text-[#111827] tracking-tight">
+                    Trusted by <span class="text-[#16A34A]">Industry Leaders</span>
+                </h2>
+            </div>
+
+            <div class="flex items-center gap-2 mt-4 md:mt-0">
+                <button
+                    type="button"
+                    id="prev-testimonial"
+                    class="p-3 rounded-xl bg-white border border-[#E5E7EB] text-[#374151] hover:text-[#16A34A] hover:border-[#16A34A] transition-all shadow-xs cursor-pointer"
+                    aria-label="Previous Testimonial"
+                >
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button
+                    type="button"
+                    id="next-testimonial"
+                    class="p-3 rounded-xl bg-white border border-[#E5E7EB] text-[#374151] hover:text-[#16A34A] hover:border-[#16A34A] transition-all shadow-xs cursor-pointer"
+                    aria-label="Next Testimonial"
+                >
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Testimonials 3-Card Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <?php foreach ( $testimonials as $idx => $t ) : ?>
+                <div
+                    class="testimonial-card rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 border <?php echo $idx === 0 ? 'border-[#16A34A] bg-[#F8FAF8] shadow-[0_8px_24px_rgba(22,163,74,0.1)] scale-[1.02]' : 'bg-white border-[#E5E7EB] hover:border-[#BBF7D0]'; ?>"
+                    data-index="<?php echo $idx; ?>"
+                >
                     <div>
-                        <!-- Stars -->
-                        <div class="flex items-center gap-1 text-[#00D4FF] mb-6">
-                            <?php for ( $i = 0; $i < $item['rating']; $i++ ) : ?>
-                                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <?php endfor; ?>
+                        <!-- Rating & Quote Icon -->
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-1 text-[#16A34A]">
+                                <?php for ( $i = 0; $i < $t['stars']; $i++ ) : ?>
+                                    <svg class="w-4 h-4 fill-current text-[#16A34A]" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                <?php endfor; ?>
+                            </div>
+                            <svg class="w-8 h-8 text-[#BBF7D0]" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
                         </div>
 
-                        <p class="text-xs sm:text-sm text-white/90 leading-relaxed italic mb-6">
-                            &ldquo;<?php echo esc_html( $item['text'] ); ?>&rdquo;
+                        <p class="text-sm text-[#374151] leading-relaxed italic mb-8">
+                            "<?php echo esc_html( $t['quote'] ); ?>"
                         </p>
                     </div>
 
-                    <div class="pt-4 border-t border-white/10 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#2B6EFA] to-[#00D4FF] flex items-center justify-center font-bold text-xs text-white">
-                            <?php echo esc_html( substr( $item['name'], 0, 1 ) ); ?>
-                        </div>
+                    <!-- Author Details -->
+                    <div class="pt-6 border-t border-[#E5E7EB] flex items-center gap-4">
+                        <img
+                            src="<?php echo esc_url( $t['avatar'] ); ?>"
+                            alt="<?php echo esc_attr( $t['name'] ); ?>"
+                            class="w-12 h-12 rounded-full object-cover border-2 border-[#16A34A]"
+                        />
                         <div>
-                            <div class="font-heading font-bold text-sm text-white"><?php echo esc_html( $item['name'] ); ?></div>
-                            <div class="text-[11px] text-[#8B9AB5]"><?php echo esc_html( $item['role'] ); ?>, <span class="text-[#00D4FF]"><?php echo esc_html( $item['company'] ); ?></span></div>
+                            <div class="font-heading font-bold text-sm text-[#111827] flex items-center gap-1.5">
+                                <?php echo esc_html( $t['name'] ); ?>
+                                <svg class="w-3.5 h-3.5 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="text-xs text-[#6B7280]">
+                                <?php echo esc_html( $t['role'] ); ?> &bull; <span class="text-[#16A34A] font-medium"><?php echo esc_html( $t['company'] ); ?></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
-        <?php endif; ?>
+        </div>
+
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.testimonial-card');
+    let currentIdx = 0;
+
+    function updateHighlight(index) {
+        cards.forEach((c, i) => {
+            if (i === index) {
+                c.className = 'testimonial-card rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 border border-[#16A34A] bg-[#F8FAF8] shadow-[0_8px_24px_rgba(22,163,74,0.1)] scale-[1.02]';
+            } else {
+                c.className = 'testimonial-card rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 border bg-white border-[#E5E7EB] hover:border-[#BBF7D0]';
+            }
+        });
+    }
+
+    document.getElementById('prev-testimonial')?.addEventListener('click', () => {
+        currentIdx = (currentIdx === 0) ? cards.length - 1 : currentIdx - 1;
+        updateHighlight(currentIdx);
+    });
+
+    document.getElementById('next-testimonial')?.addEventListener('click', () => {
+        currentIdx = (currentIdx === cards.length - 1) ? 0 : currentIdx + 1;
+        updateHighlight(currentIdx);
+    });
+});
+</script>

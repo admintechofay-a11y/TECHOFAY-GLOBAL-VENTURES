@@ -1,6 +1,7 @@
 <?php
 /**
- * Template part: Services Grid
+ * Template part: Services Grid (Verticals Overview)
+ * Exactly matches client/src/components/home/VerticalsOverview.jsx 1-to-1
  *
  * @package Techofay_Theme
  */
@@ -9,159 +10,167 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-$services_query = new WP_Query( array(
-    'post_type'      => 'techofay_service',
-    'posts_per_page' => 6,
-    'post_status'    => 'publish',
-) );
-
-// Fallback services if none entered in WP admin yet
-$fallback_services = array(
+$services = array(
     array(
-        'slug'  => 'cybersecurity',
-        'title' => 'Cybersecurity & Zero Trust',
-        'desc'  => 'Military-grade defense architectures, SOC-as-a-Service, automated penetration testing, and compliance certification for global enterprises.',
-        'badge' => 'Enterprise Defense',
-        'icon'  => '<svg class="w-6 h-6 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>',
-        'tools' => array( 'CrowdStrike', 'Splunk', 'Nessus', 'Zero Trust' ),
+        'id'        => 'cybersecurity',
+        'title'     => 'Cybersecurity & Zero Trust',
+        'shortDesc' => 'Military-grade defense architectures, 24/7 SOC telemetry, automated penetration testing, and regulatory compliance.',
+        'badge'     => 'Enterprise Defense',
+        'stat'      => '4.8M+ Threats Blocked',
+        'icon'      => '<svg class="w-6 h-6 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>',
+        'subItems'  => array( 'SOC-as-a-Service', 'Zero-Trust Architecture', 'Penetration Testing' ),
+        'tools'     => array( 'CrowdStrike', 'Splunk', 'Nessus', 'Wazuh' ),
     ),
     array(
-        'slug'  => 'development',
-        'title' => 'Engineering & QA Testing',
-        'desc'  => 'Full-cycle modern software engineering, cloud-native microservices, mobile apps, and automated QA pipelines built for scale.',
-        'badge' => 'High-Velocity Dev',
-        'icon'  => '<svg class="w-6 h-6 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>',
-        'tools' => array( 'React', 'Node.js', 'Go', 'Kubernetes' ),
+        'id'        => 'development',
+        'title'     => 'Development & QA Testing',
+        'shortDesc' => 'Custom full-stack web applications, cross-platform mobile apps, automated QA pipelines, and high-velocity microservices.',
+        'badge'     => 'High-Velocity Dev',
+        'stat'      => '99.98% Clean QA',
+        'icon'      => '<svg class="w-6 h-6 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>',
+        'subItems'  => array( 'Custom Web Applications', 'Mobile App Development', 'Automated QA Testing' ),
+        'tools'     => array( 'React', 'Node.js', 'Go', 'Kubernetes' ),
     ),
     array(
-        'slug'  => 'cloud-infrastructure',
-        'title' => 'Cloud & DevOps Architecture',
-        'desc'  => 'High-throughput multi-cloud engineering across AWS, Azure, and GCP. Automated CI/CD, Kubernetes orchestration, and FinOps.',
-        'badge' => 'Cloud Sovereignty',
-        'icon'  => '<svg class="w-6 h-6 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>',
-        'tools' => array( 'AWS', 'GCP', 'Terraform', 'Docker' ),
+        'id'        => 'ai-automation',
+        'title'     => 'AI & Intelligent Automation',
+        'shortDesc' => 'Domain-specific enterprise LLM fine-tuning, deterministic RAG pipelines, autonomous workflows, and predictive analytics.',
+        'badge'     => 'Autonomous AI',
+        'stat'      => '120k+ Tasks/Day',
+        'icon'      => '<svg class="w-6 h-6 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>',
+        'subItems'  => array( 'Custom LLM Engineering', 'Autonomous AI Agents', 'Enterprise RAG Systems' ),
+        'tools'     => array( 'PyTorch', 'OpenAI', 'LangChain', 'Pinecone' ),
     ),
     array(
-        'slug'  => 'ai-data-analytics',
-        'title' => 'Data & Applied AI Solutions',
-        'desc'  => 'Predictive intelligence pipelines, custom LLM fine-tuning, RAG enterprise knowledge agents, and BigQuery data warehousing.',
-        'badge' => 'Autonomous Intelligence',
-        'icon'  => '<svg class="w-6 h-6 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>',
-        'tools' => array( 'PyTorch', 'OpenAI', 'LangChain', 'Snowflake' ),
+        'id'        => 'saas-products',
+        'title'     => 'Techofay Software Products',
+        'shortDesc' => 'Turnkey enterprise SaaS platforms for Schools, Hospitals, Hotels, Logistics Fleets, and Core Multi-Entity ERP operations.',
+        'badge'     => 'Turnkey SaaS Suites',
+        'stat'      => '5 Flagship Platforms',
+        'icon'      => '<svg class="w-6 h-6 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>',
+        'subItems'  => array( 'School ERP System', 'Hospital Management (HMS)', 'Hotel Management (PMS)' ),
+        'tools'     => array( 'Enterprise ERP', 'Multi-tenant', 'Zero-Downtime', 'Cloud Native' ),
     ),
     array(
-        'slug'  => 'ui-ux-design',
-        'title' => 'Product Design & UX Systems',
-        'desc'  => 'Conversion-focused digital product design, enterprise design systems, usability research, and interactive micro-animations.',
-        'badge' => 'Human-Centric UX',
-        'icon'  => '<svg class="w-6 h-6 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>',
-        'tools' => array( 'Figma', 'Prototyping', 'Design Systems', 'Micro-UX' ),
+        'id'        => 'marketing',
+        'title'     => 'Growth & Marketing',
+        'shortDesc' => 'Revenue-focused international SEO, paid acquisition campaigns, corporate branding identity, and Smart NFC business cards.',
+        'badge'     => '100% Guaranteed ROI',
+        'stat'      => '3.8x Client Pipeline',
+        'icon'      => '<svg class="w-6 h-6 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>',
+        'subItems'  => array( 'SEO & Organic Growth', 'Digital Marketing & Ads', 'Smart NFC Business Cards' ),
+        'tools'     => array( 'Global SEO', 'Google Ads', 'NFC Tech', 'Brand Strategy' ),
     ),
     array(
-        'slug'  => 'growth-marketing',
-        'title' => 'Digital Growth & Acquisition',
-        'desc'  => 'Performance marketing, international SEO, AI-driven conversion rate optimization, and brand amplification backed by revenue ROI.',
-        'badge' => 'Guaranteed Pipeline',
-        'icon'  => '<svg class="w-6 h-6 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>',
-        'tools' => array( 'Global SEO', 'PPC Growth', 'Brand Equity', 'Analytics' ),
+        'id'        => 'infrastructure',
+        'title'     => 'Cloud & Infrastructure',
+        'shortDesc' => 'Multi-cloud architectures across AWS and GCP, Terraform automation, container orchestration, and disaster recovery.',
+        'badge'     => 'Cloud Sovereignty',
+        'stat'      => '99.999% SLA Uptime',
+        'icon'      => '<svg class="w-6 h-6 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>',
+        'subItems'  => array( 'AWS & GCP Architectures', 'Kubernetes Orchestration', 'Terraform Automation' ),
+        'tools'     => array( 'AWS', 'GCP', 'Terraform', 'Docker' ),
     ),
 );
 ?>
 
-<section class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
-    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#00D4FF]/10 border border-[#00D4FF]/30 text-xs font-semibold text-[#00D4FF]">
-            <span>CORE CAPABILITIES</span>
+<section class="relative py-24 sm:py-32 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] text-[#166534] text-xs font-semibold uppercase tracking-wider mb-4">
+                <svg class="w-3.5 h-3.5 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                Core Enterprise Verticals
+            </div>
+            <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-[40px] text-[#111827] tracking-tight mb-4">
+                End-to-End Technology <span class="text-[#16A34A]">Capabilities</span>
+            </h2>
+            <p class="text-sm sm:text-base text-[#374151] leading-relaxed">
+                From high-assurance cybersecurity and custom AI development to high-conversion digital marketing, branding, smart NFC cards, and scalable cloud applications — we deliver full-spectrum digital dominance.
+            </p>
         </div>
-        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight">
-            Six Sovereign Enterprise Verticals
-        </h2>
-        <p class="text-sm sm:text-base text-[#8B9AB5] leading-relaxed">
-            From zero-trust network hardening to high-concurrency microservices and autonomous machine learning pipelines.
-        </p>
-    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <?php if ( $services_query->have_posts() ) : ?>
-            <?php while ( $services_query->have_posts() ) : $services_query->the_post(); ?>
-                <?php
-                $badge = get_field( 'service_badge' ) ?: 'Enterprise Solution';
-                $tools = get_field( 'service_tools' );
-                ?>
-                <div class="glass-card rounded-2xl p-7 flex flex-col justify-between group transition-all duration-300 hover:border-[#00D4FF]/50 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgba(0,212,255,0.12)]">
+        <!-- 6 Service Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <?php foreach ( $services as $vertical ) : ?>
+                <div class="group relative bg-white border border-[#E5E7EB] rounded-[12px] p-7 sm:p-8 flex flex-col justify-between overflow-hidden cursor-pointer transition-all duration-300 hover:border-[#16A34A] hover:shadow-[0_8px_24px_rgba(22,163,74,0.08)]">
+                    <!-- 3px Solid Forest Green Top Accent Bar -->
+                    <div class="absolute top-0 left-0 right-0 h-[3px] bg-[#16A34A]"></div>
+
                     <div>
+                        <!-- Top Badge & Icon -->
                         <div class="flex items-center justify-between mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-[#2B6EFA]/10 border border-[#2B6EFA]/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <svg class="w-6 h-6 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            <!-- Icon container: #DCFCE7 bg circle, #16A34A icon -->
+                            <div class="w-12 h-12 rounded-full bg-[#DCFCE7] flex items-center justify-center text-[#16A34A] group-hover:scale-105 transition-transform duration-300">
+                                <?php echo $vertical['icon']; ?>
                             </div>
-                            <span class="text-[10px] uppercase tracking-wider font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#00D4FF]">
-                                <?php echo esc_html( $badge ); ?>
+                            <span class="text-[10px] uppercase font-mono tracking-wider px-2.5 py-1 rounded-md bg-[#F8FAF8] border border-[#E5E7EB] text-[#374151]">
+                                <?php echo esc_html( $vertical['badge'] ); ?>
                             </span>
                         </div>
 
-                        <h3 class="font-heading font-bold text-xl text-white mb-3 group-hover:text-[#00D4FF] transition-colors">
-                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                        <!-- Title -->
+                        <h3 class="font-heading font-bold text-lg sm:text-xl text-[#111827] mb-3 group-hover:text-[#16A34A] transition-colors">
+                            <a href="<?php echo esc_url( home_url( '/services' ) ); ?>"><?php echo esc_html( $vertical['title'] ); ?></a>
                         </h3>
 
-                        <p class="text-xs sm:text-sm text-[#8B9AB5] leading-relaxed mb-6">
-                            <?php echo wp_trim_words( get_the_excerpt(), 22 ); ?>
+                        <!-- 2-line Description -->
+                        <p class="text-xs sm:text-sm text-[#374151] leading-relaxed line-clamp-2 mb-6">
+                            <?php echo esc_html( $vertical['shortDesc'] ); ?>
                         </p>
-                    </div>
 
-                    <div>
-                        <a href="<?php the_permalink(); ?>" class="inline-flex items-center gap-2 text-xs font-bold text-[#00D4FF] hover:text-white transition-colors">
-                            <span>Explore Architecture</span>
-                            <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                        </a>
-                    </div>
-                </div>
-            <?php endwhile; wp_reset_postdata(); ?>
-        <?php else : ?>
-            <?php foreach ( $fallback_services as $svc ) : ?>
-                <div class="glass-card rounded-2xl p-7 flex flex-col justify-between group transition-all duration-300 hover:border-[#00D4FF]/50 hover:-translate-y-1.5 hover:shadow-[0_15px_40px_rgba(0,212,255,0.12)]">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="w-12 h-12 rounded-xl bg-[#2B6EFA]/10 border border-[#2B6EFA]/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <?php echo $svc['icon']; ?>
-                            </div>
-                            <span class="text-[10px] uppercase tracking-wider font-mono px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[#00D4FF]">
-                                <?php echo esc_html( $svc['badge'] ); ?>
-                            </span>
+                        <!-- Key Services List -->
+                        <div class="space-y-2 mb-6">
+                            <?php foreach ( $vertical['subItems'] as $item ) : ?>
+                                <div class="flex items-center gap-2.5 text-xs text-[#374151]">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#16A34A] shrink-0"></span>
+                                    <span class="truncate"><?php echo esc_html( $item ); ?></span>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
 
-                        <h3 class="font-heading font-bold text-xl text-white mb-3 group-hover:text-[#00D4FF] transition-colors">
-                            <a href="<?php echo esc_url( home_url( '/service/' . $svc['slug'] ) ); ?>"><?php echo esc_html( $svc['title'] ); ?></a>
-                        </h3>
-
-                        <p class="text-xs sm:text-sm text-[#8B9AB5] leading-relaxed mb-6">
-                            <?php echo esc_html( $svc['desc'] ); ?>
-                        </p>
-
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <?php foreach ( $svc['tools'] as $tool ) : ?>
-                                <span class="text-[10px] px-2 py-0.5 rounded bg-white/5 text-white/70 font-mono">
+                        <!-- Tools snippet preview -->
+                        <div class="flex flex-wrap gap-1.5 mb-6 pt-3 border-t border-[#E5E7EB]">
+                            <?php foreach ( array_slice( $vertical['tools'], 0, 3 ) as $tool ) : ?>
+                                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#F8FAF8] text-[#6B7280] border border-[#E5E7EB]">
                                     <?php echo esc_html( $tool ); ?>
                                 </span>
                             <?php endforeach; ?>
+                            <?php if ( count( $vertical['tools'] ) > 3 ) : ?>
+                                <span class="text-[10px] font-mono px-1.5 py-0.5 text-[#9CA3AF]">
+                                    +<?php echo count( $vertical['tools'] ) - 3; ?> more
+                                </span>
+                            <?php endif; ?>
                         </div>
                     </div>
 
-                    <div>
-                        <a href="<?php echo esc_url( home_url( '/service/' . $svc['slug'] ) ); ?>" class="inline-flex items-center gap-2 text-xs font-bold text-[#00D4FF] hover:text-white transition-colors">
-                            <span>Explore Architecture</span>
-                            <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    <!-- Bottom CTA Link -->
+                    <div class="pt-4 border-t border-[#E5E7EB] flex items-center justify-between">
+                        <a
+                            href="<?php echo esc_url( home_url( '/services' ) ); ?>"
+                            class="inline-flex items-center gap-2 text-xs font-semibold text-[#16A34A] hover:text-[#166534] transition-colors group/link"
+                        >
+                            <span>Learn Detailed Scope</span>
+                            <svg class="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </a>
+                        <span class="text-[11px] font-mono font-semibold text-[#16A34A]">
+                            <?php echo esc_html( $vertical['stat'] ); ?>
+                        </span>
                     </div>
                 </div>
             <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
+        </div>
 
-    <!-- Bottom Services CTA -->
-    <div class="mt-14 text-center">
-        <a href="<?php echo esc_url( home_url( '/services' ) ); ?>" class="inline-flex items-center gap-2 px-7 py-3 rounded-xl text-xs font-bold text-white bg-white/5 border border-white/15 hover:bg-white/10 hover:border-[#00D4FF]/40 transition-all">
-            <span>View Complete Engineering Capabilities & Tools Matrix</span>
-            <svg class="w-3.5 h-3.5 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-        </a>
+        <!-- Bottom Explorer Action -->
+        <div class="mt-14 text-center">
+            <a
+                href="<?php echo esc_url( home_url( '/services' ) ); ?>"
+                class="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg font-semibold text-sm text-[#16A34A] bg-white border border-[#16A34A] hover:bg-[#F0FDF4] transition-colors shadow-xs"
+            >
+                <span>Explore All 40+ Growth Capabilities</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+        </div>
     </div>
 </section>
