@@ -66,18 +66,18 @@ export default function AdminDemoRequests() {
   return (
     <div className="space-y-6">
       <div>
-        <span className="text-[10px] font-mono uppercase tracking-widest text-[#00D4FF]">
+        <span className="text-[10px] font-mono uppercase tracking-widest text-[#F59E0B]">
           SAAS PLATFORMS
         </span>
-        <h1 className="font-orbitron font-extrabold text-2xl text-white">
+        <h1 className="font-heading font-extrabold text-2xl text-[#FFFBEB]">
           Product Demo Requests
         </h1>
       </div>
 
-      <div className="glass-panel rounded-2xl border border-[rgba(43,110,250,0.25)] overflow-hidden">
+      <div className="bg-[#1A1A1A] rounded-2xl border border-[rgba(245,158,11,0.15)] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#050B1F]/80 text-[#8B9AB5] uppercase font-mono text-[10px] border-b border-white/5">
+            <thead className="bg-[#111111] text-[#FDE68A]/70 uppercase font-mono text-[10px] border-b border-[rgba(245,158,11,0.1)]">
               <tr>
                 <th className="px-5 py-3.5">Product</th>
                 <th className="px-5 py-3.5">Contact / Company</th>
@@ -87,10 +87,10 @@ export default function AdminDemoRequests() {
                 <th className="px-5 py-3.5 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-[rgba(245,158,11,0.08)]">
               {loading ? (
                 <tr>
-                  <td colSpan={6} className="px-5 py-12 text-center text-xs font-mono text-[#00D4FF] animate-pulse">
+                  <td colSpan={6} className="px-5 py-12 text-center text-xs font-mono text-[#F59E0B] animate-pulse">
                     LOADING DEMO REQUESTS...
                   </td>
                 </tr>
@@ -107,10 +107,10 @@ export default function AdminDemoRequests() {
               ) : (
                 demos.map((d) => (
                   <tr key={d._id} className="hover:bg-white/5 transition-colors">
-                    <td className="px-5 py-4 font-orbitron font-bold text-white">
+                    <td className="px-5 py-4 font-heading font-bold text-[#FFFBEB]">
                       <div className="flex items-center gap-1.5">
                         {d.isLiveArrival && (
-                          <span className="px-1.5 py-0.5 rounded text-[8px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 animate-pulse uppercase">
+                          <span className="px-1.5 py-0.5 rounded text-[8px] font-mono font-bold bg-[rgba(245,158,11,0.2)] text-[#F59E0B] border border-[rgba(245,158,11,0.4)] animate-pulse uppercase">
                             LIVE
                           </span>
                         )}
@@ -119,20 +119,20 @@ export default function AdminDemoRequests() {
                     </td>
 
                     <td className="px-5 py-4">
-                      <div className="font-semibold text-white">{d.fullName || d.name || 'Client Lead'}</div>
-                      <div className="text-[11px] text-[#8B9AB5]">
+                      <div className="font-semibold text-[#FFFBEB]">{d.fullName || d.name || 'Client Lead'}</div>
+                      <div className="text-[11px] text-[#FDE68A]/60">
                         {(d.companyName || d.company || 'Corporate')} &bull; {d.email || 'N/A'}
                       </div>
                       {d.requirements && (
-                        <div className="text-[11px] text-[#00D4FF] italic mt-0.5 line-clamp-1">"{d.requirements}"</div>
+                        <div className="text-[11px] text-[#F59E0B] italic mt-0.5 line-clamp-1">"{d.requirements}"</div>
                       )}
                     </td>
 
-                    <td className="px-5 py-4 font-mono text-[#cad7ec]">
+                    <td className="px-5 py-4 font-mono text-[#FDE68A]">
                       {d.companySize || 'Enterprise'}
                     </td>
 
-                    <td className="px-5 py-4 text-[#8B9AB5] whitespace-nowrap">
+                    <td className="px-5 py-4 text-[#FDE68A]/60 whitespace-nowrap">
                       {d.createdAt ? new Date(d.createdAt).toLocaleDateString() : 'Today'}
                     </td>
 
@@ -140,11 +140,11 @@ export default function AdminDemoRequests() {
                       <select
                         value={d.status}
                         onChange={(e) => handleStatusChange(d._id, e.target.value)}
-                        className={`text-[10px] font-semibold px-2 py-1 rounded-lg bg-[#050B1F] border focus:outline-none cursor-pointer ${
+                        className={`text-[10px] font-semibold px-2 py-1 rounded-lg bg-[#111111] border focus:outline-none cursor-pointer ${
                           d.status === 'Pending'
                             ? 'text-amber-400 border-amber-500/40'
                             : d.status === 'Scheduled'
-                            ? 'text-cyan-400 border-cyan-500/40'
+                            ? 'text-[#F59E0B] border-[rgba(245,158,11,0.4)]'
                             : d.status === 'Completed'
                             ? 'text-green-400 border-green-500/40'
                             : 'text-red-400 border-red-500/40'
@@ -160,7 +160,7 @@ export default function AdminDemoRequests() {
                     <td className="px-5 py-4 text-right">
                       <button
                         onClick={() => handleDelete(d._id)}
-                        className="p-1.5 rounded-lg bg-white/5 hover:bg-red-500/20 text-[#8B9AB5] hover:text-red-400 transition-colors"
+                        className="p-1.5 rounded-lg bg-white/5 hover:bg-red-500/20 text-[#FDE68A]/60 hover:text-red-400 transition-colors cursor-pointer"
                         title="Delete Demo Lead"
                       >
                         <Trash2 className="w-4 h-4" />

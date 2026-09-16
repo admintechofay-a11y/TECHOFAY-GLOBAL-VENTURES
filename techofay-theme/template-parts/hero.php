@@ -21,7 +21,7 @@ $cta_p_text     = trim( get_field( 'hero_cta_primary_text' ) ?: 'Explore Our Ser
 $cta_p_url      = get_field( 'hero_cta_primary_url' ) ?: home_url( '/services' );
 ?>
 
-<section class="relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-white">
+<section class="relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-[#1A1A1A]">
     <!-- Subtle green gradient mesh on right side -->
     <div 
         class="absolute top-0 right-0 w-full lg:w-3/5 h-full pointer-events-none opacity-60"
@@ -38,38 +38,38 @@ $cta_p_url      = get_field( 'hero_cta_primary_url' ) ?: home_url( '/services' )
             <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
                 
                 <!-- Top Enterprise Badge -->
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F0FDF4] border border-[#BBF7D0] shadow-xs animate-float-slow">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[rgba(245,158,11,0.06)] border border-[rgba(245,158,11,0.25)] shadow-xs animate-float-slow">
                     <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#16A34A] opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-[#16A34A]"></span>
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F59E0B] opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-[#F59E0B]"></span>
                     </span>
-                    <span class="text-xs font-semibold tracking-wide text-[#166534]">
+                    <span class="text-xs font-semibold tracking-wide text-[#B45309]">
                         <?php echo esc_html( $hero_badge ); ?>
                     </span>
                 </div>
 
-                <!-- Main Headline H1=56px, #111827 with one word highlighted in #16A34A -->
-                <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-[56px] text-[#111827] tracking-tight leading-[1.12]">
-                    <?php echo esc_html( $h1_line1 ); ?> <span class="text-[#16A34A]"><?php echo esc_html( $h1_accent ); ?></span>,<br />
+                <!-- Main Headline H1=56px, #111827 with one word highlighted in #F59E0B -->
+                <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-[56px] text-[#FFFBEB] tracking-tight leading-[1.12]">
+                    <?php echo esc_html( $h1_line1 ); ?> <span class="text-[#F59E0B]"><?php echo esc_html( $h1_accent ); ?></span>,<br />
                     <?php echo esc_html( $h1_line2 ); ?>
                 </h1>
 
                 <!-- Subtext: #6B7280 -->
-                <p class="text-base sm:text-lg text-[#6B7280] leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
-                    <strong class="text-[#111827] font-semibold">TECHOFAY GLOBAL VENTURES</strong> empowers enterprise transformation with complete digital growth solutions — Websites, SEO, Social Media, Digital Marketing, Branding, Smart NFC Cards, Mobile Apps, and Custom AI Development.
+                <p class="text-base sm:text-lg text-[#D97706] leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+                    <strong class="text-[#FFFBEB] font-semibold">TECHOFAY GLOBAL VENTURES</strong> empowers enterprise transformation with complete digital growth solutions — Websites, SEO, Social Media, Digital Marketing, Branding, Smart NFC Cards, Mobile Apps, and Custom AI Development.
                 </p>
 
                 <!-- 100% Money-Back Guarantee Badge -->
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[#DCFCE7] border border-[#BBF7D0] text-[#166534] text-xs font-semibold">
-                    <span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[rgba(245,158,11,0.15)] border border-[rgba(245,158,11,0.25)] text-[#B45309] text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-[#F59E0B] animate-pulse"></span>
                     <span><?php echo esc_html( $guarantee_text ); ?></span>
                 </div>
 
-                <!-- CTAs: Primary = #16A34A button, Secondary = white bg + green border + green text -->
+                <!-- CTAs: Primary = #F59E0B button, Secondary = white bg + green border + green text -->
                 <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
                     <a
                         href="<?php echo esc_url( $cta_p_url ); ?>"
-                        class="w-full sm:w-auto px-8 py-3.5 rounded-lg font-semibold text-sm text-white bg-[#16A34A] hover:bg-[#166534] transition-colors shadow-sm flex items-center justify-center gap-2 group cursor-pointer"
+                        class="w-full sm:w-auto px-8 py-3.5 rounded-lg font-semibold text-sm text-[#1c1400] font-semibold bg-[#F59E0B] hover:bg-[#B45309] transition-colors shadow-sm flex items-center justify-center gap-2 group cursor-pointer"
                     >
                         <span><?php echo esc_html( $cta_p_text ); ?></span>
                         <svg class="w-4 h-4 group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -78,35 +78,35 @@ $cta_p_url      = get_field( 'hero_cta_primary_url' ) ?: home_url( '/services' )
                     <button
                         type="button"
                         id="hero-watch-demo-btn"
-                        class="w-full sm:w-auto px-7 py-3.5 rounded-lg font-semibold text-sm text-[#16A34A] bg-white border border-[#16A34A] hover:bg-[#F0FDF4] transition-colors flex items-center justify-center gap-2 group cursor-pointer"
+                        class="w-full sm:w-auto px-7 py-3.5 rounded-lg font-semibold text-sm text-[#F59E0B] bg-[#1A1A1A] border border-[#F59E0B] hover:bg-[rgba(245,158,11,0.06)] transition-colors flex items-center justify-center gap-2 group cursor-pointer"
                     >
-                        <div class="w-6 h-6 rounded-full bg-[#DCFCE7] flex items-center justify-center">
-                            <svg class="w-3 h-3 text-[#16A34A] fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="w-6 h-6 rounded-full bg-[rgba(245,158,11,0.15)] flex items-center justify-center">
+                            <svg class="w-3 h-3 text-[#F59E0B] fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
                         <span>Watch Architecture Demo</span>
                     </button>
                 </div>
 
                 <!-- Trust Logos Row (Exact match to Hero.jsx) -->
-                <div class="pt-6 border-t border-[#E5E7EB]">
-                    <div class="text-[11px] uppercase tracking-widest text-[#6B7280] font-semibold mb-3">
+                <div class="pt-6 border-t border-[rgba(245,158,11,0.15)]">
+                    <div class="text-[11px] uppercase tracking-widest text-[#D97706] font-semibold mb-3">
                         Enterprise Standards & Certifications
                     </div>
                     <div class="flex flex-wrap items-center justify-center lg:justify-start gap-5 sm:gap-7">
-                        <div class="flex items-center gap-2 text-xs font-medium text-[#374151]">
-                            <svg class="w-4 h-4 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        <div class="flex items-center gap-2 text-xs font-medium text-[#FDE68A]">
+                            <svg class="w-4 h-4 text-[#F59E0B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                             <span>ISO 27001 Certified</span>
                         </div>
-                        <div class="flex items-center gap-2 text-xs font-medium text-[#374151]">
-                            <svg class="w-4 h-4 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                        <div class="flex items-center gap-2 text-xs font-medium text-[#FDE68A]">
+                            <svg class="w-4 h-4 text-[#F59E0B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
                             <span>AWS Premier Partner</span>
                         </div>
-                        <div class="flex items-center gap-2 text-xs font-medium text-[#374151]">
-                            <svg class="w-4 h-4 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <div class="flex items-center gap-2 text-xs font-medium text-[#FDE68A]">
+                            <svg class="w-4 h-4 text-[#F59E0B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                             <span>Google Cloud Partner</span>
                         </div>
-                        <div class="flex items-center gap-2 text-xs font-medium text-[#374151]">
-                            <svg class="w-4 h-4 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        <div class="flex items-center gap-2 text-xs font-medium text-[#FDE68A]">
+                            <svg class="w-4 h-4 text-[#F59E0B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                             <span>SOC 2 Type II</span>
                         </div>
                     </div>
@@ -123,22 +123,22 @@ $cta_p_url      = get_field( 'hero_cta_primary_url' ) ?: home_url( '/services' )
                 </div>
 
                 <!-- Floating Live Telemetric Card 1 (Top-Right) -->
-                <div class="hidden sm:flex absolute -top-4 -right-4 bg-white px-4 py-3 rounded-xl border border-[#E5E7EB] shadow-[0_8px_24px_rgba(22,163,74,0.08)] animate-float-slow items-center gap-2.5 z-20">
-                    <div class="w-2.5 h-2.5 rounded-full bg-[#16A34A] animate-ping"></div>
+                <div class="hidden sm:flex absolute -top-4 -right-4 bg-[#1A1A1A] px-4 py-3 rounded-xl border border-[rgba(245,158,11,0.15)] shadow-[0_8px_24px_rgba(22,163,74,0.08)] animate-float-slow items-center gap-2.5 z-20">
+                    <div class="w-2.5 h-2.5 rounded-full bg-[#F59E0B] animate-ping"></div>
                     <div>
-                        <div class="text-[11px] font-bold text-[#111827]">SOC TELEMETRY: ACTIVE</div>
-                        <div class="text-[10px] text-[#16A34A] font-medium">4.8M+ Threats Blocked Daily</div>
+                        <div class="text-[11px] font-bold text-[#FFFBEB]">SOC TELEMETRY: ACTIVE</div>
+                        <div class="text-[10px] text-[#F59E0B] font-medium">4.8M+ Threats Blocked Daily</div>
                     </div>
                 </div>
 
                 <!-- Floating Live Telemetric Card 2 (Bottom-Left) -->
-                <div class="hidden sm:flex absolute -bottom-4 -left-4 bg-white px-4 py-3 rounded-xl border border-[#E5E7EB] shadow-[0_8px_24px_rgba(22,163,74,0.08)] animate-float-slow items-center gap-2.5 z-20" style="animation-delay: 1.8s;">
-                    <div class="w-7 h-7 rounded-full bg-[#DCFCE7] flex items-center justify-center">
-                        <svg class="w-4 h-4 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <div class="hidden sm:flex absolute -bottom-4 -left-4 bg-[#1A1A1A] px-4 py-3 rounded-xl border border-[rgba(245,158,11,0.15)] shadow-[0_8px_24px_rgba(22,163,74,0.08)] animate-float-slow items-center gap-2.5 z-20" style="animation-delay: 1.8s;">
+                    <div class="w-7 h-7 rounded-full bg-[rgba(245,158,11,0.15)] flex items-center justify-center">
+                        <svg class="w-4 h-4 text-[#F59E0B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     </div>
                     <div>
-                        <div class="text-[11px] font-bold text-[#111827]">ZERO TRUST CORE</div>
-                        <div class="text-[10px] text-[#16A34A] font-medium">99.999% SLA Uptime</div>
+                        <div class="text-[11px] font-bold text-[#FFFBEB]">ZERO TRUST CORE</div>
+                        <div class="text-[10px] text-[#F59E0B] font-medium">99.999% SLA Uptime</div>
                     </div>
                 </div>
             </div>
@@ -148,26 +148,26 @@ $cta_p_url      = get_field( 'hero_cta_primary_url' ) ?: home_url( '/services' )
 
     <!-- Demo Architecture Modal (Triggered by Watch Architecture Demo) -->
     <div id="hero-demo-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-        <div class="bg-white rounded-2xl max-w-2xl w-full border border-[#E5E7EB] shadow-2xl overflow-hidden animate-scale-up">
-            <div class="p-6 border-b border-[#E5E7EB] flex items-center justify-between">
+        <div class="bg-[#1A1A1A] rounded-2xl max-w-2xl w-full border border-[rgba(245,158,11,0.15)] shadow-2xl overflow-hidden animate-scale-up">
+            <div class="p-6 border-b border-[rgba(245,158,11,0.15)] flex items-center justify-between">
                 <div>
-                    <h3 class="font-heading font-bold text-lg text-[#111827]">TECHOFAY Enterprise Architecture Overview</h3>
-                    <p class="text-xs text-[#6B7280]">Watch how our autonomous Zero Trust and AI systems integrate with your stack.</p>
+                    <h3 class="font-heading font-bold text-lg text-[#FFFBEB]">TECHOFAY Enterprise Architecture Overview</h3>
+                    <p class="text-xs text-[#D97706]">Watch how our autonomous Zero Trust and AI systems integrate with your stack.</p>
                 </div>
-                <button type="button" id="close-demo-modal" class="p-2 rounded-lg text-[#6B7280] hover:text-[#111827] hover:bg-[#F8FAF8] transition-colors">
+                <button type="button" id="close-demo-modal" class="p-2 rounded-lg text-[#D97706] hover:text-[#FFFBEB] hover:bg-[#161616] transition-colors">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
             </div>
             <div class="p-6 space-y-4">
-                <div class="relative aspect-video rounded-xl bg-[#F8FAF8] border border-[#E5E7EB] overflow-hidden flex items-center justify-center p-6 text-center">
+                <div class="relative aspect-video rounded-xl bg-[#161616] border border-[rgba(245,158,11,0.15)] overflow-hidden flex items-center justify-center p-6 text-center">
                     <div class="space-y-3">
-                        <div class="w-16 h-16 rounded-full bg-[#DCFCE7] flex items-center justify-center mx-auto">
-                            <svg class="w-7 h-7 text-[#16A34A] fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="w-16 h-16 rounded-full bg-[rgba(245,158,11,0.15)] flex items-center justify-center mx-auto">
+                            <svg class="w-7 h-7 text-[#F59E0B] fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
-                        <h4 class="font-heading text-[#111827] text-base font-semibold">
+                        <h4 class="font-heading text-[#FFFBEB] text-base font-semibold">
                             Enterprise Demonstration Stream
                         </h4>
-                        <p class="text-xs text-[#6B7280] max-w-md mx-auto">
+                        <p class="text-xs text-[#D97706] max-w-md mx-auto">
                             Discover the real-time telemetric defense grid, automated microservices deployment pipelines, and AI agent reasoning loops deployed for our global enterprise clientele.
                         </p>
                     </div>
@@ -175,7 +175,7 @@ $cta_p_url      = get_field( 'hero_cta_primary_url' ) ?: home_url( '/services' )
                 <div class="flex justify-end pt-2">
                     <a
                         href="<?php echo esc_url( home_url( '/contact' ) ); ?>"
-                        class="px-6 py-2.5 rounded-lg text-xs font-semibold text-white bg-[#16A34A] hover:bg-[#166534] transition-colors shadow-sm"
+                        class="px-6 py-2.5 rounded-lg text-xs font-semibold text-[#1c1400] font-semibold bg-[#F59E0B] hover:bg-[#B45309] transition-colors shadow-sm"
                     >
                         Book a Live Architectural Walkthrough
                     </a>

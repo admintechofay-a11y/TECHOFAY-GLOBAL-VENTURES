@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import { servicesData } from '../data/servicesData';
 import CtaBanner from '../components/home/CtaBanner';
+import HexGrid3D from '../components/three/HexGrid3D';
+import ServiceIcon3D from '../components/three/ServiceIcon3D';
 
 const iconMap = {
   ShieldCheck: ShieldAlert,
@@ -39,7 +41,7 @@ export default function Services() {
   });
 
   return (
-    <div className="min-h-screen pt-28 pb-20 bg-[#F8FAF8]">
+    <div className="min-h-screen pt-28 pb-20 bg-[#111111]">
       <Helmet>
         <title>Enterprise Services & Engineering Verticals | TECHOFAY GLOBAL VENTURES</title>
         <meta
@@ -49,30 +51,33 @@ export default function Services() {
         <link rel="canonical" href="https://techofay.com/services" />
       </Helmet>
       {/* Header Banner */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 relative">
+      <div className="relative overflow-hidden">
+        <HexGrid3D />
+        <div className="relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 relative">
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] text-[#166534] text-xs font-semibold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-[#16A34A]" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(245,158,11,0.12)] border border-[rgba(245,158,11,0.25)] text-[#F59E0B] text-xs font-semibold uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-[#F59E0B]" />
             Comprehensive Growth Solutions
           </div>
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#111827] tracking-tight">
-            Our Enterprise <span className="text-[#16A34A]">Service Verticals</span>
+          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#FFFBEB] tracking-tight">
+            Our Enterprise <span className="text-[#F59E0B]">Service Verticals</span>
           </h1>
-          <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#FDE68A] leading-relaxed">
             Engineered to deliver unmatched security, velocity, and scalable client growth across six specialized technical pillars. Explore our capabilities below.
           </p>
         </div>
 
         {/* Filter & Search Bar */}
-        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-4 bg-white p-3 rounded-2xl border border-[#E5E7EB] shadow-xs">
+        <div className="mt-12 flex flex-col md:flex-row items-center justify-between gap-4 bg-[#1A1A1A] p-3 rounded-2xl border border-[rgba(245,158,11,0.15)] shadow-xs">
           {/* Vertical Pill Tabs */}
           <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
             <button
               onClick={() => setSelectedVertical('all')}
               className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                 selectedVertical === 'all'
-                  ? 'bg-[#16A34A] text-white shadow-xs'
-                  : 'text-[#374151] hover:text-[#16A34A] bg-[#F8FAF8] border border-[#E5E7EB]'
+                  ? 'bg-[#F59E0B] text-[#1c1400] shadow-xs'
+                  : 'text-[#FDE68A] hover:text-[#F59E0B] bg-[#111111] border border-[rgba(245,158,11,0.15)]'
               }`}
             >
               All Verticals (6)
@@ -83,8 +88,8 @@ export default function Services() {
                 onClick={() => setSelectedVertical(v.id)}
                 className={`px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer ${
                   selectedVertical === v.id
-                    ? 'bg-[#16A34A] text-white shadow-xs'
-                    : 'text-[#374151] hover:text-[#16A34A] bg-[#F8FAF8] border border-[#E5E7EB]'
+                    ? 'bg-[#F59E0B] text-[#1c1400] shadow-xs'
+                    : 'text-[#FDE68A] hover:text-[#F59E0B] bg-[#111111] border border-[rgba(245,158,11,0.15)]'
                 }`}
               >
                 {v.title.split(' ')[0]}
@@ -94,14 +99,16 @@ export default function Services() {
 
           {/* Search Input */}
           <div className="relative w-full md:w-72">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7280]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#D97706]" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search services, tools, AI, SEO..."
-              className="w-full pl-10 pr-4 py-2 rounded-lg bg-[#F8FAF8] border border-[#E5E7EB] text-xs text-[#111827] placeholder:text-[#6B7280] focus:outline-none focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A]"
+              className="w-full pl-10 pr-4 py-2 rounded-lg bg-[#111111] border border-[rgba(245,158,11,0.15)] text-xs text-[#FFFBEB] placeholder:text-[#D97706] focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B]"
             />
+          </div>
+        </div>
           </div>
         </div>
       </div>
@@ -113,41 +120,72 @@ export default function Services() {
           return (
             <div
               key={vertical.id}
-              className="bg-white rounded-2xl p-6 sm:p-10 border border-[#E5E7EB] shadow-[0_8px_24px_rgba(22,163,74,0.06)] relative overflow-hidden"
+              className="bg-[rgba(245,158,11,0.06)] rounded-2xl p-6 sm:p-10 border border-[rgba(245,158,11,0.15)] shadow-[0_8px_24px_rgba(245,158,11,0.06)] relative overflow-hidden backdrop-blur-md"
             >
               {/* Top Accent bar */}
-              <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#16A34A]" />
+              <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#F59E0B]" />
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
                 {/* Left Overview */}
                 <div className="lg:col-span-5 space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-[#DCFCE7] flex items-center justify-center text-[#16A34A] shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-[rgba(245,158,11,0.15)] flex items-center justify-center text-[#F59E0B] shrink-0">
                       <Icon className="w-6 h-6" />
                     </div>
                     <div>
-                      <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#DCFCE7] text-[#166534] font-semibold">
+                      <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#1A1A1A] text-[#FDE68A] font-semibold border border-[rgba(245,158,11,0.15)]">
                         {vertical.badge}
                       </span>
-                      <h2 className="font-heading font-bold text-xl sm:text-2xl text-[#111827] mt-1">
+                      <h2 className="font-heading font-bold text-xl sm:text-2xl text-[#FFFBEB] mt-1">
                         {vertical.title}
                       </h2>
                     </div>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-[#374151] leading-relaxed">
+                  {/* Interactive 3D Model Viewport */}
+                  <div className="relative w-full h-52 sm:h-60 rounded-xl bg-[#111111]/90 border border-[rgba(245,158,11,0.2)] overflow-hidden shadow-[inset_0_2px_12px_rgba(0,0,0,0.6)] flex items-center justify-center my-3 group">
+                    {/* Tech Corner Accents */}
+                    <div className="absolute top-2 left-2 w-2.5 h-2.5 border-t-2 border-l-2 border-[#F59E0B]" />
+                    <div className="absolute top-2 right-2 w-2.5 h-2.5 border-t-2 border-r-2 border-[#F59E0B]" />
+                    <div className="absolute bottom-2 left-2 w-2.5 h-2.5 border-b-2 border-l-2 border-[#F59E0B]" />
+                    <div className="absolute bottom-2 right-2 w-2.5 h-2.5 border-b-2 border-r-2 border-[#F59E0B]" />
+
+                    {/* Top HUD Telemetry Bar */}
+                    <div className="absolute top-2.5 inset-x-3.5 flex items-center justify-between pointer-events-none z-10 text-[10px] font-mono">
+                      <span className="flex items-center gap-1.5 text-[#F59E0B]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-ping" />
+                        <span className="font-semibold tracking-wider">3D ARCHITECTURE</span>
+                      </span>
+                      <span className="text-[#D97706] uppercase tracking-wider font-semibold">
+                        {vertical.badge}
+                      </span>
+                    </div>
+
+                    {/* Radial Ambient Amber Glow */}
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.12)_0%,transparent_70%)] pointer-events-none" />
+
+                    {/* 3D Animated Object */}
+                    <ServiceIcon3D iconType={vertical.id} className="w-full h-full" />
+
+                    {/* Interactive hint footer */}
+                    <div className="absolute bottom-2 inset-x-3 flex items-center justify-center pointer-events-none z-10 text-[9px] font-mono text-[#D97706]/80 uppercase tracking-wider">
+                      Interactive 3D Model • Move Cursor to Inspect
+                    </div>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-[#FDE68A] leading-relaxed">
                     {vertical.overview}
                   </p>
 
                   {/* Metrics Row */}
                   <div className="grid grid-cols-2 gap-3 pt-2">
                     {vertical.stats.slice(0, 2).map((st, i) => (
-                      <div key={i} className="p-3 rounded-xl bg-[#F8FAF8] border border-[#E5E7EB]">
-                        <div className="font-heading font-extrabold text-lg text-[#16A34A]">
+                      <div key={i} className="p-3 rounded-xl bg-[#1A1A1A] border border-[rgba(245,158,11,0.15)]">
+                        <div className="font-heading font-extrabold text-lg text-[#F59E0B]">
                           {st.value}
                         </div>
-                        <div className="text-[11px] text-[#6B7280]">
+                        <div className="text-[11px] text-[#D97706]">
                           {st.label}
                         </div>
                       </div>
@@ -156,14 +194,14 @@ export default function Services() {
 
                   {/* Tech Stack Pills */}
                   <div className="pt-2">
-                    <div className="text-[11px] font-mono text-[#6B7280] uppercase tracking-wider mb-2">
+                    <div className="text-[11px] font-mono text-[#D97706] uppercase tracking-wider mb-2">
                       Tools & Technologies
                     </div>
                     <div className="flex flex-wrap gap-1.5">
                       {vertical.tools.map((tool, i) => (
                         <span
                           key={i}
-                          className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-[#F8FAF8] border border-[#E5E7EB] text-[#374151]"
+                          className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-[#1A1A1A] border border-[rgba(245,158,11,0.15)] text-[#FCD34D]"
                         >
                           {tool}
                         </span>
@@ -174,7 +212,7 @@ export default function Services() {
                   <div className="pt-4">
                     <Link
                       to={`/services/${vertical.id}`}
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-xs font-semibold text-white bg-[#16A34A] hover:bg-[#166534] transition-colors shadow-sm"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-xs font-semibold text-[#1c1400] bg-[#F59E0B] hover:bg-[#B45309] transition-colors shadow-sm"
                     >
                       <span>Explore Dedicated {vertical.title} Page</span>
                       <ArrowRight className="w-4 h-4" />
@@ -183,23 +221,23 @@ export default function Services() {
                 </div>
 
                 {/* Right Services Offering List */}
-                <div className="lg:col-span-7 bg-[#F8FAF8] rounded-2xl p-6 border border-[#E5E7EB] space-y-3">
-                  <div className="text-xs font-heading font-semibold uppercase text-[#111827] tracking-wider mb-3">
+                <div className="lg:col-span-7 bg-[#1A1A1A]/80 rounded-2xl p-6 border border-[rgba(245,158,11,0.15)] space-y-3">
+                  <div className="text-xs font-heading font-semibold uppercase text-[#FFFBEB] tracking-wider mb-3">
                     Services Included in this Vertical:
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {vertical.servicesOffered.map((service, i) => (
                       <div
                         key={i}
-                        className="p-3.5 rounded-xl bg-white border border-[#E5E7EB] hover:border-[#16A34A] transition-colors shadow-xs"
+                        className="p-3.5 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.15)] hover:border-[#F59E0B] transition-colors shadow-xs"
                       >
                         <div className="flex items-start gap-2.5">
-                          <CheckCircle2 className="w-4 h-4 text-[#16A34A] shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-4 h-4 text-[#F59E0B] shrink-0 mt-0.5" />
                           <div>
-                            <h4 className="font-semibold text-xs text-[#111827] mb-1">
+                            <h4 className="font-semibold text-xs text-[#FFFBEB] mb-1">
                               {service.name}
                             </h4>
-                            <p className="text-[11px] text-[#6B7280] leading-relaxed">
+                            <p className="text-[11px] text-[#FDE68A] leading-relaxed">
                               {service.desc}
                             </p>
                           </div>

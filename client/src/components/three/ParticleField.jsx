@@ -39,9 +39,9 @@ export default function ParticleField() {
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const color1 = new THREE.Color('#16A34A'); // Forest Green
-    const color2 = new THREE.Color('#22C55E'); // Vibrant Green
-    const color3 = new THREE.Color('#4ADE80'); // Mint Green
+    const color1 = new THREE.Color('#F59E0B'); // Amber
+    const color2 = new THREE.Color('#FCD34D'); // Light Gold
+    const color3 = new THREE.Color('#B45309'); // Dark Amber
 
     for (let i = 0; i < particleCount; i++) {
       const x = (Math.random() - 0.5) * 550;
@@ -72,12 +72,12 @@ export default function ParticleField() {
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3).setUsage(THREE.DynamicDrawUsage));
     particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    // Particle Material - subtle floating green particle dots
+    // Particle Material - amber (#F59E0B) at opacity 0.15
     const pMaterial = new THREE.PointsMaterial({
       size: 3.5,
       vertexColors: true,
       transparent: true,
-      opacity: 0.3,
+      opacity: 0.15,
       blending: THREE.NormalBlending,
     });
 
@@ -96,7 +96,7 @@ export default function ParticleField() {
       vertexColors: true,
       transparent: true,
       blending: THREE.NormalBlending,
-      opacity: 0.15,
+      opacity: 0.1,
     });
 
     const linesMesh = new THREE.LineSegments(linesGeometry, lineMaterial);
@@ -179,13 +179,13 @@ export default function ParticleField() {
             linePositions[vertexpos++] = positions[j * 3 + 1];
             linePositions[vertexpos++] = positions[j * 3 + 2];
 
-            lineColors[colorpos++] = 0.09;
-            lineColors[colorpos++] = 0.64 * alpha;
-            lineColors[colorpos++] = 0.29 * alpha;
+            lineColors[colorpos++] = 0.96 * alpha;
+            lineColors[colorpos++] = 0.62 * alpha;
+            lineColors[colorpos++] = 0.04 * alpha;
 
-            lineColors[colorpos++] = 0.13;
-            lineColors[colorpos++] = 0.77 * alpha;
-            lineColors[colorpos++] = 0.37 * alpha;
+            lineColors[colorpos++] = 0.99 * alpha;
+            lineColors[colorpos++] = 0.83 * alpha;
+            lineColors[colorpos++] = 0.30 * alpha;
 
             numConnected++;
           }

@@ -83,57 +83,57 @@ $fallback_services = array(
 );
 ?>
 
-<main id="primary" class="site-main min-h-screen pt-24 pb-20 bg-[#F8FAF8]">
+<main id="primary" class="site-main min-h-screen pt-24 pb-20 bg-[#161616]">
     <!-- Header Banner -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 relative">
         <div class="text-center max-w-3xl mx-auto space-y-4">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] text-[#166534] text-xs font-semibold uppercase tracking-wider">
-                <svg class="w-3.5 h-3.5 text-[#16A34A]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(245,158,11,0.15)] border border-[rgba(245,158,11,0.25)] text-[#B45309] text-xs font-semibold uppercase tracking-wider">
+                <svg class="w-3.5 h-3.5 text-[#F59E0B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
                 Comprehensive Growth Solutions
             </div>
-            <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#111827] tracking-tight">
-                Our Enterprise <span class="text-[#16A34A]">Service Verticals</span>
+            <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#FFFBEB] tracking-tight">
+                Our Enterprise <span class="text-[#F59E0B]">Service Verticals</span>
             </h1>
-            <p class="text-sm sm:text-base text-[#6B7280] leading-relaxed">
+            <p class="text-sm sm:text-base text-[#D97706] leading-relaxed">
                 Engineered to deliver unmatched security, velocity, and scalable client growth across six specialized technical pillars. Explore our capabilities below.
             </p>
         </div>
 
         <!-- Filter & Search Bar -->
-        <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-4 bg-white p-3 rounded-2xl border border-[#E5E7EB] shadow-sm">
+        <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-4 bg-[#1A1A1A] p-3 rounded-2xl border border-[rgba(245,158,11,0.15)] shadow-sm">
             <!-- Filter Pills -->
             <div class="flex flex-wrap items-center gap-2 w-full md:w-auto" id="service-filter-tabs">
-                <button type="button" data-filter="all" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer bg-[#16A34A] text-white shadow-sm">
+                <button type="button" data-filter="all" class="filter-tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer bg-[#F59E0B] text-[#1c1400] font-semibold shadow-sm">
                     All Verticals (6)
                 </button>
-                <button type="button" data-filter="cybersecurity" class="filter-tab-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#374151] hover:text-[#16A34A] bg-[#F8FAF8] border border-[#E5E7EB]">
+                <button type="button" data-filter="cybersecurity" class="filter-tab-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#FDE68A] hover:text-[#F59E0B] bg-[#161616] border border-[rgba(245,158,11,0.15)]">
                     Cybersecurity
                 </button>
-                <button type="button" data-filter="development" class="filter-tab-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#374151] hover:text-[#16A34A] bg-[#F8FAF8] border border-[#E5E7EB]">
+                <button type="button" data-filter="development" class="filter-tab-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#FDE68A] hover:text-[#F59E0B] bg-[#161616] border border-[rgba(245,158,11,0.15)]">
                     Engineering
                 </button>
-                <button type="button" data-filter="cloud" class="filter-tab-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#374151] hover:text-[#16A34A] bg-[#F8FAF8] border border-[#E5E7EB]">
+                <button type="button" data-filter="cloud" class="filter-tab-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#FDE68A] hover:text-[#F59E0B] bg-[#161616] border border-[rgba(245,158,11,0.15)]">
                     Cloud & DevOps
                 </button>
-                <button type="button" data-filter="ai" class="filter-tab-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#374151] hover:text-[#16A34A] bg-[#F8FAF8] border border-[#E5E7EB]">
+                <button type="button" data-filter="ai" class="filter-tab-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#FDE68A] hover:text-[#F59E0B] bg-[#161616] border border-[rgba(245,158,11,0.15)]">
                     Applied AI
                 </button>
-                <button type="button" data-filter="design" class="filter-tab-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#374151] hover:text-[#16A34A] bg-[#F8FAF8] border border-[#E5E7EB]">
+                <button type="button" data-filter="design" class="filter-tab-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#FDE68A] hover:text-[#F59E0B] bg-[#161616] border border-[rgba(245,158,11,0.15)]">
                     UI/UX
                 </button>
-                <button type="button" data-filter="growth" class="filter-tab-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#374151] hover:text-[#16A34A] bg-[#F8FAF8] border border-[#E5E7EB]">
+                <button type="button" data-filter="growth" class="filter-tab-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#FDE68A] hover:text-[#F59E0B] bg-[#161616] border border-[rgba(245,158,11,0.15)]">
                     Growth & SEO
                 </button>
             </div>
 
             <!-- Search Input -->
             <div class="relative w-full md:w-72">
-                <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7280]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#D97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 <input
                     type="text"
                     id="service-search-input"
                     placeholder="Search services, tools, AI, SEO..."
-                    class="w-full pl-10 pr-4 py-2 rounded-lg bg-[#F8FAF8] border border-[#E5E7EB] text-xs text-[#111827] placeholder:text-[#6B7280] focus:outline-none focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A]"
+                    class="w-full pl-10 pr-4 py-2 rounded-lg bg-[#161616] border border-[rgba(245,158,11,0.15)] text-xs text-[#FFFBEB] placeholder:text-[#D97706] focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B]"
                 />
             </div>
         </div>
@@ -151,23 +151,23 @@ $fallback_services = array(
                     $metric  = get_field( 'service_metric' ) ?: 'Enterprise Grade SLA';
                     $post_slug = get_post_field( 'post_name', get_the_ID() );
                     ?>
-                    <article class="service-card bg-white rounded-2xl p-8 flex flex-col justify-between border border-[#E5E7EB] hover:border-[#16A34A] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5" data-title="<?php the_title_attribute(); ?>" data-desc="<?php echo esc_attr( get_the_excerpt() ); ?>" data-category="<?php echo esc_attr( $post_slug ); ?>">
+                    <article class="service-card bg-[#1A1A1A] rounded-2xl p-8 flex flex-col justify-between border border-[rgba(245,158,11,0.15)] hover:border-[#F59E0B] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5" data-title="<?php the_title_attribute(); ?>" data-desc="<?php echo esc_attr( get_the_excerpt() ); ?>" data-category="<?php echo esc_attr( $post_slug ); ?>">
                         <div>
                             <div class="flex items-center justify-between mb-6">
-                                <div class="w-12 h-12 rounded-xl bg-[#DCFCE7] border border-[#BBF7D0] flex items-center justify-center text-[#16A34A]">
+                                <div class="w-12 h-12 rounded-xl bg-[rgba(245,158,11,0.15)] border border-[rgba(245,158,11,0.25)] flex items-center justify-center text-[#F59E0B]">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                                 </div>
-                                <span class="text-[10px] uppercase font-mono px-2.5 py-1 rounded-md bg-[#DCFCE7] border border-[#BBF7D0] text-[#166534] font-semibold">
+                                <span class="text-[10px] uppercase font-mono px-2.5 py-1 rounded-md bg-[rgba(245,158,11,0.15)] border border-[rgba(245,158,11,0.25)] text-[#B45309] font-semibold">
                                     <?php echo esc_html( $badge ); ?>
                                 </span>
                             </div>
 
-                            <h2 class="font-heading font-bold text-xl text-[#111827] mb-2 hover:text-[#16A34A] transition-colors">
+                            <h2 class="font-heading font-bold text-xl text-[#FFFBEB] mb-2 hover:text-[#F59E0B] transition-colors">
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                             </h2>
 
                             <?php if ( $tagline ) : ?>
-                                <div class="text-xs font-semibold text-[#16A34A] mb-3">
+                                <div class="text-xs font-semibold text-[#F59E0B] mb-3">
                                     <?php echo esc_html( $tagline ); ?>
                                 </div>
                             <?php endif; ?>
@@ -179,7 +179,7 @@ $fallback_services = array(
                             <?php if ( is_array( $tools ) && ! empty( $tools ) ) : ?>
                                 <div class="flex flex-wrap gap-1.5 mb-6">
                                     <?php foreach ( $tools as $tool ) : ?>
-                                        <span class="text-[10px] px-2.5 py-1 rounded-md bg-[#F8FAF8] text-[#374151] border border-[#E5E7EB] font-mono">
+                                        <span class="text-[10px] px-2.5 py-1 rounded-md bg-[#161616] text-[#FDE68A] border border-[rgba(245,158,11,0.15)] font-mono">
                                             <?php echo esc_html( $tool ); ?>
                                         </span>
                                     <?php endforeach; ?>
@@ -187,9 +187,9 @@ $fallback_services = array(
                             <?php endif; ?>
                         </div>
 
-                        <div class="pt-5 border-t border-[#E5E7EB] flex items-center justify-between">
-                            <span class="text-xs font-mono font-bold text-[#16A34A]"><?php echo esc_html( $metric ); ?></span>
-                            <a href="<?php the_permalink(); ?>" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#16A34A] hover:text-[#166534] transition-colors">
+                        <div class="pt-5 border-t border-[rgba(245,158,11,0.15)] flex items-center justify-between">
+                            <span class="text-xs font-mono font-bold text-[#F59E0B]"><?php echo esc_html( $metric ); ?></span>
+                            <a href="<?php the_permalink(); ?>" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#F59E0B] hover:text-[#B45309] transition-colors">
                                 <span>Deep Dive</span>
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                             </a>
@@ -198,22 +198,22 @@ $fallback_services = array(
                 <?php endwhile; wp_reset_postdata(); ?>
             <?php else : ?>
                 <?php foreach ( $fallback_services as $svc ) : ?>
-                    <article class="service-card bg-white rounded-2xl p-8 flex flex-col justify-between border border-[#E5E7EB] hover:border-[#16A34A] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5" data-title="<?php echo esc_attr( $svc['title'] ); ?>" data-desc="<?php echo esc_attr( $svc['desc'] ); ?>" data-category="<?php echo esc_attr( $svc['category'] ); ?>">
+                    <article class="service-card bg-[#1A1A1A] rounded-2xl p-8 flex flex-col justify-between border border-[rgba(245,158,11,0.15)] hover:border-[#F59E0B] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5" data-title="<?php echo esc_attr( $svc['title'] ); ?>" data-desc="<?php echo esc_attr( $svc['desc'] ); ?>" data-category="<?php echo esc_attr( $svc['category'] ); ?>">
                         <div>
                             <div class="flex items-center justify-between mb-6">
-                                <div class="w-12 h-12 rounded-xl bg-[#DCFCE7] border border-[#BBF7D0] flex items-center justify-center text-[#16A34A]">
+                                <div class="w-12 h-12 rounded-xl bg-[rgba(245,158,11,0.15)] border border-[rgba(245,158,11,0.25)] flex items-center justify-center text-[#F59E0B]">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                                 </div>
-                                <span class="text-[10px] uppercase font-mono px-2.5 py-1 rounded-md bg-[#DCFCE7] border border-[#BBF7D0] text-[#166534] font-semibold">
+                                <span class="text-[10px] uppercase font-mono px-2.5 py-1 rounded-md bg-[rgba(245,158,11,0.15)] border border-[rgba(245,158,11,0.25)] text-[#B45309] font-semibold">
                                     <?php echo esc_html( $svc['badge'] ); ?>
                                 </span>
                             </div>
 
-                            <h2 class="font-heading font-bold text-xl text-[#111827] mb-2 hover:text-[#16A34A] transition-colors">
+                            <h2 class="font-heading font-bold text-xl text-[#FFFBEB] mb-2 hover:text-[#F59E0B] transition-colors">
                                 <a href="<?php echo esc_url( home_url( '/service/' . $svc['slug'] ) ); ?>"><?php echo esc_html( $svc['title'] ); ?></a>
                             </h2>
 
-                            <div class="text-xs font-semibold text-[#16A34A] mb-3">
+                            <div class="text-xs font-semibold text-[#F59E0B] mb-3">
                                 <?php echo esc_html( $svc['tagline'] ); ?>
                             </div>
 
@@ -223,16 +223,16 @@ $fallback_services = array(
 
                             <div class="flex flex-wrap gap-1.5 mb-6">
                                 <?php foreach ( $svc['tools'] as $tool ) : ?>
-                                    <span class="text-[10px] px-2.5 py-1 rounded-md bg-[#F8FAF8] text-[#374151] border border-[#E5E7EB] font-mono">
+                                    <span class="text-[10px] px-2.5 py-1 rounded-md bg-[#161616] text-[#FDE68A] border border-[rgba(245,158,11,0.15)] font-mono">
                                         <?php echo esc_html( $tool ); ?>
                                     </span>
                                 <?php endforeach; ?>
                             </div>
                         </div>
 
-                        <div class="pt-5 border-t border-[#E5E7EB] flex items-center justify-between">
-                            <span class="text-xs font-mono font-bold text-[#16A34A]"><?php echo esc_html( $svc['metric'] ); ?></span>
-                            <a href="<?php echo esc_url( home_url( '/service/' . $svc['slug'] ) ); ?>" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#16A34A] hover:text-[#166534] transition-colors">
+                        <div class="pt-5 border-t border-[rgba(245,158,11,0.15)] flex items-center justify-between">
+                            <span class="text-xs font-mono font-bold text-[#F59E0B]"><?php echo esc_html( $svc['metric'] ); ?></span>
+                            <a href="<?php echo esc_url( home_url( '/service/' . $svc['slug'] ) ); ?>" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#F59E0B] hover:text-[#B45309] transition-colors">
                                 <span>Deep Dive</span>
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                             </a>
@@ -276,11 +276,11 @@ document.addEventListener('DOMContentLoaded', function() {
     tabs.forEach(tab => {
         tab.addEventListener('click', function() {
             tabs.forEach(t => {
-                t.classList.remove('bg-[#16A34A]', 'text-white', 'shadow-sm');
-                t.classList.add('text-[#374151]', 'bg-[#F8FAF8]', 'border', 'border-[#E5E7EB]');
+                t.classList.remove('bg-[#F59E0B]', 'text-white', 'shadow-sm');
+                t.classList.add('text-[#FDE68A]', 'bg-[#161616]', 'border', 'border-[rgba(245,158,11,0.15)]');
             });
-            this.classList.remove('text-[#374151]', 'bg-[#F8FAF8]', 'border', 'border-[#E5E7EB]');
-            this.classList.add('bg-[#16A34A]', 'text-white', 'shadow-sm');
+            this.classList.remove('text-[#FDE68A]', 'bg-[#161616]', 'border', 'border-[rgba(245,158,11,0.15)]');
+            this.classList.add('bg-[#F59E0B]', 'text-white', 'shadow-sm');
 
             currentFilter = this.getAttribute('data-filter') || 'all';
             filterCards();

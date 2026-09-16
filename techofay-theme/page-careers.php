@@ -117,7 +117,7 @@ $fallback_jobs = array(
                         <div class="space-y-2">
                             <div class="flex flex-wrap items-center gap-2">
                                 <span class="px-2.5 py-0.5 rounded text-[10px] font-mono bg-[#00D4FF]/10 text-[#00D4FF] border border-[#00D4FF]/30"><?php echo esc_html( $dept ); ?></span>
-                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono bg-white/5 text-[#8B9AB5] border border-white/10"><?php echo esc_html( $type ); ?></span>
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono bg-[#1A1A1A]/5 text-[#8B9AB5] border border-white/10"><?php echo esc_html( $type ); ?></span>
                                 <span class="text-xs text-[#8B9AB5]"><?php echo esc_html( $location ); ?></span>
                             </div>
                             <h3 class="font-heading font-bold text-xl text-white"><?php the_title(); ?></h3>
@@ -139,7 +139,7 @@ $fallback_jobs = array(
                         <div class="space-y-2">
                             <div class="flex flex-wrap items-center gap-2">
                                 <span class="px-2.5 py-0.5 rounded text-[10px] font-mono bg-[#00D4FF]/10 text-[#00D4FF] border border-[#00D4FF]/30"><?php echo esc_html( $job['dept'] ); ?></span>
-                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono bg-white/5 text-[#8B9AB5] border border-white/10"><?php echo esc_html( $job['type'] ); ?></span>
+                                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono bg-[#1A1A1A]/5 text-[#8B9AB5] border border-white/10"><?php echo esc_html( $job['type'] ); ?></span>
                                 <span class="text-xs text-[#8B9AB5]"><?php echo esc_html( $job['location'] ); ?></span>
                             </div>
                             <h3 class="font-heading font-bold text-xl text-white"><?php echo esc_html( $job['title'] ); ?></h3>
@@ -177,23 +177,23 @@ $fallback_jobs = array(
                 <input type="hidden" name="applied_job" id="form-applied-job" value="" />
                 <div>
                     <label class="block text-xs font-semibold text-[#8B9AB5] mb-1 uppercase">Full Name *</label>
-                    <input type="text" name="applicant_name" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="Alex Mercer" />
+                    <input type="text" name="applicant_name" required class="w-full px-4 py-2.5 rounded-xl bg-[#1A1A1A]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="Alex Mercer" />
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-[#8B9AB5] mb-1 uppercase">Email Address *</label>
-                    <input type="email" name="applicant_email" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="alex@domain.com" />
+                    <input type="email" name="applicant_email" required class="w-full px-4 py-2.5 rounded-xl bg-[#1A1A1A]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="alex@domain.com" />
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-[#8B9AB5] mb-1 uppercase">Phone Number *</label>
-                    <input type="tel" name="applicant_phone" required class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="+91 98765 43210" />
+                    <input type="tel" name="applicant_phone" required class="w-full px-4 py-2.5 rounded-xl bg-[#1A1A1A]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="+91 98765 43210" />
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-[#8B9AB5] mb-1 uppercase">LinkedIn / GitHub Profile</label>
-                    <input type="url" name="linkedin_url" class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="https://linkedin.com/in/alex" />
+                    <input type="url" name="linkedin_url" class="w-full px-4 py-2.5 rounded-xl bg-[#1A1A1A]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="https://linkedin.com/in/alex" />
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-[#8B9AB5] mb-1 uppercase">Resume Link (Google Drive / Dropbox)</label>
-                    <input type="url" name="resume_url" class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="https://drive.google.com/..." />
+                    <input type="url" name="resume_url" class="w-full px-4 py-2.5 rounded-xl bg-[#1A1A1A]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="https://drive.google.com/..." />
                 </div>
 
                 <div id="career-form-msg" class="text-xs hidden p-3 rounded-xl"></div>

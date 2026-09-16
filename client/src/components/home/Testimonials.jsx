@@ -43,31 +43,31 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="relative py-24 sm:py-32 bg-white border-b border-[#E5E7EB] overflow-hidden">
+    <section className="relative py-24 sm:py-32 bg-[#111111] border-b border-[rgba(245,158,11,0.15)] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#DCFCE7] border border-[#BBF7D0] text-[#166534] text-xs font-semibold uppercase tracking-wider mb-4">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[rgba(245,158,11,0.12)] border border-[rgba(245,158,11,0.25)] text-[#F59E0B] text-xs font-semibold uppercase tracking-wider mb-4">
               Client Validation
             </div>
-            <h2 className="font-heading font-extrabold text-2xl sm:text-4xl text-[#111827] tracking-tight">
-              Trusted by <span className="text-[#16A34A]">Industry Leaders</span>
+            <h2 className="font-heading font-extrabold text-2xl sm:text-4xl text-[#FFFBEB] tracking-tight">
+              Trusted by <span className="text-[#F59E0B]">Industry Leaders</span>
             </h2>
           </div>
 
           <div className="flex items-center gap-2 mt-4 md:mt-0">
             <button
               onClick={handlePrev}
-              className="p-3 rounded-xl bg-white border border-[#E5E7EB] text-[#374151] hover:text-[#16A34A] hover:border-[#16A34A] transition-all shadow-xs cursor-pointer"
+              className="p-3 rounded-xl bg-[#1A1A1A] border border-[rgba(245,158,11,0.2)] text-[#FDE68A] hover:text-[#F59E0B] hover:border-[#F59E0B] transition-all shadow-xs cursor-pointer"
               aria-label="Previous Testimonial"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={handleNext}
-              className="p-3 rounded-xl bg-white border border-[#E5E7EB] text-[#374151] hover:text-[#16A34A] hover:border-[#16A34A] transition-all shadow-xs cursor-pointer"
+              className="p-3 rounded-xl bg-[#1A1A1A] border border-[rgba(245,158,11,0.2)] text-[#FDE68A] hover:text-[#F59E0B] hover:border-[#F59E0B] transition-all shadow-xs cursor-pointer"
               aria-label="Next Testimonial"
             >
               <ChevronRight className="w-5 h-5" />
@@ -82,40 +82,40 @@ export default function Testimonials() {
               key={idx}
               className={`rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 border ${
                 idx === activeIndex
-                  ? 'border-[#16A34A] bg-[#F8FAF8] shadow-[0_8px_24px_rgba(22,163,74,0.1)] scale-[1.02]'
-                  : 'bg-white border-[#E5E7EB] hover:border-[#BBF7D0]'
+                  ? 'border-[#F59E0B] bg-[#1A1A1A] shadow-[0_8px_32px_rgba(245,158,11,0.15)] scale-[1.02]'
+                  : 'bg-[rgba(245,158,11,0.06)] border-[rgba(245,158,11,0.15)] hover:border-[#F59E0B]/50'
               }`}
             >
               <div>
                 {/* Rating & Quote Icon */}
                 <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center gap-1 text-[#16A34A]">
+                  <div className="flex items-center gap-1 text-[#F59E0B]">
                     {[...Array(t.stars)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current text-[#16A34A]" />
+                      <Star key={i} className="w-4 h-4 fill-current text-[#F59E0B]" />
                     ))}
                   </div>
-                  <Quote className="w-8 h-8 text-[#BBF7D0]" />
+                  <Quote className="w-8 h-8 text-[#F59E0B]/30" />
                 </div>
 
-                <p className="text-sm text-[#374151] leading-relaxed italic mb-8">
+                <p className="text-sm text-[#FDE68A] leading-relaxed italic mb-8">
                   "{t.quote}"
                 </p>
               </div>
 
               {/* Author Details */}
-              <div className="pt-6 border-t border-[#E5E7EB] flex items-center gap-4">
+              <div className="pt-6 border-t border-[rgba(245,158,11,0.15)] flex items-center gap-4">
                 <img
                   src={t.avatar}
                   alt={t.name}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-[#16A34A]"
+                  className="w-12 h-12 rounded-full object-cover border-2 border-[#F59E0B]"
                 />
                 <div>
-                  <div className="font-heading font-bold text-sm text-[#111827] flex items-center gap-1.5">
+                  <div className="font-heading font-bold text-sm text-[#FFFBEB] flex items-center gap-1.5">
                     {t.name}
-                    <CheckCircle className="w-3.5 h-3.5 text-[#16A34A]" />
+                    <CheckCircle className="w-3.5 h-3.5 text-[#F59E0B]" />
                   </div>
-                  <div className="text-xs text-[#6B7280]">
-                    {t.role} &bull; <span className="text-[#16A34A] font-medium">{t.company}</span>
+                  <div className="text-xs text-[#D97706]">
+                    {t.role} &bull; <span className="text-[#F59E0B] font-medium">{t.company}</span>
                   </div>
                 </div>
               </div>

@@ -70,7 +70,7 @@ export default function BlogPost() {
   const relatedPosts = initialBlogData.filter((p) => p.slug !== post.slug).slice(0, 2);
 
   return (
-    <div className="min-h-screen pt-28 pb-20 bg-white">
+    <div className="min-h-screen pt-28 pb-20 bg-[#111111]">
       <Helmet>
         <title>{`${post.title} | TECHOFAY GLOBAL VENTURES`}</title>
         <meta name="description" content={post.excerpt || post.title} />
@@ -81,7 +81,7 @@ export default function BlogPost() {
         {/* Back Link */}
         <Link
           to="/blog"
-          className="inline-flex items-center gap-2 text-xs font-semibold text-[#6B7280] hover:text-[#16A34A] transition-colors mb-8 group"
+          className="inline-flex items-center gap-2 text-xs font-semibold text-[#D97706] hover:text-[#F59E0B] transition-colors mb-8 group"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span>Back to All Research Insights</span>
@@ -89,19 +89,19 @@ export default function BlogPost() {
 
         {/* Category & Metadata */}
         <div className="flex flex-wrap items-center gap-3 mb-4">
-          <span className="px-3 py-1 rounded-full text-xs font-mono uppercase bg-[#DCFCE7] text-[#166534] border border-[#BBF7D0] font-semibold">
+          <span className="px-3 py-1 rounded-full text-xs font-mono uppercase bg-[#1A1A1A] text-[#FDE68A] border border-[rgba(245,158,11,0.25)] font-semibold">
             {post.category}
           </span>
-          <span className="flex items-center gap-1.5 text-xs text-[#6B7280]">
-            <Calendar className="w-3.5 h-3.5 text-[#16A34A]" />
+          <span className="flex items-center gap-1.5 text-xs text-[#D97706]">
+            <Calendar className="w-3.5 h-3.5 text-[#F59E0B]" />
             {post.publishedAt || new Date(post.createdAt).toLocaleDateString()}
           </span>
-          <span className="flex items-center gap-1.5 text-xs text-[#6B7280]">
-            <Clock className="w-3.5 h-3.5 text-[#16A34A]" />
+          <span className="flex items-center gap-1.5 text-xs text-[#D97706]">
+            <Clock className="w-3.5 h-3.5 text-[#F59E0B]" />
             {post.readTime}
           </span>
           {post.views > 0 && (
-            <span className="flex items-center gap-1.5 text-xs text-[#16A34A] font-mono ml-auto font-semibold">
+            <span className="flex items-center gap-1.5 text-xs text-[#F59E0B] font-mono ml-auto font-semibold">
               <Eye className="w-3.5 h-3.5" />
               {post.views} Views
             </span>
@@ -109,41 +109,41 @@ export default function BlogPost() {
         </div>
 
         {/* Title */}
-        <h1 className="font-heading font-extrabold text-2xl sm:text-4xl lg:text-5xl text-[#111827] tracking-tight leading-tight mb-6">
+        <h1 className="font-heading font-extrabold text-2xl sm:text-4xl lg:text-5xl text-[#FFFBEB] tracking-tight leading-tight mb-6">
           {post.title}
         </h1>
 
         {/* Excerpt Lead */}
-        <p className="text-base sm:text-lg text-[#374151] font-medium leading-relaxed mb-8 border-l-4 border-[#16A34A] pl-4 py-2 bg-[#F8FAF8] rounded-r-lg">
+        <p className="text-base sm:text-lg text-[#FDE68A] font-medium leading-relaxed mb-8 border-l-4 border-[#F59E0B] pl-4 py-2 bg-[#1A1A1A] rounded-r-lg">
           {post.excerpt}
         </p>
 
         {/* Author Bar & Social Share */}
-        <div className="bg-[#F8FAF8] p-4 rounded-2xl border border-[#E5E7EB] flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 shadow-xs">
+        <div className="bg-[#1A1A1A] p-4 rounded-2xl border border-[rgba(245,158,11,0.15)] flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 shadow-xs">
           <div className="flex items-center gap-3">
             <img
               src={post.author?.avatar}
               alt={post.author?.name}
-              className="w-12 h-12 rounded-full object-cover border-2 border-[#16A34A]"
+              className="w-12 h-12 rounded-full object-cover border-2 border-[#F59E0B]"
             />
             <div>
-              <div className="font-heading font-bold text-sm text-[#111827] flex items-center gap-1.5">
+              <div className="font-heading font-bold text-sm text-[#FFFBEB] flex items-center gap-1.5">
                 {post.author?.name}
-                <ShieldCheck className="w-3.5 h-3.5 text-[#16A34A]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#F59E0B]" />
               </div>
-              <div className="text-xs text-[#6B7280]">
+              <div className="text-xs text-[#D97706]">
                 {post.author?.role} &bull; Techofay Global Ventures
               </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#E5E7EB]">
-            <span className="text-xs text-[#6B7280] mr-1 hidden sm:inline">Share:</span>
+          <div className="flex items-center gap-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-[rgba(245,158,11,0.15)]">
+            <span className="text-xs text-[#D97706] mr-1 hidden sm:inline">Share:</span>
             <a
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`}
               target="_blank"
               rel="noreferrer"
-              className="p-2 rounded-lg bg-white hover:bg-[#DCFCE7] text-[#6B7280] hover:text-[#16A34A] border border-[#E5E7EB] transition-colors"
+              className="p-2 rounded-lg bg-[#111111] hover:bg-[#1A1A1A] text-[#FDE68A] hover:text-[#F59E0B] border border-[rgba(245,158,11,0.2)] transition-colors"
               title="Share on Twitter / X"
             >
               <Twitter className="w-4 h-4" />
@@ -152,23 +152,23 @@ export default function BlogPost() {
               href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
               target="_blank"
               rel="noreferrer"
-              className="p-2 rounded-lg bg-white hover:bg-[#DCFCE7] text-[#6B7280] hover:text-[#16A34A] border border-[#E5E7EB] transition-colors"
+              className="p-2 rounded-lg bg-[#111111] hover:bg-[#1A1A1A] text-[#FDE68A] hover:text-[#F59E0B] border border-[rgba(245,158,11,0.2)] transition-colors"
               title="Share on LinkedIn"
             >
               <Linkedin className="w-4 h-4" />
             </a>
             <button
               onClick={handleCopyLink}
-              className="p-2 rounded-lg bg-white hover:bg-[#DCFCE7] text-[#6B7280] hover:text-[#16A34A] border border-[#E5E7EB] transition-colors flex items-center gap-1 cursor-pointer"
+              className="p-2 rounded-lg bg-[#111111] hover:bg-[#1A1A1A] text-[#FDE68A] hover:text-[#F59E0B] border border-[rgba(245,158,11,0.2)] transition-colors flex items-center gap-1 cursor-pointer"
               title="Copy URL"
             >
-              {copied ? <Check className="w-4 h-4 text-[#16A34A]" /> : <Copy className="w-4 h-4" />}
+              {copied ? <Check className="w-4 h-4 text-[#F59E0B]" /> : <Copy className="w-4 h-4" />}
             </button>
           </div>
         </div>
 
         {/* Featured Image */}
-        <div className="relative aspect-video rounded-2xl overflow-hidden mb-12 border border-[#E5E7EB] shadow-sm">
+        <div className="relative aspect-video rounded-2xl overflow-hidden mb-12 border border-[rgba(245,158,11,0.15)] shadow-sm">
           <img
             src={post.thumbnail}
             alt={post.title}
@@ -179,26 +179,26 @@ export default function BlogPost() {
         {/* Article Body Content */}
         <article
           className="prose max-w-none 
-            prose-headings:font-heading prose-headings:text-[#111827] prose-headings:font-bold
-            prose-p:text-[#374151] prose-p:leading-relaxed prose-p:text-sm sm:prose-p:text-base
-            prose-li:text-[#374151] prose-li:text-sm sm:prose-li:text-base
-            prose-strong:text-[#111827] prose-strong:font-semibold
-            prose-blockquote:border-l-[#16A34A] prose-blockquote:bg-[#F0FDF4] prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-blockquote:italic
-            prose-code:text-[#16A34A] prose-code:font-mono prose-code:bg-[#F0FDF4] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+            prose-headings:font-heading prose-headings:text-[#FFFBEB] prose-headings:font-bold
+            prose-p:text-[#FDE68A] prose-p:leading-relaxed prose-p:text-sm sm:prose-p:text-base
+            prose-li:text-[#FDE68A] prose-li:text-sm sm:prose-li:text-base
+            prose-strong:text-[#FFFBEB] prose-strong:font-semibold
+            prose-blockquote:border-l-[#F59E0B] prose-blockquote:bg-[#1A1A1A] prose-blockquote:text-[#FDE68A] prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-blockquote:italic
+            prose-code:text-[#FCD34D] prose-code:font-mono prose-code:bg-[#1A1A1A] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
             space-y-6"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
         {/* Tags */}
         {post.tags && post.tags.length > 0 && (
-          <div className="pt-10 mt-12 border-t border-[#E5E7EB] flex flex-wrap items-center gap-2">
-            <span className="text-xs font-mono text-[#6B7280] mr-2 flex items-center gap-1">
-              <Tag className="w-3.5 h-3.5 text-[#16A34A]" /> Tags:
+          <div className="pt-10 mt-12 border-t border-[rgba(245,158,11,0.15)] flex flex-wrap items-center gap-2">
+            <span className="text-xs font-mono text-[#D97706] mr-2 flex items-center gap-1">
+              <Tag className="w-3.5 h-3.5 text-[#F59E0B]" /> Tags:
             </span>
             {post.tags.map((tag, i) => (
               <span
                 key={i}
-                className="px-3 py-1 rounded-md text-xs font-mono bg-[#F8FAF8] border border-[#E5E7EB] text-[#16A34A] font-semibold"
+                className="px-3 py-1 rounded-md text-xs font-mono bg-[#1A1A1A] border border-[rgba(245,158,11,0.15)] text-[#F59E0B] font-semibold"
               >
                 #{tag}
               </span>
@@ -207,28 +207,28 @@ export default function BlogPost() {
         )}
 
         {/* Author Bio Box */}
-        <div className="mt-12 bg-[#F8FAF8] p-6 sm:p-8 rounded-2xl border border-[#E5E7EB] flex flex-col sm:flex-row items-center gap-6 shadow-xs">
+        <div className="mt-12 bg-[#1A1A1A] p-6 sm:p-8 rounded-2xl border border-[rgba(245,158,11,0.15)] flex flex-col sm:flex-row items-center gap-6 shadow-xs">
           <img
             src={post.author?.avatar}
             alt={post.author?.name}
-            className="w-20 h-20 rounded-full object-cover border-2 border-[#16A34A] shrink-0"
+            className="w-20 h-20 rounded-full object-cover border-2 border-[#F59E0B] shrink-0"
           />
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-wider text-[#166534] font-semibold">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-[#F59E0B] font-semibold">
               About the Author
             </span>
-            <h4 className="font-heading font-bold text-lg text-[#111827] mt-0.5 mb-1">
+            <h4 className="font-heading font-bold text-lg text-[#FFFBEB] mt-0.5 mb-1">
               {post.author?.name}
             </h4>
-            <p className="text-xs text-[#6B7280] leading-relaxed">
+            <p className="text-xs text-[#FDE68A] leading-relaxed">
               Technical specialist and systems researcher at TECHOFAY GLOBAL VENTURES. Specializing in enterprise digital growth, custom AI applications, multi-channel search architecture, and high-conversion software engineering.
             </p>
           </div>
         </div>
 
         {/* Related Articles */}
-        <div className="mt-16 pt-10 border-t border-[#E5E7EB]">
-          <h3 className="font-heading font-bold text-xl text-[#111827] mb-6">
+        <div className="mt-16 pt-10 border-t border-[rgba(245,158,11,0.15)]">
+          <h3 className="font-heading font-bold text-xl text-[#FFFBEB] mb-6">
             Related Research Publications
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -236,15 +236,15 @@ export default function BlogPost() {
               <Link
                 key={rel.id}
                 to={`/blog/${rel.slug}`}
-                className="bg-white p-5 rounded-xl border border-[#E5E7EB] hover:border-[#16A34A] hover:shadow-[0_8px_24px_rgba(22,163,74,0.08)] transition-all group shadow-xs"
+                className="bg-[rgba(245,158,11,0.06)] p-5 rounded-xl border border-[rgba(245,158,11,0.15)] hover:border-[#F59E0B] hover:shadow-[0_8px_24px_rgba(245,158,11,0.08)] transition-all group shadow-xs backdrop-blur-md"
               >
-                <span className="text-[10px] font-mono text-[#166534] uppercase block mb-1 font-semibold">
+                <span className="text-[10px] font-mono text-[#F59E0B] uppercase block mb-1 font-semibold">
                   {rel.category}
                 </span>
-                <h4 className="font-heading font-bold text-sm text-[#111827] group-hover:text-[#16A34A] transition-colors line-clamp-2 mb-2">
+                <h4 className="font-heading font-bold text-sm text-[#FFFBEB] group-hover:text-[#FCD34D] transition-colors line-clamp-2 mb-2">
                   {rel.title}
                 </h4>
-                <p className="text-xs text-[#6B7280] line-clamp-2">
+                <p className="text-xs text-[#FDE68A] line-clamp-2">
                   {rel.excerpt}
                 </p>
               </Link>

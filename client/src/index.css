@@ -4,33 +4,36 @@
 
 @layer base {
   :root {
-    --bg-primary: #FFFFFF;
-    --bg-secondary: #F8FAF8;
-    --bg-alt: #F0FDF4;
-    --accent-primary: #16A34A;
-    --accent-dark: #166534;
-    --accent-light: #DCFCE7;
-    --accent-border: #BBF7D0;
-    --text-primary: #111827;
-    --text-secondary: #374151;
-    --text-muted: #6B7280;
-    --border-color: #E5E7EB;
+    --bg-primary: #111111;
+    --bg-secondary: #1A1A1A;
+    --bg-card: rgba(245, 158, 11, 0.06);
+    --bg-section-alt: #161616;
+    --accent-primary: #F59E0B;
+    --accent-light: #FCD34D;
+    --accent-dark: #B45309;
+    --accent-glow: rgba(245, 158, 11, 0.15);
+    --text-primary: #FFFBEB;
+    --text-secondary: #FDE68A;
+    --text-muted: #D97706;
+    --border: rgba(245, 158, 11, 0.15);
+    --border-hover: rgba(245, 158, 11, 0.4);
   }
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 16px;
     line-height: 1.6;
-    color: #374151;
-    background-color: #FFFFFF;
+    color: #FDE68A;
+    background-color: #111111;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6, .font-heading, .font-orbitron {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #111827;
+  h1, h2, h3, h4, h5, h6, .font-heading, .font-orbitron, .font-raleway {
+    font-family: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #FFFBEB;
     letter-spacing: -0.02em;
+    font-weight: 700;
   }
 
   h1 {
@@ -52,73 +55,80 @@
   }
 }
 
-/* Custom Forest Green Scrollbar */
+/* Custom Charcoal & Amber Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F8FAF8;
+  background: #111111;
 }
 ::-webkit-scrollbar-thumb {
-  background: #BBF7D0;
+  background: rgba(245, 158, 11, 0.3);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #16A34A;
+  background: #F59E0B;
 }
 
-/* Clean Flat Card System (Replaces Glassmorphism) */
+/* Charcoal + Amber Glass Card System */
 .glass-panel,
 .glass-card,
 .card-clean {
-  background-color: #FFFFFF !important;
-  border: 1px solid #E5E7EB !important;
+  background-color: rgba(245, 158, 11, 0.06) !important;
+  border: 1px solid rgba(245, 158, 11, 0.15) !important;
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.glass-panel:hover,
 .glass-card:hover,
 .card-clean:hover {
-  border-color: #16A34A !important;
-  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.08) !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+  box-shadow: 0 8px 32px rgba(245, 158, 11, 0.08) !important;
   transform: translateY(-3px);
 }
 
-/* 3px Forest Green Top Accent Bar on Cards */
+/* 3px Solid Amber Top Accent Bar */
 .card-top-accent {
   position: relative;
   overflow: hidden;
-  border-top: 3px solid #16A34A !important;
+  border-top: 3px solid #F59E0B !important;
 }
 
-/* Feature Highlight Left Accent Bar */
+/* 4px Amber Left Accent Bar */
 .card-left-accent {
-  border-left: 4px solid #16A34A !important;
+  border-left: 4px solid #F59E0B !important;
 }
 
-/* Icon Container Circle */
-.icon-container-green {
+/* Icon Container: rgba(245,158,11,0.15) bg, #F59E0B icon */
+.icon-container-green,
+.icon-container-emerald,
+.icon-container-amber {
   width: 48px;
   height: 48px;
   border-radius: 9999px;
-  background-color: #DCFCE7;
-  color: #16A34A;
+  background-color: rgba(245, 158, 11, 0.15) !important;
+  color: #F59E0B !important;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-/* Standard Buttons */
+/* Standard Buttons:
+   Primary: bg #F59E0B, text #1c1400, hover bg #B45309
+   Secondary: border 1px #F59E0B, text #FCD34D, bg transparent
+   Destructive: border 1px #EF4444, text #F87171
+*/
 .btn-primary {
-  background-color: #16A34A !important;
-  color: #FFFFFF !important;
+  background-color: #F59E0B !important;
+  color: #1c1400 !important;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 700;
   padding: 12px 24px;
   transition: background-color 0.2s ease, transform 0.15s ease;
   display: inline-flex;
@@ -126,15 +136,16 @@
   justify-content: center;
   gap: 8px;
   border: none;
+  cursor: pointer;
 }
 .btn-primary:hover {
-  background-color: #166534 !important;
+  background-color: #B45309 !important;
 }
 
 .btn-secondary {
-  background-color: #FFFFFF !important;
-  color: #16A34A !important;
-  border: 1px solid #16A34A !important;
+  background-color: transparent !important;
+  color: #FCD34D !important;
+  border: 1px solid #F59E0B !important;
   border-radius: 8px;
   font-weight: 600;
   padding: 12px 24px;
@@ -143,47 +154,134 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  cursor: pointer;
 }
 .btn-secondary:hover {
-  background-color: #F0FDF4 !important;
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  color: #FFFBEB !important;
 }
 
-/* Green Highlight Badges */
-.badge-green {
+.btn-destructive {
+  background-color: transparent !important;
+  color: #F87171 !important;
+  border: 1px solid #EF4444 !important;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.btn-destructive:hover {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+}
+
+/* Status Badges */
+.badge-emerald,
+.badge-new,
+.badge-amber {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 4px 12px;
   border-radius: 9999px;
-  background-color: #DCFCE7;
-  border: 1px solid #BBF7D0;
-  color: #166534;
+  background-color: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #F59E0B;
   font-size: 12px;
   font-weight: 600;
 }
 
-/* Text Highlight Overrides (No more neon dark gradients) */
-.text-gradient {
-  color: #16A34A !important;
-  background: none !important;
-  -webkit-text-fill-color: #16A34A !important;
+.badge-gold,
+.badge-in-progress {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background-color: rgba(252, 211, 77, 0.15);
+  border: 1px solid rgba(252, 211, 77, 0.3);
+  color: #FCD34D;
+  font-size: 12px;
+  font-weight: 600;
 }
 
-.text-gradient-purple {
-  color: #166534 !important;
-  background: none !important;
-  -webkit-text-fill-color: #166534 !important;
+.badge-gray,
+.badge-resolved {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background-color: rgba(156, 163, 175, 0.15);
+  border: 1px solid rgba(156, 163, 175, 0.3);
+  color: #9CA3AF;
+  font-size: 12px;
+  font-weight: 600;
 }
 
-/* Subtle Green Dot / Grid Background */
+/* Gradient Highlights */
+.text-gradient,
+.text-gradient-emerald,
+.text-gradient-amber {
+  color: #F59E0B !important;
+  background: linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Subtle Amber Dot Grid Background */
 .tech-grid-bg {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(22, 163, 74, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(22, 163, 74, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(245, 158, 11, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 158, 11, 0.05) 1px, transparent 1px);
 }
 
-/* Subtle Green Floating Animations */
+/* Form Controls */
+input, select, textarea {
+  background-color: #1A1A1A !important;
+  color: #FFFBEB !important;
+  border: 1px solid rgba(245, 158, 11, 0.2) !important;
+  border-radius: 8px;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #F59E0B !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #D97706 !important;
+  opacity: 0.6;
+}
+
+/* Protected Footer Styles (#0A0A0A background, border-top 1px solid rgba(245,158,11,0.1)) */
+footer {
+  background-color: #0A0A0A !important;
+  color: #FFFBEB !important;
+  border-top: 1px solid rgba(245, 158, 11, 0.1) !important;
+}
+
+footer a {
+  color: #FCD34D;
+  transition: color 0.2s ease;
+}
+
+footer a:hover {
+  color: #F59E0B !important;
+}
+
+footer h4 {
+  color: #FFFBEB !important;
+  font-family: 'Raleway', sans-serif !important;
+}
+
+/* Floating Animation */
 @keyframes float-slow {
   0%, 100% {
     transform: translateY(0px);
@@ -195,92 +293,6 @@
 
 .animate-float-slow {
   animation: float-slow 4s ease-in-out infinite;
-}
-
-/* General Layout & Legacy Background Resets */
-.bg-\[\#050B1F\],
-.bg-\[\#060D24\],
-.bg-\[\#040817\],
-.bg-\[\#060C21\],
-.bg-\[\#070E24\] {
-  background-color: #FFFFFF !important;
-}
-
-.bg-\[\#0A1628\] {
-  background-color: #F8FAF8 !important;
-}
-
-/* Text Overrides for Legacy Dark Classes (Exclude Footer) */
-:not(footer) .text-white:not(.btn-primary *):not(.badge-green *):not(.bg-\[\#16A34A\] *):not(button[class*="bg-\[\#16A34A\]"] *):not(a[class*="bg-\[\#16A34A\]"] *):not(span[class*="bg-\[\#16A34A\]"] *) {
-  color: #111827;
-}
-
-:not(footer) .text-\[\#8B9AB5\],
-:not(footer) .text-\[\#94A3B8\],
-:not(footer) .text-slate-400 {
-  color: #6B7280 !important;
-}
-
-:not(footer) .text-\[\#cad7ec\],
-:not(footer) .text-\[\#c4d2ea\],
-:not(footer) .text-\[\#cad5e7\],
-:not(footer) .text-\[\#cad5e8\],
-:not(footer) .text-\[\#c2d0e7\],
-:not(footer) .text-slate-300 {
-  color: #374151 !important;
-}
-
-:not(footer) .text-\[\#00D4FF\] {
-  color: #16A34A !important;
-}
-
-/* Border Overrides */
-:not(footer) .border-white\/10,
-:not(footer) .border-white\/5,
-:not(footer) .border-white\/20,
-:not(footer) .border-\[rgba\(43\,110\,250\,0\.3\)\],
-:not(footer) .border-\[rgba\(43\,110\,250\,0\.2\)\],
-:not(footer) .border-\[rgba\(43\,110\,250\,0\.15\)\],
-:not(footer) .border-\[rgba\(0\,212\,255\,0\.3\)\] {
-  border-color: #E5E7EB !important;
-}
-
-/* Form Controls */
-input, select, textarea {
-  background-color: #FFFFFF !important;
-  color: #111827 !important;
-  border: 1px solid #E5E7EB !important;
-}
-
-input:focus, select:focus, textarea:focus {
-  border-color: #16A34A !important;
-  outline: none !important;
-  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15) !important;
-}
-
-input::placeholder, textarea::placeholder {
-  color: #9CA3AF !important;
-}
-
-/* Protected Footer Styles (#111827 background, #F9FAFB text, #4ADE80 green links) */
-footer {
-  background-color: #111827 !important;
-  color: #F9FAFB !important;
-  border-top: 1px solid #1F2937 !important;
-}
-
-footer a {
-  color: #9CA3AF;
-  transition: color 0.2s ease;
-}
-
-footer a:hover {
-  color: #4ADE80 !important;
-}
-
-footer h4 {
-  color: #FFFFFF !important;
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 
 /* Marquee Animation */
@@ -298,3 +310,4 @@ footer h4 {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+

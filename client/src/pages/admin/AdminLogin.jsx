@@ -35,45 +35,46 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen pt-28 pb-20 flex items-center justify-center bg-[#F8FAF8] px-4 relative overflow-hidden">
-      {/* Background subtle green ambient decoration */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[#DCFCE7]/40 rounded-full blur-3xl pointer-events-none" />
+    <div className="min-h-screen pt-28 pb-20 flex items-center justify-center bg-[#111111] px-4 relative overflow-hidden text-[#FFFBEB]">
+      {/* Background subtle amber ambient decoration */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[rgba(245,158,11,0.08)] rounded-full blur-3xl pointer-events-none" />
 
-      <div className="w-full max-w-md bg-[#FFFFFF] p-8 sm:p-10 rounded-2xl border border-[#E5E7EB] shadow-[0_10px_30px_rgba(0,0,0,0.06)] relative z-10">
-        <div className="text-center space-y-2 mb-8">
-          <div className="relative w-16 h-16 rounded-2xl bg-[#DCFCE7] flex items-center justify-center text-[#16A34A] mx-auto border border-[#BBF7D0]">
+      <div className="w-full max-w-md bg-[#1A1A1A] p-8 sm:p-10 rounded-2xl border border-[rgba(245,158,11,0.2)] shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative z-10">
+        <div className="text-center space-y-3 mb-8">
+          <img src="/logo.png" alt="TECHOFAY GLOBAL VENTURES" className="h-11 w-auto mx-auto object-contain mb-2" />
+          <div className="relative w-14 h-14 rounded-2xl bg-[rgba(245,158,11,0.15)] flex items-center justify-center text-[#F59E0B] mx-auto border border-[rgba(245,158,11,0.3)]">
             <Lock className="w-8 h-8" />
-            <span className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#FFFFFF] border border-[#BBF7D0] flex items-center justify-center text-[10px] text-[#16A34A]">
+            <span className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#111111] border border-[rgba(245,158,11,0.3)] flex items-center justify-center text-[10px] text-[#F59E0B]">
               <ShieldCheck className="w-3.5 h-3.5" />
             </span>
           </div>
-          <h1 className="font-['Plus_Jakarta_Sans',sans-serif] font-extrabold text-2xl sm:text-3xl text-[#111827] tracking-tight">
+          <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-[#FFFBEB] tracking-tight">
             Enterprise Admin Portal
           </h1>
-          <p className="text-xs text-[#6B7280]">
+          <p className="text-xs text-[#FDE68A]/60">
             Secure administrative gateway for TECHOFAY operations
           </p>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs leading-relaxed">
+          <div className="mb-6 p-4 rounded-xl bg-red-950/40 border border-red-500/50 text-red-400 text-xs leading-relaxed">
             {error}
           </div>
         )}
 
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-[#374151] mb-1.5 uppercase tracking-wider">
+            <label className="block text-xs font-semibold text-[#FDE68A] mb-1.5 uppercase tracking-wider">
               Admin Email
             </label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-[#16A34A] absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Mail className="w-4 h-4 text-[#F59E0B] absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-lg bg-[#FFFFFF] border border-[#E5E7EB] text-[#111827] text-sm focus:outline-none focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A] transition-all"
+                className="w-full pl-10 pr-4 py-3 rounded-lg bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-sm placeholder:text-[#FDE68A]/40 focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all"
                 placeholder="admin@techofay.com"
                 autoComplete="email"
               />
@@ -81,24 +82,24 @@ export default function AdminLogin() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#374151] mb-1.5 uppercase tracking-wider">
+            <label className="block text-xs font-semibold text-[#FDE68A] mb-1.5 uppercase tracking-wider">
               Security Password
             </label>
             <div className="relative">
-              <KeyRound className="w-4 h-4 text-[#16A34A] absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <KeyRound className="w-4 h-4 text-[#F59E0B] absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-11 py-3 rounded-lg bg-[#FFFFFF] border border-[#E5E7EB] text-[#111827] text-sm focus:outline-none focus:border-[#16A34A] focus:ring-1 focus:ring-[#16A34A] transition-all"
+                className="w-full pl-10 pr-11 py-3 rounded-lg bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-sm placeholder:text-[#FDE68A]/40 focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all"
                 placeholder="••••••••••••"
                 autoComplete="current-password"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#6B7280] hover:text-[#16A34A] transition-colors"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#FDE68A]/60 hover:text-[#F59E0B] transition-colors cursor-pointer"
                 title={showPassword ? 'Hide password' : 'Show password'}
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -110,11 +111,11 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 rounded-lg font-bold text-sm text-white bg-[#16A34A] hover:bg-[#166534] transition-all duration-300 shadow-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+              className="w-full py-3.5 rounded-lg font-bold text-sm text-[#1c1400] bg-[#F59E0B] hover:bg-[#B45309] transition-all duration-300 shadow-[0_0_15px_rgba(245,158,11,0.25)] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
             >
               {loading ? (
                 <span className="flex items-center gap-2">
-                  <span className="w-3.5 h-3.5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+                  <span className="w-3.5 h-3.5 rounded-full border-2 border-[#1c1400]/30 border-t-[#1c1400] animate-spin" />
                   Authenticating Session...
                 </span>
               ) : (

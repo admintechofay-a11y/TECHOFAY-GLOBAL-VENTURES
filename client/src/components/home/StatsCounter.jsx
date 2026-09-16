@@ -95,28 +95,28 @@ export default function StatsCounter() {
 
   return (
     <section ref={sectionRef} className="relative z-20 -mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="rounded-2xl p-6 sm:p-8 bg-[#F0FDF4] border border-[#BBF7D0] shadow-sm relative overflow-hidden group">
-        {/* Top subtle green accent line */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#16A34A] opacity-70" />
+      <div className="rounded-2xl p-6 sm:p-8 bg-[#161616] border border-[rgba(245,158,11,0.15)] shadow-[0_8px_32px_rgba(0,0,0,0.5)] relative overflow-hidden group backdrop-blur-md">
+        {/* Top 3px solid amber accent line */}
+        <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#F59E0B]" />
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-[#BBF7D0]">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-[rgba(245,158,11,0.15)]">
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
             return (
               <div key={idx} className={`pt-4 sm:pt-0 ${idx !== 0 ? 'sm:pl-6 lg:pl-8' : ''} group/stat hover:translate-y-[-2px] transition-transform`}>
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-9 h-9 rounded-lg bg-[#DCFCE7] flex items-center justify-center text-[#16A34A] transition-all">
+                  <div className="w-9 h-9 rounded-lg bg-[rgba(245,158,11,0.15)] flex items-center justify-center text-[#F59E0B] transition-all">
                     <Icon className="w-4 h-4" />
                   </div>
-                  <div className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#16A34A] flex items-center gap-1.5">
+                  <div className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#F59E0B] flex items-center gap-1.5">
                     <span>{stat.value}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A] animate-ping" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-ping" />
                   </div>
                 </div>
-                <div className="font-semibold text-xs sm:text-sm text-[#111827] group-hover/stat:text-[#16A34A] transition-colors">
+                <div className="font-semibold text-xs sm:text-sm text-[#FFFBEB] group-hover/stat:text-[#FCD34D] transition-colors">
                   {stat.label}
                 </div>
-                <div className="text-[11px] text-[#6B7280] mt-0.5">
+                <div className="text-[11px] text-[#D97706] mt-0.5">
                   {stat.sublabel}
                 </div>
               </div>

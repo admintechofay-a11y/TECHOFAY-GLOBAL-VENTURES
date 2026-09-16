@@ -51,9 +51,9 @@ function initParticleField(container) {
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const color1 = new THREE.Color('#16A34A'); // Forest Green
-    const color2 = new THREE.Color('#22C55E'); // Vibrant Green
-    const color3 = new THREE.Color('#4ADE80'); // Mint Green
+    const color1 = new THREE.Color('#F59E0B'); // Forest Green
+    const color2 = new THREE.Color('#FCD34D'); // Vibrant Green
+    const color3 = new THREE.Color('#FDE68A'); // Mint Green
 
     for (let i = 0; i < particleCount; i++) {
         const x = (Math.random() - 0.5) * 550;
@@ -184,13 +184,13 @@ function initParticleField(container) {
                     linePositions[vertexpos++] = positions[j * 3 + 1];
                     linePositions[vertexpos++] = positions[j * 3 + 2];
 
-                    lineColors[colorpos++] = 0.09 * alpha;
-                    lineColors[colorpos++] = 0.64 * alpha;
-                    lineColors[colorpos++] = 0.29 * alpha;
+                    lineColors[colorpos++] = 0.96 * alpha;
+                    lineColors[colorpos++] = 0.62 * alpha;
+                    lineColors[colorpos++] = 0.04 * alpha;
 
-                    lineColors[colorpos++] = 0.13 * alpha;
-                    lineColors[colorpos++] = 0.77 * alpha;
-                    lineColors[colorpos++] = 0.37 * alpha;
+                    lineColors[colorpos++] = 0.99 * alpha;
+                    lineColors[colorpos++] = 0.83 * alpha;
+                    lineColors[colorpos++] = 0.30 * alpha;
 
                     numConnected++;
                 }
@@ -235,11 +235,11 @@ function initTechGlobe(container) {
     const globeGroup = new THREE.Group();
     scene.add(globeGroup);
 
-    // 1. Inner Wireframe Sphere: Forest Green #16A34A
+    // 1. Inner Wireframe Sphere: Forest Green #F59E0B
     const sphereRadius = 75;
     const sphereGeo = new THREE.SphereGeometry(sphereRadius, 36, 36);
     const sphereMat = new THREE.MeshBasicMaterial({
-        color: 0x16a34a,
+        color: 0xF59E0B,
         wireframe: true,
         transparent: true,
         opacity: 0.18,
@@ -252,9 +252,9 @@ function initTechGlobe(container) {
     const pointsPositions = new Float32Array(pointsCount * 3);
     const pointsColors = new Float32Array(pointsCount * 3);
 
-    const green1 = new THREE.Color('#16A34A');
-    const green2 = new THREE.Color('#22C55E');
-    const green3 = new THREE.Color('#166534');
+    const green1 = new THREE.Color('#F59E0B');
+    const green2 = new THREE.Color('#FCD34D');
+    const green3 = new THREE.Color('#B45309');
 
     for (let i = 0; i < pointsCount; i++) {
         const phi = Math.acos(1 - 2 * (i + 0.5) / pointsCount);
@@ -307,7 +307,7 @@ function initTechGlobe(container) {
         // Satellite node on ring
         const satGeo = new THREE.SphereGeometry(3, 16, 16);
         const satMat = new THREE.MeshBasicMaterial({
-            color: 0x16a34a,
+            color: 0xF59E0B,
             blending: THREE.NormalBlending,
         });
         const sat = new THREE.Mesh(satGeo, satMat);
@@ -316,9 +316,9 @@ function initTechGlobe(container) {
         return { ring, speed, sat, radius };
     };
 
-    const ring1 = createOrbitRing(102, Math.PI / 3, Math.PI / 6, 0x16a34a, 0.015);
-    const ring2 = createOrbitRing(116, -Math.PI / 4, Math.PI / 4, 0x22c55e, -0.01);
-    const ring3 = createOrbitRing(128, Math.PI / 2.2, -Math.PI / 5, 0x4ade80, 0.008);
+    const ring1 = createOrbitRing(102, Math.PI / 3, Math.PI / 6, 0xF59E0B, 0.015);
+    const ring2 = createOrbitRing(116, -Math.PI / 4, Math.PI / 4, 0xFCD34D, -0.01);
+    const ring3 = createOrbitRing(128, Math.PI / 2.2, -Math.PI / 5, 0xFCD34D, 0.008);
 
     scene.add(ring1.ring);
     scene.add(ring2.ring);

@@ -3,18 +3,17 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  // Default to 'light' as requested by the user
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
-    localStorage.setItem('techofay_theme', 'light');
+    localStorage.setItem('techofay_theme', 'dark');
     const root = document.documentElement;
     const body = document.body;
 
-    root.classList.remove('dark');
-    root.classList.add('light');
-    body.classList.remove('bg-[#050B1F]', 'text-white');
-    body.classList.add('bg-white', 'text-[#111827]');
+    root.classList.remove('light');
+    root.classList.add('dark');
+    body.classList.remove('bg-white', 'text-[#111827]', 'bg-[#0C0F0A]', 'text-[#F0FDF4]');
+    body.classList.add('bg-[#111111]', 'text-[#FFFBEB]');
   }, [theme]);
 
   const toggleTheme = () => {

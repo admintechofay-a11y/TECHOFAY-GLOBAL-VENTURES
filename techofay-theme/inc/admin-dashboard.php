@@ -158,7 +158,7 @@ function techofay_render_admin_dashboard() {
                                 <td><span style="background: #f1f5f9; padding: 3px 8px; border-radius: 4px; font-weight: 500;"><?php echo esc_html( $service ); ?></span></td>
                                 <td><?php echo esc_html( $budget ); ?></td>
                                 <td>
-                                    <span style="display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; <?php echo $status === 'Resolved' ? 'background: #dcfce7; color: #166534;' : ($status === 'In Progress' ? 'background: #fef9c3; color: #854d0e;' : 'background: #e0f2fe; color: #075985;'); ?>">
+                                    <span style="display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; <?php echo $status === 'Resolved' ? 'background: rgba(245,158,11,0.15); color: #B45309;' : ($status === 'In Progress' ? 'background: #fef9c3; color: #854d0e;' : 'background: #e0f2fe; color: #075985;'); ?>">
                                         <?php echo esc_html( $status ); ?>
                                     </span>
                                 </td>

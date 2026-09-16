@@ -7,7 +7,6 @@ import Footer from './components/common/Footer';
 import CookieBanner from './components/common/CookieBanner';
 import WhatsAppFloat from './components/common/WhatsAppFloat';
 import BackToTop from './components/common/BackToTop';
-import LoadingScreen from './components/common/LoadingScreen';
 
 // Lazy load all public pages for optimal bundle performance
 const Home = lazy(() => import('./pages/Home'));
@@ -83,15 +82,12 @@ function ScrollToTop() {
 }
 
 export default function App() {
-  const [initialLoading, setInitialLoading] = useState(true);
   const location = useLocation();
 
   const isAdminRoute = location.pathname.startsWith('/admin');
 
   return (
     <HelmetProvider>
-      {initialLoading && <LoadingScreen onComplete={() => setInitialLoading(false)} />}
-
       <ScrollToTop />
 
       {/* Public Navigation */}

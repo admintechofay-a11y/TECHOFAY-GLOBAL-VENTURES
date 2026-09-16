@@ -32,10 +32,10 @@ export default function TechGlobe() {
     const sphereRadius = 75;
     const sphereGeo = new THREE.SphereGeometry(sphereRadius, 36, 36);
     const sphereMat = new THREE.MeshBasicMaterial({
-      color: 0x16a34a,
+      color: 0xf59e0b,
       wireframe: true,
       transparent: true,
-      opacity: 0.18,
+      opacity: 0.22,
     });
     const sphere = new THREE.Mesh(sphereGeo, sphereMat);
     globeGroup.add(sphere);
@@ -45,9 +45,9 @@ export default function TechGlobe() {
     const pointsPositions = new Float32Array(pointsCount * 3);
     const pointsColors = new Float32Array(pointsCount * 3);
 
-    const cyan = new THREE.Color('#16A34A');
-    const blue = new THREE.Color('#22C55E');
-    const violet = new THREE.Color('#166534');
+    const amberColor = new THREE.Color('#F59E0B');
+    const goldColor = new THREE.Color('#FCD34D');
+    const darkAmberColor = new THREE.Color('#B45309');
 
     for (let i = 0; i < pointsCount; i++) {
       // Golden spiral distribution on sphere
@@ -63,7 +63,7 @@ export default function TechGlobe() {
       pointsPositions[i * 3 + 1] = y;
       pointsPositions[i * 3 + 2] = z;
 
-      const col = Math.random() > 0.4 ? cyan : (Math.random() > 0.5 ? blue : violet);
+      const col = Math.random() > 0.4 ? amberColor : (Math.random() > 0.5 ? goldColor : darkAmberColor);
       pointsColors[i * 3] = col.r;
       pointsColors[i * 3 + 1] = col.g;
       pointsColors[i * 3 + 2] = col.b;
@@ -74,11 +74,11 @@ export default function TechGlobe() {
     pointsGeo.setAttribute('color', new THREE.BufferAttribute(pointsColors, 3));
 
     const pointsMat = new THREE.PointsMaterial({
-      size: isLight ? 3.2 : 3.5,
+      size: 3.5,
       vertexColors: true,
       transparent: true,
-      opacity: isLight ? 0.8 : 0.9,
-      blending: isLight ? THREE.NormalBlending : THREE.AdditiveBlending,
+      opacity: 0.85,
+      blending: THREE.AdditiveBlending,
     });
 
     const pointsMesh = new THREE.Points(pointsGeo, pointsMat);
@@ -101,7 +101,7 @@ export default function TechGlobe() {
       // Add a satellite node on the ring
       const satGeo = new THREE.SphereGeometry(3, 16, 16);
       const satMat = new THREE.MeshBasicMaterial({ 
-        color: 0x16a34a, 
+        color: 0xf59e0b, 
         blending: THREE.NormalBlending 
       });
       const sat = new THREE.Mesh(satGeo, satMat);
@@ -110,9 +110,9 @@ export default function TechGlobe() {
       return { ring, speed, sat, radius };
     };
 
-    const ring1 = createOrbitRing(102, Math.PI / 3, Math.PI / 6, 0x16a34a, 0.015);
-    const ring2 = createOrbitRing(116, -Math.PI / 4, Math.PI / 4, 0x22c55e, -0.01);
-    const ring3 = createOrbitRing(128, Math.PI / 2.2, -Math.PI / 5, 0x4ade80, 0.008);
+    const ring1 = createOrbitRing(102, Math.PI / 3, Math.PI / 6, 0xf59e0b, 0.015);
+    const ring2 = createOrbitRing(116, -Math.PI / 4, Math.PI / 4, 0xfcd34d, -0.01);
+    const ring3 = createOrbitRing(128, Math.PI / 2.2, -Math.PI / 5, 0xb45309, 0.008);
 
     scene.add(ring1.ring);
     scene.add(ring2.ring);
@@ -121,9 +121,9 @@ export default function TechGlobe() {
     // 4. Subtle Inner Glow Core
     const coreGeo = new THREE.SphereGeometry(50, 24, 24);
     const coreMat = new THREE.MeshBasicMaterial({
-      color: isLight ? 0xe0f2fe : 0x050b1f,
+      color: 0x111111,
       transparent: true,
-      opacity: isLight ? 0.25 : 0.95,
+      opacity: 0.95,
     });
     const core = new THREE.Mesh(coreGeo, coreMat);
     globeGroup.add(core);
@@ -209,11 +209,7 @@ export default function TechGlobe() {
   return (
     <div className="relative w-full h-[380px] sm:h-[450px] lg:h-[500px] flex items-center justify-center">
       {/* Background glow halo */}
-      <div className={`absolute w-72 h-72 rounded-full ${
-        isLight
-          ? 'bg-gradient-to-tr from-blue-300/30 via-sky-200/40 to-indigo-300/30'
-          : 'bg-gradient-to-tr from-[#2B6EFA]/20 via-[#00D4FF]/20 to-[#7B2FBE]/20'
-      } blur-3xl pointer-events-none`} />
+      <div className="absolute w-72 h-72 rounded-full bg-gradient-to-tr from-[#F59E0B]/20 via-[#FCD34D]/15 to-[#B45309]/20 blur-3xl pointer-events-none" />
       <div ref={containerRef} className="w-full h-full cursor-grab active:cursor-grabbing" />
     </div>
   );
