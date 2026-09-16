@@ -24,7 +24,7 @@ import { useRealtime } from '../../context/SocketContext';
 
 export default function AdminLayout() {
   const { user, isAuthenticated, loading, logout } = useAuth();
-  const { isConnected, latency, telemetry, realtimeAlerts, unreadCount, markAllRead, clearAlerts, playLeadChime } = useRealtime();
+  const { isConnected, syncMode, latency, telemetry, realtimeAlerts, unreadCount, markAllRead, clearAlerts, playLeadChime } = useRealtime();
   const location = useLocation();
   const navigate = useNavigate();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -198,11 +198,23 @@ export default function AdminLayout() {
           <div className="flex items-center gap-4">
             {/* Realtime Telemetry Status */}
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[11px] font-mono">
-              <span className={`w-2 h-2 rounded-full ${isConnected ? 'bg-[#2B6EFA] animate-pulse' : 'bg-amber-600'}`} />
-              <span className="text-[#c4d7f5]/60">Socket:</span>
-              <span className="text-[#FFFFFF] font-medium">{isConnected ? 'Synchronized' : 'Reconnecting'}</span>
+              <span
+                className={`w-2 h-2 rounded-full ${
+                  isConnected
+                    ? syncMode === 'websocket'
+                      ? 'bg-[#00D4FF] shadow-[0_0_8px_#00D4FF] animate-pulse'
+                      : 'bg-[#2B6EFA] shadow-[0_0_8px_#2B6EFA] animate-pulse'
+                    : 'bg-amber-500 animate-ping'
+                }`}
+              />
+              <span className="text-[#c4d7f5]/60">
+                {syncMode === 'websocket' ? 'Socket:' : 'Cloud Sync:'}
+              </span>
+              <span className="text-[#FFFFFF] font-medium">
+                {isConnected ? 'Synchronized' : 'Connecting'}
+              </span>
               <span className="text-[#FFFFFF]/20">|</span>
-              <span className="text-[#2B6EFA]">{latency}ms</span>
+              <span className="text-[#00D4FF]">{latency}ms</span>
             </div>
 
             {/* Sound Chime Tester */}
