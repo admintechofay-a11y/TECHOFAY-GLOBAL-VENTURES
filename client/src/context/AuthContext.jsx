@@ -63,7 +63,9 @@ export const AuthProvider = ({ children }) => {
       // Never bypass — always show the real error
       const message =
         err.response?.data?.message ||
-        (err.code === 'ERR_NETWORK'
+        (err.response?.status === 404
+          ? 'Backend endpoint not found (404). Ensure backend server is connected or running.'
+          : err.code === 'ERR_NETWORK'
           ? 'Cannot connect to server. Is the backend running?'
           : 'Login failed. Check your credentials.');
       throw new Error(message);
