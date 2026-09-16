@@ -32,9 +32,35 @@ export const ALLOWED_ORIGINS = [
   process.env.FRONTEND_URL,
   'https://techofay.com',
   'https://www.techofay.com',
+  'https://techofay.in',
+  'https://www.techofay.in',
 ].filter(Boolean);
 
-const io = initSocket(httpServer, ALLOWED_ORIGINS);
+export const isAllowedOrigin = (origin) => {
+  if (!origin) return true; // allow curl, Postman, mobile
+  if (ALLOWED_ORIGINS.includes(origin)) return true;
+  try {
+    const url = new URL(origin);
+    const host = url.hostname;
+    if (
+      host === 'localhost' ||
+      host === '127.0.0.1' ||
+      host.endsWith('.vercel.app') ||
+      host === 'vercel.app' ||
+      host === 'techofay.com' ||
+      host.endsWith('.techofay.com') ||
+      host === 'techofay.in' ||
+      host.endsWith('.techofay.in')
+    ) {
+      return true;
+    }
+  } catch (e) {
+    // Malformed origin
+  }
+  return false;
+};
+
+const io = initSocket(httpServer, isAllowedOrigin);
 
 // Security Headers
 app.use(
@@ -44,12 +70,11 @@ app.use(
   })
 );
 
-// Restricted CORS
+// Restricted CORS with Vercel and domain support
 app.use(
   cors({
     origin: (origin, cb) => {
-      // Allow requests with no origin (Postman, server-to-server, mobile apps)
-      if (!origin || ALLOWED_ORIGINS.includes(origin)) return cb(null, true);
+      if (isAllowedOrigin(origin)) return cb(null, true);
       cb(new Error(`CORS: Origin ${origin} not permitted`));
     },
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],

@@ -62,9 +62,7 @@ export default function Careers() {
       data.append('coverLetter', formData.coverLetter);
       data.append('resume', resumeFile);
 
-      await api.post('/careers/apply', data, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      });
+      await api.post('/careers/apply', data);
 
       setApplySuccess(true);
       setTimeout(() => {

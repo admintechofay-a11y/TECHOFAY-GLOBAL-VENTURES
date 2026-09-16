@@ -74,17 +74,16 @@ export default function Contact() {
     setErrorMessage('');
 
     try {
-      const data = new FormData();
-      Object.keys(formData).forEach((key) => {
-        data.append(key, formData[key]);
-      });
       if (attachment) {
+        const data = new FormData();
+        Object.keys(formData).forEach((key) => {
+          data.append(key, formData[key]);
+        });
         data.append('attachment', attachment);
+        await api.post('/contact', data);
+      } else {
+        await api.post('/contact', formData);
       }
-
-      await api.post('/contact', data, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
 
       setSubmitted(true);
       window.scrollTo({ top: 100, behavior: 'smooth' });

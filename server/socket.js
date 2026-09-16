@@ -7,10 +7,18 @@ const serverStartTime = Date.now();
 /**
  * Initialize WebSockets on HTTP server
  */
-export const initSocket = (httpServer, allowedOrigins = ['http://localhost:3000', 'http://localhost:5173']) => {
+export const initSocket = (httpServer, allowedOriginChecker) => {
   io = new Server(httpServer, {
     cors: {
-      origin: allowedOrigins,
+      origin: (origin, callback) => {
+        if (typeof allowedOriginChecker === 'function') {
+          return callback(null, allowedOriginChecker(origin));
+        }
+        if (Array.isArray(allowedOriginChecker)) {
+          return callback(null, !origin || allowedOriginChecker.includes(origin));
+        }
+        callback(null, true);
+      },
       methods: ['GET', 'POST', 'PATCH', 'DELETE'],
       credentials: true,
     },
