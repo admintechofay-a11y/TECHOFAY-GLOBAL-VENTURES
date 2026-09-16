@@ -32,43 +32,43 @@ export default function RocketScene3D() {
     const mainRocket = new THREE.Group();
     scene.add(mainRocket);
 
-    // Rocket Body - Charcoal Slate
+    // Rocket Body - Dark Navy Panel
     const bodyGeo = new THREE.CylinderGeometry(0.3, 0.3, 2.0, 12);
-    const bodyMat = new THREE.MeshBasicMaterial({ color: 0x262626, transparent: true, opacity: 0.95 });
+    const bodyMat = new THREE.MeshBasicMaterial({ color: 0x0A1628, transparent: true, opacity: 0.95 });
     const bodyMesh = new THREE.Mesh(bodyGeo, bodyMat);
     mainRocket.add(bodyMesh);
 
-    // Nose Cone - Radiant Amber
+    // Nose Cone - Cyber Neon Cyan
     const noseGeo = new THREE.ConeGeometry(0.3, 0.8, 12);
-    const noseMat = new THREE.MeshBasicMaterial({ color: 0xF59E0B, transparent: true, opacity: 0.95 });
+    const noseMat = new THREE.MeshBasicMaterial({ color: 0x00D4FF, transparent: true, opacity: 0.95 });
     const noseMesh = new THREE.Mesh(noseGeo, noseMat);
     noseMesh.position.y = 1.4;
     mainRocket.add(noseMesh);
 
-    // Left Fin - Gold Accent
+    // Left Fin - Electric Blue
     const finGeo = new THREE.BoxGeometry(0.05, 0.6, 0.4);
-    const finMat = new THREE.MeshBasicMaterial({ color: 0xFCD34D });
+    const finMat = new THREE.MeshBasicMaterial({ color: 0x2B6EFA });
     const leftFin = new THREE.Mesh(finGeo, finMat);
     leftFin.position.set(-0.35, -0.9, 0);
     leftFin.rotation.z = -0.3;
     mainRocket.add(leftFin);
 
-    // Right Fin - Gold Accent
+    // Right Fin - Electric Blue
     const rightFin = new THREE.Mesh(finGeo, finMat);
     rightFin.position.set(0.35, -0.9, 0);
     rightFin.rotation.z = 0.3;
     mainRocket.add(rightFin);
 
-    // Engine Bell - Deep Amber Bronze
+    // Engine Bell - Radiant Violet
     const bellGeo = new THREE.CylinderGeometry(0.2, 0.35, 0.3, 12);
-    const bellMat = new THREE.MeshBasicMaterial({ color: 0xB45309, transparent: true, opacity: 0.85 });
+    const bellMat = new THREE.MeshBasicMaterial({ color: 0x7B2FBE, transparent: true, opacity: 0.9 });
     const bellMesh = new THREE.Mesh(bellGeo, bellMat);
     bellMesh.position.y = -1.15;
     mainRocket.add(bellMesh);
 
-    // Window - Warm Light
+    // Window - Pure White
     const winGeo = new THREE.SphereGeometry(0.12, 8, 8);
-    const winMat = new THREE.MeshBasicMaterial({ color: 0xFFFBEB, transparent: true, opacity: 0.95 });
+    const winMat = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, transparent: true, opacity: 0.95 });
     const winMesh = new THREE.Mesh(winGeo, winMat);
     winMesh.position.set(0, 0.4, 0.28);
     mainRocket.add(winMesh);
@@ -99,10 +99,10 @@ export default function RocketScene3D() {
     exhaustGeo.setAttribute('position', new THREE.BufferAttribute(exhaustPositions, 3));
 
     const exhaustMat = new THREE.PointsMaterial({
-      color: 0xF59E0B,
+      color: 0x00D4FF,
       size: 0.06,
       transparent: true,
-      opacity: isLight ? 0.6 : 0.8,
+      opacity: isLight ? 0.6 : 0.85,
       blending: THREE.AdditiveBlending
     });
 

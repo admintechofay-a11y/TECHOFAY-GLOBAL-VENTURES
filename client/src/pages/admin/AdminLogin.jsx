@@ -35,23 +35,23 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen pt-28 pb-20 flex items-center justify-center bg-[#111111] px-4 relative overflow-hidden text-[#FFFBEB]">
+    <div className="min-h-screen pt-28 pb-20 flex items-center justify-center bg-[#050B1F] px-4 relative overflow-hidden text-[#FFFFFF]">
       {/* Background subtle amber ambient decoration */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[rgba(245,158,11,0.08)] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-[rgba(43,110,250,0.08)] rounded-full blur-3xl pointer-events-none" />
 
-      <div className="w-full max-w-md bg-[#1A1A1A] p-8 sm:p-10 rounded-2xl border border-[rgba(245,158,11,0.2)] shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative z-10">
+      <div className="w-full max-w-md bg-[#0A1628] p-8 sm:p-10 rounded-2xl border border-[rgba(43,110,250,0.2)] shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative z-10">
         <div className="text-center space-y-3 mb-8">
           <img src="/logo.png" alt="TECHOFAY GLOBAL VENTURES" className="h-11 w-auto mx-auto object-contain mb-2" />
-          <div className="relative w-14 h-14 rounded-2xl bg-[rgba(245,158,11,0.15)] flex items-center justify-center text-[#F59E0B] mx-auto border border-[rgba(245,158,11,0.3)]">
+          <div className="relative w-14 h-14 rounded-2xl bg-[rgba(43,110,250,0.2)] flex items-center justify-center text-[#2B6EFA] mx-auto border border-[rgba(43,110,250,0.3)]">
             <Lock className="w-8 h-8" />
-            <span className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#111111] border border-[rgba(245,158,11,0.3)] flex items-center justify-center text-[10px] text-[#F59E0B]">
+            <span className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#050B1F] border border-[rgba(43,110,250,0.3)] flex items-center justify-center text-[10px] text-[#2B6EFA]">
               <ShieldCheck className="w-3.5 h-3.5" />
             </span>
           </div>
-          <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-[#FFFBEB] tracking-tight">
+          <h1 className="font-heading font-extrabold text-2xl sm:text-3xl text-[#FFFFFF] tracking-tight">
             Enterprise Admin Portal
           </h1>
-          <p className="text-xs text-[#FDE68A]/60">
+          <p className="text-xs text-[#c4d7f5]/60">
             Secure administrative gateway for TECHOFAY operations
           </p>
         </div>
@@ -64,17 +64,17 @@ export default function AdminLogin() {
 
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-[#FDE68A] mb-1.5 uppercase tracking-wider">
+            <label className="block text-xs font-semibold text-[#c4d7f5] mb-1.5 uppercase tracking-wider">
               Admin Email
             </label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-[#F59E0B] absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Mail className="w-4 h-4 text-[#2B6EFA] absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-lg bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-sm placeholder:text-[#FDE68A]/40 focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all"
+                className="w-full pl-10 pr-4 py-3 rounded-lg bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-sm placeholder:text-[#c4d7f5]/40 focus:outline-none focus:border-[#2B6EFA] focus:ring-1 focus:ring-[#2B6EFA] transition-all"
                 placeholder="admin@techofay.com"
                 autoComplete="email"
               />
@@ -82,24 +82,24 @@ export default function AdminLogin() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#FDE68A] mb-1.5 uppercase tracking-wider">
+            <label className="block text-xs font-semibold text-[#c4d7f5] mb-1.5 uppercase tracking-wider">
               Security Password
             </label>
             <div className="relative">
-              <KeyRound className="w-4 h-4 text-[#F59E0B] absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <KeyRound className="w-4 h-4 text-[#2B6EFA] absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-11 py-3 rounded-lg bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-sm placeholder:text-[#FDE68A]/40 focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B] transition-all"
+                className="w-full pl-10 pr-11 py-3 rounded-lg bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-sm placeholder:text-[#c4d7f5]/40 focus:outline-none focus:border-[#2B6EFA] focus:ring-1 focus:ring-[#2B6EFA] transition-all"
                 placeholder="••••••••••••"
                 autoComplete="current-password"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#FDE68A]/60 hover:text-[#F59E0B] transition-colors cursor-pointer"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#c4d7f5]/60 hover:text-[#2B6EFA] transition-colors cursor-pointer"
                 title={showPassword ? 'Hide password' : 'Show password'}
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -111,7 +111,7 @@ export default function AdminLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 rounded-lg font-bold text-sm text-[#1c1400] bg-[#F59E0B] hover:bg-[#B45309] transition-all duration-300 shadow-[0_0_15px_rgba(245,158,11,0.25)] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+              className="w-full py-3.5 rounded-lg font-bold text-sm text-white font-semibold bg-[#2B6EFA] hover:bg-[#1E50C8] transition-all duration-300 shadow-[0_0_15px_rgba(0,212,255,0.3)] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
             >
               {loading ? (
                 <span className="flex items-center gap-2">

@@ -107,54 +107,54 @@ $fallback_products = array(
 );
 ?>
 
-<main id="primary" class="site-main min-h-screen pt-24 pb-20 bg-[#161616]">
+<main id="primary" class="site-main min-h-screen pt-24 pb-20 bg-[#070E24]">
     <!-- Header Banner -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 relative">
         <div class="text-center max-w-3xl mx-auto space-y-4">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(245,158,11,0.15)] border border-[rgba(245,158,11,0.25)] text-[#B45309] text-xs font-semibold uppercase tracking-wider">
-                <span class="w-2 h-2 rounded-full bg-[#F59E0B] animate-pulse"></span>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[rgba(43,110,250,0.2)] border border-[rgba(0,212,255,0.3)] text-[#1E50C8] text-xs font-semibold uppercase tracking-wider">
+                <span class="w-2 h-2 rounded-full bg-[#2B6EFA] animate-pulse"></span>
                 Flagship SaaS Platforms
             </div>
-            <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#FFFBEB] tracking-tight">
-                Enterprise <span class="text-[#F59E0B]">Software Suites</span>
+            <h1 class="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-[#FFFFFF] tracking-tight">
+                Enterprise <span class="text-[#2B6EFA]">Software Suites</span>
             </h1>
-            <p class="text-sm sm:text-base text-[#D97706] leading-relaxed">
+            <p class="text-sm sm:text-base text-[#8B9AB5] leading-relaxed">
                 Battle-tested, turnkey software solutions engineered for high performance, maximum security, and rapid business ROI.
             </p>
         </div>
 
         <!-- Filter & Search Bar -->
-        <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-4 bg-[#1A1A1A] p-3 rounded-2xl border border-[rgba(245,158,11,0.15)] shadow-sm">
+        <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-4 bg-[#0A1628] p-3 rounded-2xl border border-[rgba(43,110,250,0.2)] shadow-sm">
             <!-- Filter Pills -->
             <div class="flex flex-wrap items-center gap-2 w-full md:w-auto" id="product-filter-tabs">
-                <button type="button" data-filter="all" class="prod-filter-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer bg-[#F59E0B] text-[#1c1400] font-semibold shadow-sm">
+                <button type="button" data-filter="all" class="prod-filter-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer bg-[#2B6EFA] text-[#1c1400] font-semibold shadow-sm">
                     All Products (5)
                 </button>
-                <button type="button" data-filter="Enterprise ERP" class="prod-filter-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#FDE68A] hover:text-[#F59E0B] bg-[#161616] border border-[rgba(245,158,11,0.15)]">
+                <button type="button" data-filter="Enterprise ERP" class="prod-filter-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#c4d7f5] hover:text-[#2B6EFA] bg-[#070E24] border border-[rgba(43,110,250,0.2)]">
                     Enterprise ERP
                 </button>
-                <button type="button" data-filter="Enterprise Hardware" class="prod-filter-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#FDE68A] hover:text-[#F59E0B] bg-[#161616] border border-[rgba(245,158,11,0.15)]">
+                <button type="button" data-filter="Enterprise Hardware" class="prod-filter-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#c4d7f5] hover:text-[#2B6EFA] bg-[#070E24] border border-[rgba(43,110,250,0.2)]">
                     Smart NFC
                 </button>
-                <button type="button" data-filter="Applied AI" class="prod-filter-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#FDE68A] hover:text-[#F59E0B] bg-[#161616] border border-[rgba(245,158,11,0.15)]">
+                <button type="button" data-filter="Applied AI" class="prod-filter-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#c4d7f5] hover:text-[#2B6EFA] bg-[#070E24] border border-[rgba(43,110,250,0.2)]">
                     AI Chatbot
                 </button>
-                <button type="button" data-filter="Healthcare" class="prod-filter-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#FDE68A] hover:text-[#F59E0B] bg-[#161616] border border-[rgba(245,158,11,0.15)]">
+                <button type="button" data-filter="Healthcare" class="prod-filter-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#c4d7f5] hover:text-[#2B6EFA] bg-[#070E24] border border-[rgba(43,110,250,0.2)]">
                     Healthcare
                 </button>
-                <button type="button" data-filter="Education" class="prod-filter-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#FDE68A] hover:text-[#F59E0B] bg-[#161616] border border-[rgba(245,158,11,0.15)]">
+                <button type="button" data-filter="Education" class="prod-filter-btn px-3 py-2 rounded-lg text-xs font-medium transition-all cursor-pointer text-[#c4d7f5] hover:text-[#2B6EFA] bg-[#070E24] border border-[rgba(43,110,250,0.2)]">
                     Education
                 </button>
             </div>
 
             <!-- Search Input -->
             <div class="relative w-full md:w-72">
-                <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#D97706]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#8B9AB5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 <input
                     type="text"
                     id="product-search-input"
                     placeholder="Search software, features, ERP..."
-                    class="w-full pl-10 pr-4 py-2 rounded-lg bg-[#161616] border border-[rgba(245,158,11,0.15)] text-xs text-[#FFFBEB] placeholder:text-[#D97706] focus:outline-none focus:border-[#F59E0B] focus:ring-1 focus:ring-[#F59E0B]"
+                    class="w-full pl-10 pr-4 py-2 rounded-lg bg-[#070E24] border border-[rgba(43,110,250,0.2)] text-xs text-[#FFFFFF] placeholder:text-[#8B9AB5] focus:outline-none focus:border-[#2B6EFA] focus:ring-1 focus:ring-[#2B6EFA]"
                 />
             </div>
         </div>
@@ -180,16 +180,16 @@ $fallback_products = array(
                         );
                     }
                     ?>
-                    <article class="product-card bg-[#1A1A1A] rounded-2xl p-8 flex flex-col justify-between border border-[rgba(245,158,11,0.15)] hover:border-[#F59E0B] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5" data-title="<?php the_title_attribute(); ?>" data-desc="<?php echo esc_attr( get_the_excerpt() ); ?>" data-category="<?php echo esc_attr( $category ); ?>">
+                    <article class="product-card bg-[#0A1628] rounded-2xl p-8 flex flex-col justify-between border border-[rgba(43,110,250,0.2)] hover:border-[#2B6EFA] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5" data-title="<?php the_title_attribute(); ?>" data-desc="<?php echo esc_attr( get_the_excerpt() ); ?>" data-category="<?php echo esc_attr( $category ); ?>">
                         <div>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-[10px] uppercase font-mono px-2.5 py-1 rounded-md bg-[rgba(245,158,11,0.15)] border border-[rgba(245,158,11,0.25)] text-[#B45309] font-bold">
+                                <span class="text-[10px] uppercase font-mono px-2.5 py-1 rounded-md bg-[rgba(43,110,250,0.2)] border border-[rgba(0,212,255,0.3)] text-[#1E50C8] font-bold">
                                     <?php echo esc_html( $badge ); ?>
                                 </span>
-                                <span class="text-xs font-mono font-bold text-[#F59E0B]"><?php echo esc_html( $metric ); ?></span>
+                                <span class="text-xs font-mono font-bold text-[#2B6EFA]"><?php echo esc_html( $metric ); ?></span>
                             </div>
 
-                            <h2 class="font-heading font-bold text-2xl text-[#FFFBEB] mb-3 hover:text-[#F59E0B] transition-colors">
+                            <h2 class="font-heading font-bold text-2xl text-[#FFFFFF] mb-3 hover:text-[#2B6EFA] transition-colors">
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                             </h2>
 
@@ -198,31 +198,31 @@ $fallback_products = array(
                             </p>
 
                             <!-- Pricing -->
-                            <div class="mb-6 p-4 rounded-xl bg-[#161616] border border-[rgba(245,158,11,0.15)]">
-                                <div class="text-[10px] uppercase font-mono tracking-wider text-[#D97706]">Starting Price</div>
+                            <div class="mb-6 p-4 rounded-xl bg-[#070E24] border border-[rgba(43,110,250,0.2)]">
+                                <div class="text-[10px] uppercase font-mono tracking-wider text-[#8B9AB5]">Starting Price</div>
                                 <div class="flex items-baseline gap-1 mt-1">
-                                    <span class="text-2xl font-extrabold text-[#FFFBEB]"><?php echo esc_html( $price ); ?></span>
-                                    <span class="text-xs text-[#D97706]"><?php echo esc_html( $billing ); ?></span>
+                                    <span class="text-2xl font-extrabold text-[#FFFFFF]"><?php echo esc_html( $price ); ?></span>
+                                    <span class="text-xs text-[#8B9AB5]"><?php echo esc_html( $billing ); ?></span>
                                 </div>
                             </div>
 
                             <!-- Features List -->
                             <div class="space-y-2.5 mb-8">
-                                <div class="text-xs font-bold uppercase tracking-wider text-[#FFFBEB]">Key Capabilities</div>
+                                <div class="text-xs font-bold uppercase tracking-wider text-[#FFFFFF]">Key Capabilities</div>
                                 <?php foreach ( array_slice( $features, 0, 4 ) as $feat ) : ?>
-                                    <div class="flex items-start gap-2 text-xs text-[#FDE68A]">
-                                        <svg class="w-4 h-4 text-[#F59E0B] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                    <div class="flex items-start gap-2 text-xs text-[#c4d7f5]">
+                                        <svg class="w-4 h-4 text-[#2B6EFA] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                                         <span><?php echo esc_html( is_array( $feat ) ? ( $feat['feature'] ?? '' ) : $feat ); ?></span>
                                     </div>
                                 <?php endforeach; ?>
                             </div>
                         </div>
 
-                        <div class="pt-5 border-t border-[rgba(245,158,11,0.15)] flex items-center justify-between gap-3">
-                            <a href="<?php the_permalink(); ?>" class="flex-1 py-3 rounded-xl text-xs font-bold text-center text-[#1c1400] font-semibold bg-[#F59E0B] hover:bg-[#B45309] shadow-sm transition-all">
+                        <div class="pt-5 border-t border-[rgba(43,110,250,0.2)] flex items-center justify-between gap-3">
+                            <a href="<?php the_permalink(); ?>" class="flex-1 py-3 rounded-xl text-xs font-bold text-center text-[#1c1400] font-semibold bg-[#2B6EFA] hover:bg-[#1E50C8] shadow-sm transition-all">
                                 Request Live Demo
                             </a>
-                            <a href="<?php the_permalink(); ?>" class="px-4 py-3 rounded-xl text-xs font-bold text-[#F59E0B] bg-[#1A1A1A] border border-[#F59E0B] hover:bg-[rgba(245,158,11,0.06)] transition-all">
+                            <a href="<?php the_permalink(); ?>" class="px-4 py-3 rounded-xl text-xs font-bold text-[#2B6EFA] bg-[#0A1628] border border-[#2B6EFA] hover:bg-[rgba(255,255,255,0.05)] transition-all">
                                 Specs &rarr;
                             </a>
                         </div>
@@ -230,16 +230,16 @@ $fallback_products = array(
                 <?php endwhile; wp_reset_postdata(); ?>
             <?php else : ?>
                 <?php foreach ( $fallback_products as $prod ) : ?>
-                    <article class="product-card bg-[#1A1A1A] rounded-2xl p-8 flex flex-col justify-between border border-[rgba(245,158,11,0.15)] hover:border-[#F59E0B] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5" data-title="<?php echo esc_attr( $prod['name'] ); ?>" data-desc="<?php echo esc_attr( $prod['desc'] ); ?>" data-category="<?php echo esc_attr( $prod['category'] ); ?>">
+                    <article class="product-card bg-[#0A1628] rounded-2xl p-8 flex flex-col justify-between border border-[rgba(43,110,250,0.2)] hover:border-[#2B6EFA] shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5" data-title="<?php echo esc_attr( $prod['name'] ); ?>" data-desc="<?php echo esc_attr( $prod['desc'] ); ?>" data-category="<?php echo esc_attr( $prod['category'] ); ?>">
                         <div>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-[10px] uppercase font-mono px-2.5 py-1 rounded-md bg-[rgba(245,158,11,0.15)] border border-[rgba(245,158,11,0.25)] text-[#B45309] font-bold">
+                                <span class="text-[10px] uppercase font-mono px-2.5 py-1 rounded-md bg-[rgba(43,110,250,0.2)] border border-[rgba(0,212,255,0.3)] text-[#1E50C8] font-bold">
                                     <?php echo esc_html( $prod['badge'] ); ?>
                                 </span>
-                                <span class="text-xs font-mono font-bold text-[#F59E0B]"><?php echo esc_html( $prod['metric'] ); ?></span>
+                                <span class="text-xs font-mono font-bold text-[#2B6EFA]"><?php echo esc_html( $prod['metric'] ); ?></span>
                             </div>
 
-                            <h2 class="font-heading font-bold text-2xl text-[#FFFBEB] mb-3 hover:text-[#F59E0B] transition-colors">
+                            <h2 class="font-heading font-bold text-2xl text-[#FFFFFF] mb-3 hover:text-[#2B6EFA] transition-colors">
                                 <a href="<?php echo esc_url( home_url( '/product/' . $prod['slug'] ) ); ?>"><?php echo esc_html( $prod['name'] ); ?></a>
                             </h2>
 
@@ -248,31 +248,31 @@ $fallback_products = array(
                             </p>
 
                             <!-- Pricing -->
-                            <div class="mb-6 p-4 rounded-xl bg-[#161616] border border-[rgba(245,158,11,0.15)]">
-                                <div class="text-[10px] uppercase font-mono tracking-wider text-[#D97706]">Starting Price</div>
+                            <div class="mb-6 p-4 rounded-xl bg-[#070E24] border border-[rgba(43,110,250,0.2)]">
+                                <div class="text-[10px] uppercase font-mono tracking-wider text-[#8B9AB5]">Starting Price</div>
                                 <div class="flex items-baseline gap-1 mt-1">
-                                    <span class="text-2xl font-extrabold text-[#FFFBEB]"><?php echo esc_html( $prod['price'] ); ?></span>
-                                    <span class="text-xs text-[#D97706]"><?php echo esc_html( $prod['billing'] ); ?></span>
+                                    <span class="text-2xl font-extrabold text-[#FFFFFF]"><?php echo esc_html( $prod['price'] ); ?></span>
+                                    <span class="text-xs text-[#8B9AB5]"><?php echo esc_html( $prod['billing'] ); ?></span>
                                 </div>
                             </div>
 
                             <!-- Features List -->
                             <div class="space-y-2.5 mb-8">
-                                <div class="text-xs font-bold uppercase tracking-wider text-[#FFFBEB]">Key Capabilities</div>
+                                <div class="text-xs font-bold uppercase tracking-wider text-[#FFFFFF]">Key Capabilities</div>
                                 <?php foreach ( $prod['features'] as $feat ) : ?>
-                                    <div class="flex items-start gap-2 text-xs text-[#FDE68A]">
-                                        <svg class="w-4 h-4 text-[#F59E0B] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                    <div class="flex items-start gap-2 text-xs text-[#c4d7f5]">
+                                        <svg class="w-4 h-4 text-[#2B6EFA] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                                         <span><?php echo esc_html( $feat ); ?></span>
                                     </div>
                                 <?php endforeach; ?>
                             </div>
                         </div>
 
-                        <div class="pt-5 border-t border-[rgba(245,158,11,0.15)] flex items-center justify-between gap-3">
-                            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="flex-1 py-3 rounded-xl text-xs font-bold text-center text-[#1c1400] font-semibold bg-[#F59E0B] hover:bg-[#B45309] shadow-sm transition-all">
+                        <div class="pt-5 border-t border-[rgba(43,110,250,0.2)] flex items-center justify-between gap-3">
+                            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="flex-1 py-3 rounded-xl text-xs font-bold text-center text-[#1c1400] font-semibold bg-[#2B6EFA] hover:bg-[#1E50C8] shadow-sm transition-all">
                                 Request Live Demo
                             </a>
-                            <a href="<?php echo esc_url( home_url( '/product/' . $prod['slug'] ) ); ?>" class="px-4 py-3 rounded-xl text-xs font-bold text-[#F59E0B] bg-[#1A1A1A] border border-[#F59E0B] hover:bg-[rgba(245,158,11,0.06)] transition-all">
+                            <a href="<?php echo esc_url( home_url( '/product/' . $prod['slug'] ) ); ?>" class="px-4 py-3 rounded-xl text-xs font-bold text-[#2B6EFA] bg-[#0A1628] border border-[#2B6EFA] hover:bg-[rgba(255,255,255,0.05)] transition-all">
                                 Specs &rarr;
                             </a>
                         </div>
@@ -315,11 +315,11 @@ document.addEventListener('DOMContentLoaded', function() {
     tabs.forEach(tab => {
         tab.addEventListener('click', function() {
             tabs.forEach(t => {
-                t.classList.remove('bg-[#F59E0B]', 'text-white', 'shadow-sm');
-                t.classList.add('text-[#FDE68A]', 'bg-[#161616]', 'border', 'border-[rgba(245,158,11,0.15)]');
+                t.classList.remove('bg-[#2B6EFA]', 'text-white', 'shadow-sm');
+                t.classList.add('text-[#c4d7f5]', 'bg-[#070E24]', 'border', 'border-[rgba(43,110,250,0.2)]');
             });
-            this.classList.remove('text-[#FDE68A]', 'bg-[#161616]', 'border', 'border-[rgba(245,158,11,0.15)]');
-            this.classList.add('bg-[#F59E0B]', 'text-white', 'shadow-sm');
+            this.classList.remove('text-[#c4d7f5]', 'bg-[#070E24]', 'border', 'border-[rgba(43,110,250,0.2)]');
+            this.classList.add('bg-[#2B6EFA]', 'text-white', 'shadow-sm');
 
             currentFilter = this.getAttribute('data-filter') || 'all';
             filterCards();

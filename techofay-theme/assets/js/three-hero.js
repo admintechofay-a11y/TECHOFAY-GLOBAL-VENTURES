@@ -51,9 +51,9 @@ function initParticleField(container) {
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const color1 = new THREE.Color('#F59E0B'); // Forest Green
-    const color2 = new THREE.Color('#FCD34D'); // Vibrant Green
-    const color3 = new THREE.Color('#FDE68A'); // Mint Green
+    const color1 = new THREE.Color('#2B6EFA'); // Forest Green
+    const color2 = new THREE.Color('#00D4FF'); // Vibrant Green
+    const color3 = new THREE.Color('#7B2FBE'); // Mint Green
 
     for (let i = 0; i < particleCount; i++) {
         const x = (Math.random() - 0.5) * 550;
@@ -235,11 +235,11 @@ function initTechGlobe(container) {
     const globeGroup = new THREE.Group();
     scene.add(globeGroup);
 
-    // 1. Inner Wireframe Sphere: Forest Green #F59E0B
+    // 1. Inner Wireframe Sphere: Forest Green #2B6EFA
     const sphereRadius = 75;
     const sphereGeo = new THREE.SphereGeometry(sphereRadius, 36, 36);
     const sphereMat = new THREE.MeshBasicMaterial({
-        color: 0xF59E0B,
+        color: 0x2B6EFA,
         wireframe: true,
         transparent: true,
         opacity: 0.18,
@@ -252,9 +252,9 @@ function initTechGlobe(container) {
     const pointsPositions = new Float32Array(pointsCount * 3);
     const pointsColors = new Float32Array(pointsCount * 3);
 
-    const green1 = new THREE.Color('#F59E0B');
-    const green2 = new THREE.Color('#FCD34D');
-    const green3 = new THREE.Color('#B45309');
+    const green1 = new THREE.Color('#2B6EFA');
+    const green2 = new THREE.Color('#00D4FF');
+    const green3 = new THREE.Color('#7B2FBE');
 
     for (let i = 0; i < pointsCount; i++) {
         const phi = Math.acos(1 - 2 * (i + 0.5) / pointsCount);
@@ -307,7 +307,7 @@ function initTechGlobe(container) {
         // Satellite node on ring
         const satGeo = new THREE.SphereGeometry(3, 16, 16);
         const satMat = new THREE.MeshBasicMaterial({
-            color: 0xF59E0B,
+            color: 0x2B6EFA,
             blending: THREE.NormalBlending,
         });
         const sat = new THREE.Mesh(satGeo, satMat);
@@ -327,7 +327,7 @@ function initTechGlobe(container) {
     // 4. Subtle Inner Glow Core
     const coreGeo = new THREE.SphereGeometry(50, 24, 24);
     const coreMat = new THREE.MeshBasicMaterial({
-        color: 0xe0f2fe,
+        color: 0x050B1F,
         transparent: true,
         opacity: 0.25,
     });

@@ -30,11 +30,11 @@ export default function DataRings() {
 
     const isLight = theme === 'light';
 
-    // Amber / Gold Theme Colors
-    const amberPrimary = 0xF59E0B;
-    const goldLight = 0xFCD34D;
-    const amberDark = 0xB45309;
-    const warmWhite = 0xFFFBEB;
+    // Electric Blue / Cyber Cyan Theme Colors
+    const amberPrimary = 0x2B6EFA;
+    const goldLight = 0x00D4FF;
+    const amberDark = 0x7B2FBE;
+    const warmWhite = 0xFFFFFF;
 
     const mainGroup = new THREE.Group();
     scene.add(mainGroup);

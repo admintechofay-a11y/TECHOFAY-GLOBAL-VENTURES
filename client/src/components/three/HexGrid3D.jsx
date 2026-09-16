@@ -49,7 +49,7 @@ export default function HexGrid3D() {
           ? 0.05 
           : (isLight ? 0.07 + Math.random() * 0.05 : 0.09 + Math.random() * 0.07);
 
-        const hexColors = [0xF59E0B, 0xFCD34D, 0xB45309];
+        const hexColors = [0x2B6EFA, 0x00D4FF, 0x7B2FBE];
         const mat = new THREE.MeshBasicMaterial({
           color: hexColors[(r * cols + c) % hexColors.length],
           transparent: true,

@@ -24,29 +24,29 @@ $clients = array(
 $marqueeItems = array_merge( $clients, $clients );
 ?>
 
-<section class="py-14 bg-[rgba(245,158,11,0.06)] border-y border-[rgba(245,158,11,0.25)] overflow-hidden">
+<section class="py-14 bg-[rgba(255,255,255,0.05)] border-y border-[rgba(0,212,255,0.3)] overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 text-center">
-        <span class="text-[11px] font-heading font-bold uppercase tracking-widest text-[#B45309]">
+        <span class="text-[11px] font-heading font-bold uppercase tracking-widest text-[#1E50C8]">
             POWERING MISSION-CRITICAL SYSTEMS & GROWTH FOR GLOBAL ENTERPRISES
         </span>
     </div>
 
     <div class="relative w-full overflow-hidden">
         <!-- Left & Right gradient fades -->
-        <div class="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-[rgba(245,158,11,0.06)] to-transparent z-10 pointer-events-none"></div>
-        <div class="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-[rgba(245,158,11,0.06)] to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-[rgba(255,255,255,0.05)] to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-[rgba(255,255,255,0.05)] to-transparent z-10 pointer-events-none"></div>
 
         <div class="animate-marquee gap-6 py-2">
             <?php foreach ( $marqueeItems as $item ) : ?>
-                <div class="flex items-center gap-3 px-6 py-3 rounded-xl bg-[#1A1A1A] border border-[rgba(245,158,11,0.15)] hover:border-[#F59E0B] hover:shadow-[0_8px_24px_rgba(22,163,74,0.08)] transition-all shrink-0 cursor-default group">
-                    <div class="w-8 h-8 rounded-lg bg-[rgba(245,158,11,0.15)] flex items-center justify-center text-[#F59E0B] group-hover:scale-105 transition-transform">
+                <div class="flex items-center gap-3 px-6 py-3 rounded-xl bg-[#0A1628] border border-[rgba(43,110,250,0.2)] hover:border-[#2B6EFA] hover:shadow-[0_8px_24px_rgba(22,163,74,0.08)] transition-all shrink-0 cursor-default group">
+                    <div class="w-8 h-8 rounded-lg bg-[rgba(43,110,250,0.2)] flex items-center justify-center text-[#2B6EFA] group-hover:scale-105 transition-transform">
                         <?php echo $item['icon']; ?>
                     </div>
                     <div>
-                        <div class="font-heading font-semibold text-xs text-[#FFFBEB] group-hover:text-[#F59E0B] transition-colors">
+                        <div class="font-heading font-semibold text-xs text-[#FFFFFF] group-hover:text-[#2B6EFA] transition-colors">
                             <?php echo esc_html( $item['name'] ); ?>
                         </div>
-                        <div class="text-[10px] text-[#D97706] font-mono">
+                        <div class="text-[10px] text-[#8B9AB5] font-mono">
                             <?php echo esc_html( $item['category'] ); ?>
                         </div>
                     </div>

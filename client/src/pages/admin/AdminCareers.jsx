@@ -56,10 +56,10 @@ export default function AdminCareers() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-widest text-[#F59E0B]">
+          <span className="text-[10px] font-mono uppercase tracking-widest text-[#2B6EFA]">
             TALENT PIPELINE
           </span>
-          <h1 className="font-heading font-extrabold text-2xl text-[#FFFBEB]">
+          <h1 className="font-heading font-extrabold text-2xl text-[#FFFFFF]">
             Career Applications
           </h1>
         </div>
@@ -67,7 +67,7 @@ export default function AdminCareers() {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="px-3.5 py-2 rounded-xl bg-[#1A1A1A] border border-[rgba(245,158,11,0.2)] text-xs text-[#FFFBEB] focus:outline-none focus:border-[#F59E0B]"
+          className="px-3.5 py-2 rounded-xl bg-[#0A1628] border border-[rgba(43,110,250,0.2)] text-xs text-[#FFFFFF] focus:outline-none focus:border-[#2B6EFA]"
         >
           <option value="All">All Statuses</option>
           <option value="New">New</option>
@@ -78,10 +78,10 @@ export default function AdminCareers() {
         </select>
       </div>
 
-      <div className="bg-[#1A1A1A] rounded-2xl border border-[rgba(245,158,11,0.15)] overflow-hidden">
+      <div className="bg-[#0A1628] rounded-2xl border border-[rgba(43,110,250,0.2)] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#111111] text-[#FDE68A]/70 uppercase font-mono text-[10px] border-b border-[rgba(245,158,11,0.1)]">
+            <thead className="bg-[#050B1F] text-[#c4d7f5]/70 uppercase font-mono text-[10px] border-b border-[rgba(43,110,250,0.1)]">
               <tr>
                 <th className="px-5 py-3.5">Candidate</th>
                 <th className="px-5 py-3.5">Role Applied</th>
@@ -91,10 +91,10 @@ export default function AdminCareers() {
                 <th className="px-5 py-3.5 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[rgba(245,158,11,0.08)]">
+            <tbody className="divide-y divide-[rgba(43,110,250,0.08)]">
               {loading ? (
                 <tr>
-                  <td colSpan={6} className="px-5 py-12 text-center text-xs font-mono text-[#F59E0B] animate-pulse">
+                  <td colSpan={6} className="px-5 py-12 text-center text-xs font-mono text-[#2B6EFA] animate-pulse">
                     LOADING APPLICANTS...
                   </td>
                 </tr>
@@ -114,15 +114,15 @@ export default function AdminCareers() {
                 applications.map((app) => (
                   <tr key={app._id} className="hover:bg-white/5 transition-colors">
                     <td className="px-5 py-4">
-                      <div className="font-semibold text-[#FFFBEB]">{app.fullName}</div>
-                      <div className="text-[11px] text-[#FDE68A]/60">{app.email}</div>
+                      <div className="font-semibold text-[#FFFFFF]">{app.fullName}</div>
+                      <div className="text-[11px] text-[#c4d7f5]/60">{app.email}</div>
                     </td>
 
-                    <td className="px-5 py-4 text-[#F59E0B] font-medium">
+                    <td className="px-5 py-4 text-[#2B6EFA] font-medium">
                       {app.role}
                     </td>
 
-                    <td className="px-5 py-4 text-[#FDE68A]/60 whitespace-nowrap">
+                    <td className="px-5 py-4 text-[#c4d7f5]/60 whitespace-nowrap">
                       {new Date(app.createdAt).toLocaleDateString()}
                     </td>
 
@@ -131,7 +131,7 @@ export default function AdminCareers() {
                         href={app.resumeUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#111111] border border-[rgba(245,158,11,0.2)] hover:border-[#F59E0B] text-[#F59E0B] hover:text-[#FFFBEB] transition-colors"
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#050B1F] border border-[rgba(43,110,250,0.2)] hover:border-[#2B6EFA] text-[#2B6EFA] hover:text-[#FFFFFF] transition-colors"
                       >
                         <FileText className="w-3.5 h-3.5" />
                         <span>Resume</span>
@@ -142,9 +142,9 @@ export default function AdminCareers() {
                       <select
                         value={app.status}
                         onChange={(e) => handleStatusChange(app._id, e.target.value)}
-                        className={`text-[10px] font-semibold px-2 py-1 rounded-lg bg-[#111111] border focus:outline-none cursor-pointer ${
+                        className={`text-[10px] font-semibold px-2 py-1 rounded-lg bg-[#050B1F] border focus:outline-none cursor-pointer ${
                           app.status === 'New'
-                            ? 'text-[#F59E0B] border-[rgba(245,158,11,0.4)]'
+                            ? 'text-[#2B6EFA] border-[rgba(0,212,255,0.4)]'
                             : app.status === 'Shortlisted'
                             ? 'text-amber-300 border-amber-500/40'
                             : app.status === 'Interviewing'
@@ -166,14 +166,14 @@ export default function AdminCareers() {
                       <div className="flex items-center justify-end gap-2">
                         <button
                           onClick={() => setSelectedApp(app)}
-                          className="p-1.5 rounded-lg bg-white/5 hover:bg-[rgba(245,158,11,0.15)] text-[#F59E0B] transition-colors cursor-pointer"
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-[rgba(43,110,250,0.2)] text-[#2B6EFA] transition-colors cursor-pointer"
                           title="View Full Profile"
                         >
                           <Eye className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => handleDelete(app._id)}
-                          className="p-1.5 rounded-lg bg-white/5 hover:bg-red-500/20 text-[#FDE68A]/60 hover:text-red-400 transition-colors cursor-pointer"
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-red-500/20 text-[#c4d7f5]/60 hover:text-red-400 transition-colors cursor-pointer"
                           title="Delete Application"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -196,57 +196,57 @@ export default function AdminCareers() {
         subtitle={`Role: ${selectedApp?.role}`}
       >
         {selectedApp && (
-          <div className="space-y-4 text-xs text-[#FDE68A]">
-            <div className="grid grid-cols-2 gap-4 p-4 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.15)]">
+          <div className="space-y-4 text-xs text-[#c4d7f5]">
+            <div className="grid grid-cols-2 gap-4 p-4 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)]">
               <div>
-                <span className="text-[10px] uppercase font-mono block text-[#FDE68A]/50">Email</span>
-                <a href={`mailto:${selectedApp.email}`} className="text-[#FFFBEB] font-medium hover:text-[#F59E0B]">
+                <span className="text-[10px] uppercase font-mono block text-[#c4d7f5]/50">Email</span>
+                <a href={`mailto:${selectedApp.email}`} className="text-[#FFFFFF] font-medium hover:text-[#2B6EFA]">
                   {selectedApp.email}
                 </a>
               </div>
               <div>
-                <span className="text-[10px] uppercase font-mono block text-[#FDE68A]/50">Phone</span>
-                <span className="text-[#FFFBEB] font-medium">{selectedApp.phone || 'N/A'}</span>
+                <span className="text-[10px] uppercase font-mono block text-[#c4d7f5]/50">Phone</span>
+                <span className="text-[#FFFFFF] font-medium">{selectedApp.phone || 'N/A'}</span>
               </div>
               <div>
-                <span className="text-[10px] uppercase font-mono block text-[#FDE68A]/50">LinkedIn</span>
+                <span className="text-[10px] uppercase font-mono block text-[#c4d7f5]/50">LinkedIn</span>
                 {selectedApp.linkedin ? (
-                  <a href={selectedApp.linkedin} target="_blank" rel="noreferrer" className="text-[#F59E0B] hover:underline">
+                  <a href={selectedApp.linkedin} target="_blank" rel="noreferrer" className="text-[#2B6EFA] hover:underline">
                     View Profile &rarr;
                   </a>
-                ) : <span className="text-[#FDE68A]/50">None provided</span>}
+                ) : <span className="text-[#c4d7f5]/50">None provided</span>}
               </div>
               <div>
-                <span className="text-[10px] uppercase font-mono block text-[#FDE68A]/50">Portfolio / GitHub</span>
+                <span className="text-[10px] uppercase font-mono block text-[#c4d7f5]/50">Portfolio / GitHub</span>
                 {selectedApp.portfolio ? (
-                  <a href={selectedApp.portfolio} target="_blank" rel="noreferrer" className="text-[#F59E0B] hover:underline">
+                  <a href={selectedApp.portfolio} target="_blank" rel="noreferrer" className="text-[#2B6EFA] hover:underline">
                     {selectedApp.portfolio}
                   </a>
-                ) : <span className="text-[#FDE68A]/50">None provided</span>}
+                ) : <span className="text-[#c4d7f5]/50">None provided</span>}
               </div>
             </div>
 
             {selectedApp.coverLetter && (
-              <div className="p-4 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.15)]">
-                <span className="text-[10px] uppercase font-mono block text-[#F59E0B] mb-1">
+              <div className="p-4 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)]">
+                <span className="text-[10px] uppercase font-mono block text-[#2B6EFA] mb-1">
                   Candidate Cover Note:
                 </span>
-                <p className="text-[#FFFBEB] leading-relaxed whitespace-pre-wrap">
+                <p className="text-[#FFFFFF] leading-relaxed whitespace-pre-wrap">
                   {selectedApp.coverLetter}
                 </p>
               </div>
             )}
 
-            <div className="p-3 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] flex items-center justify-between">
-              <div className="flex items-center gap-2 text-[#FFFBEB]">
-                <FileText className="w-4 h-4 text-[#F59E0B]" />
+            <div className="p-3 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] flex items-center justify-between">
+              <div className="flex items-center gap-2 text-[#FFFFFF]">
+                <FileText className="w-4 h-4 text-[#2B6EFA]" />
                 <span>Applicant Resume Document</span>
               </div>
               <a
                 href={selectedApp.resumeUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="px-4 py-1.5 rounded-lg text-xs font-semibold text-[#1c1400] bg-[#F59E0B] hover:bg-[#B45309] transition-colors"
+                className="px-4 py-1.5 rounded-lg text-xs font-semibold text-white font-semibold bg-[#2B6EFA] hover:bg-[#1E50C8] transition-colors"
               >
                 Download Resume &rarr;
               </a>

@@ -35,12 +35,12 @@ export default function Modal({ isOpen, onClose, title, subtitle, children, maxW
       <div 
         role="dialog" 
         aria-modal="true"
-        className={`relative w-full ${maxWidth} rounded-2xl p-6 sm:p-8 bg-[#1A1A1A] border border-[rgba(245,158,11,0.25)] shadow-[0_20px_60px_rgba(0,0,0,0.9)] z-10 my-8 text-[#FFFBEB]`}
+        className={`relative w-full ${maxWidth} rounded-2xl p-6 sm:p-8 bg-[#0A1628] border border-[rgba(0,212,255,0.3)] shadow-[0_20px_60px_rgba(0,0,0,0.9)] z-10 my-8 text-[#FFFFFF]`}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-lg text-[#FDE68A] hover:text-[#F59E0B] hover:bg-[rgba(245,158,11,0.1)] transition-colors cursor-pointer"
+          className="absolute top-5 right-5 p-2 rounded-lg text-[#c4d7f5] hover:text-[#2B6EFA] hover:bg-[rgba(43,110,250,0.1)] transition-colors cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -50,12 +50,12 @@ export default function Modal({ isOpen, onClose, title, subtitle, children, maxW
         {(title || subtitle) && (
           <div className="mb-6 pr-8">
             {title && (
-              <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#FFFBEB] mb-1">
+              <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#FFFFFF] mb-1">
                 {title}
               </h3>
             )}
             {subtitle && (
-              <p className="text-xs sm:text-sm text-[#FDE68A]">
+              <p className="text-xs sm:text-sm text-[#c4d7f5]">
                 {subtitle}
               </p>
             )}

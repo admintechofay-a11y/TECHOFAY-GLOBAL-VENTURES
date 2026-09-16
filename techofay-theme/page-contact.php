@@ -38,7 +38,7 @@ $preselected_product = isset( $_GET['product'] ) ? sanitize_text_field( $_GET['p
                 <h2 class="font-heading font-bold text-2xl text-white">Global Command Channels</h2>
 
                 <div class="space-y-4 text-xs sm:text-sm">
-                    <div class="p-4 rounded-2xl bg-[#1A1A1A]/5 border border-white/10 flex items-start gap-4">
+                    <div class="p-4 rounded-2xl bg-[#0A1628]/5 border border-white/10 flex items-start gap-4">
                         <div class="w-10 h-10 rounded-xl bg-[#2B6EFA]/15 border border-[#2B6EFA]/30 flex items-center justify-center text-[#00D4FF] shrink-0">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                         </div>
@@ -48,7 +48,7 @@ $preselected_product = isset( $_GET['product'] ) ? sanitize_text_field( $_GET['p
                         </div>
                     </div>
 
-                    <div class="p-4 rounded-2xl bg-[#1A1A1A]/5 border border-white/10 flex items-start gap-4">
+                    <div class="p-4 rounded-2xl bg-[#0A1628]/5 border border-white/10 flex items-start gap-4">
                         <div class="w-10 h-10 rounded-xl bg-[#2B6EFA]/15 border border-[#2B6EFA]/30 flex items-center justify-center text-[#00D4FF] shrink-0">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                         </div>
@@ -59,7 +59,7 @@ $preselected_product = isset( $_GET['product'] ) ? sanitize_text_field( $_GET['p
                         </div>
                     </div>
 
-                    <div class="p-4 rounded-2xl bg-[#1A1A1A]/5 border border-white/10 flex items-start gap-4">
+                    <div class="p-4 rounded-2xl bg-[#0A1628]/5 border border-white/10 flex items-start gap-4">
                         <div class="w-10 h-10 rounded-xl bg-[#2B6EFA]/15 border border-[#2B6EFA]/30 flex items-center justify-center text-[#00D4FF] shrink-0">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
                         </div>
@@ -118,22 +118,22 @@ $preselected_product = isset( $_GET['product'] ) ? sanitize_text_field( $_GET['p
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-[#8B9AB5] mb-1.5 uppercase">Full Name *</label>
-                            <input type="text" name="fullName" required class="w-full px-4 py-3 rounded-xl bg-[#1A1A1A]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="Marcus Vance" />
+                            <input type="text" name="fullName" required class="w-full px-4 py-3 rounded-xl bg-[#0A1628]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="Marcus Vance" />
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-[#8B9AB5] mb-1.5 uppercase">Corporate Email *</label>
-                            <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-[#1A1A1A]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="marcus@enterprise.com" />
+                            <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-[#0A1628]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="marcus@enterprise.com" />
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-[#8B9AB5] mb-1.5 uppercase">Direct Phone *</label>
-                            <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-xl bg-[#1A1A1A]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="+91 93593 39000" />
+                            <input type="tel" name="phone" required class="w-full px-4 py-3 rounded-xl bg-[#0A1628]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="+91 93593 39000" />
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-[#8B9AB5] mb-1.5 uppercase">Company Name</label>
-                            <input type="text" name="companyName" class="w-full px-4 py-3 rounded-xl bg-[#1A1A1A]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="Vance Global Inc." />
+                            <input type="text" name="companyName" class="w-full px-4 py-3 rounded-xl bg-[#0A1628]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="Vance Global Inc." />
                         </div>
                     </div>
 
@@ -167,7 +167,7 @@ $preselected_product = isset( $_GET['product'] ) ? sanitize_text_field( $_GET['p
 
                     <div>
                         <label class="block text-xs font-semibold text-[#8B9AB5] mb-1.5 uppercase">Project Scope / Technical Requirements *</label>
-                        <textarea name="message" required rows="4" class="w-full px-4 py-3 rounded-xl bg-[#1A1A1A]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="Brief description of current infrastructure, user concurrency expectations, key compliance certifications required, or desired deployment timeline..."></textarea>
+                        <textarea name="message" required rows="4" class="w-full px-4 py-3 rounded-xl bg-[#0A1628]/5 border border-white/10 text-white text-xs focus:outline-none focus:border-[#00D4FF]" placeholder="Brief description of current infrastructure, user concurrency expectations, key compliance certifications required, or desired deployment timeline..."></textarea>
                     </div>
 
                     <!-- Feedback Alert Message -->

@@ -39,26 +39,26 @@ $stats = array(
 ?>
 
 <section class="relative z-20 -mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="rounded-2xl p-6 sm:p-8 bg-[rgba(245,158,11,0.06)] border border-[rgba(245,158,11,0.25)] shadow-sm relative overflow-hidden group">
+    <div class="rounded-2xl p-6 sm:p-8 bg-[rgba(255,255,255,0.05)] border border-[rgba(0,212,255,0.3)] shadow-sm relative overflow-hidden group">
         <!-- Top subtle green accent line -->
-        <div class="absolute top-0 left-0 right-0 h-[2px] bg-[#F59E0B] opacity-70"></div>
+        <div class="absolute top-0 left-0 right-0 h-[2px] bg-[#2B6EFA] opacity-70"></div>
 
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-[rgba(245,158,11,0.25)]">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-[rgba(0,212,255,0.3)]">
             <?php foreach ( $stats as $idx => $stat ) : ?>
                 <div class="pt-4 sm:pt-0 <?php echo $idx !== 0 ? 'sm:pl-6 lg:pl-8' : ''; ?> group/stat hover:translate-y-[-2px] transition-transform">
                     <div class="flex items-center gap-3 mb-2">
-                        <div class="w-9 h-9 rounded-lg bg-[rgba(245,158,11,0.15)] flex items-center justify-center text-[#F59E0B] transition-all">
+                        <div class="w-9 h-9 rounded-lg bg-[rgba(43,110,250,0.2)] flex items-center justify-center text-[#2B6EFA] transition-all">
                             <?php echo $stat['icon']; ?>
                         </div>
-                        <div class="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#F59E0B] flex items-center gap-1.5">
+                        <div class="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-[#2B6EFA] flex items-center gap-1.5">
                             <span><?php echo esc_html( $stat['value'] ); ?></span>
-                            <span class="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-ping"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#2B6EFA] animate-ping"></span>
                         </div>
                     </div>
-                    <div class="font-semibold text-xs sm:text-sm text-[#FFFBEB] group-hover/stat:text-[#F59E0B] transition-colors">
+                    <div class="font-semibold text-xs sm:text-sm text-[#FFFFFF] group-hover/stat:text-[#2B6EFA] transition-colors">
                         <?php echo esc_html( $stat['label'] ); ?>
                     </div>
-                    <div class="text-[11px] text-[#D97706] mt-0.5">
+                    <div class="text-[11px] text-[#8B9AB5] mt-0.5">
                         <?php echo esc_html( $stat['sublabel'] ); ?>
                     </div>
                 </div>

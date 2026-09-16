@@ -132,7 +132,7 @@ function techofay_enqueue_scripts() {
     // Google Fonts: Raleway, Plus Jakarta Sans, Inter, JetBrains Mono
     wp_enqueue_style(
         'techofay-google-fonts',
-        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Raleway:wght@700;800&display=swap',
+        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@600;700;800;900&display=swap',
         array(),
         null
     );

@@ -83,27 +83,27 @@ $fallback_team = array(
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="p-6 rounded-2xl bg-[#1A1A1A]/5 border border-[#00D4FF]/40 border-l-4 border-l-[#00D4FF]">
+            <div class="p-6 rounded-2xl bg-[#0A1628]/5 border border-[#00D4FF]/40 border-l-4 border-l-[#00D4FF]">
                 <span class="text-[10px] font-mono text-[#00D4FF] uppercase block mb-1">GLOBAL HEADQUARTERS</span>
                 <h3 class="font-heading font-bold text-lg text-white">Vadodara, Gujarat</h3>
                 <p class="text-xs text-[#8B9AB5] mt-2">Executive operations, global delivery command center, core engineering labs.</p>
             </div>
-            <div class="p-6 rounded-2xl bg-[#1A1A1A]/5 border border-white/10 border-l-4 border-l-[#2B6EFA]">
+            <div class="p-6 rounded-2xl bg-[#0A1628]/5 border border-white/10 border-l-4 border-l-[#2B6EFA]">
                 <span class="text-[10px] font-mono text-[#2B6EFA] uppercase block mb-1">TECH CAPABILITY HUB</span>
                 <h3 class="font-heading font-bold text-lg text-white">Bangalore (ETV Marathahalli)</h3>
                 <p class="text-xs text-[#8B9AB5] mt-2">Silicon Valley of India — Advanced cloud orchestration, AI R&D, and SaaS development.</p>
             </div>
-            <div class="p-6 rounded-2xl bg-[#1A1A1A]/5 border border-white/10 border-l-4 border-l-[#2B6EFA]">
+            <div class="p-6 rounded-2xl bg-[#0A1628]/5 border border-white/10 border-l-4 border-l-[#2B6EFA]">
                 <span class="text-[10px] font-mono text-[#2B6EFA] uppercase block mb-1">SOUTHERN BRANCH</span>
                 <h3 class="font-heading font-bold text-lg text-white">Chennai, Tamil Nadu</h3>
                 <p class="text-xs text-[#8B9AB5] mt-2">Enterprise client support, QA automated testing harnesses, telecom integrations.</p>
             </div>
-            <div class="p-6 rounded-2xl bg-[#1A1A1A]/5 border border-white/10 border-l-4 border-l-[#2B6EFA]">
+            <div class="p-6 rounded-2xl bg-[#0A1628]/5 border border-white/10 border-l-4 border-l-[#2B6EFA]">
                 <span class="text-[10px] font-mono text-[#2B6EFA] uppercase block mb-1">NORTHERN REGIONAL HUB</span>
                 <h3 class="font-heading font-bold text-lg text-white">Ganjdundwara, Uttar Pradesh</h3>
                 <p class="text-xs text-[#8B9AB5] mt-2">Regional technical dispatch, public sector software deployments, infrastructure support.</p>
             </div>
-            <div class="p-6 rounded-2xl bg-[#1A1A1A]/5 border border-[#00D4FF]/40 border-l-4 border-l-[#00D4FF]">
+            <div class="p-6 rounded-2xl bg-[#0A1628]/5 border border-[#00D4FF]/40 border-l-4 border-l-[#00D4FF]">
                 <span class="text-[10px] font-mono text-[#00D4FF] uppercase block mb-1">EUROPEAN OPERATIONS</span>
                 <h3 class="font-heading font-bold text-lg text-white">Edinburgh, Scotland (UK)</h3>
                 <p class="text-xs text-[#8B9AB5] mt-2">UK & European enterprise governance, GDPR compliance, financial services consulting.</p>

@@ -89,10 +89,10 @@ export default function AdminSettings() {
   return (
     <div className="space-y-8 max-w-4xl">
       <div>
-        <span className="text-[10px] font-mono uppercase tracking-widest text-[#F59E0B]">
+        <span className="text-[10px] font-mono uppercase tracking-widest text-[#2B6EFA]">
           CONFIGURATION
         </span>
-        <h1 className="font-heading font-extrabold text-2xl text-[#FFFBEB]">
+        <h1 className="font-heading font-extrabold text-2xl text-[#FFFFFF]">
           System & Enterprise Settings
         </h1>
       </div>
@@ -111,16 +111,16 @@ export default function AdminSettings() {
       )}
 
       {/* Company Info Form */}
-      <div className="bg-[#1A1A1A] p-6 sm:p-8 rounded-2xl border border-[rgba(245,158,11,0.15)]">
+      <div className="bg-[#0A1628] p-6 sm:p-8 rounded-2xl border border-[rgba(43,110,250,0.2)]">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-[rgba(245,158,11,0.15)] flex items-center justify-center text-[#F59E0B]">
+          <div className="w-10 h-10 rounded-xl bg-[rgba(43,110,250,0.2)] flex items-center justify-center text-[#2B6EFA]">
             <Building className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="font-heading font-bold text-base text-[#FFFBEB]">
+            <h3 className="font-heading font-bold text-base text-[#FFFFFF]">
               Corporate Profile & Coordinates
             </h3>
-            <p className="text-xs text-[#FDE68A]/60">
+            <p className="text-xs text-[#c4d7f5]/60">
               Contact details reflected across the public website and notification templates
             </p>
           </div>
@@ -129,53 +129,53 @@ export default function AdminSettings() {
         <form onSubmit={handleSaveSettings} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-[#FDE68A] mb-1">Company Name</label>
+              <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Company Name</label>
               <input
                 type="text"
                 value={settings.companyName}
                 onChange={(e) => setSettings({ ...settings, companyName: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+                className="w-full px-3.5 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-[#FDE68A] mb-1">Corporate Tagline</label>
+              <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Corporate Tagline</label>
               <input
                 type="text"
                 value={settings.tagline}
                 onChange={(e) => setSettings({ ...settings, tagline: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+                className="w-full px-3.5 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-[#FDE68A] mb-1">Contact Email</label>
+              <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Contact Email</label>
               <input
                 type="email"
                 value={settings.email}
                 onChange={(e) => setSettings({ ...settings, email: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+                className="w-full px-3.5 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-[#FDE68A] mb-1">Phone Number</label>
+              <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Phone Number</label>
               <input
                 type="text"
                 value={settings.phone}
                 onChange={(e) => setSettings({ ...settings, phone: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+                className="w-full px-3.5 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-[#FDE68A] mb-1">Headquarters Address</label>
+            <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Headquarters Address</label>
             <input
               type="text"
               value={settings.address}
               onChange={(e) => setSettings({ ...settings, address: e.target.value })}
-              className="w-full px-3.5 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+              className="w-full px-3.5 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
             />
           </div>
 
@@ -183,7 +183,7 @@ export default function AdminSettings() {
             <button
               type="submit"
               disabled={savingSettings}
-              className="px-6 py-2.5 rounded-xl text-xs font-semibold text-[#1c1400] bg-[#F59E0B] hover:bg-[#B45309] shadow-[0_0_12px_rgba(245,158,11,0.25)] flex items-center gap-2 cursor-pointer transition-colors"
+              className="px-6 py-2.5 rounded-xl text-xs font-semibold text-white font-semibold bg-[#2B6EFA] hover:bg-[#1E50C8] shadow-[0_0_12px_rgba(0,212,255,0.3)] flex items-center gap-2 cursor-pointer transition-colors"
             >
               <Save className="w-4 h-4" />
               <span>{savingSettings ? 'Saving...' : 'Save Corporate Profile'}</span>
@@ -193,16 +193,16 @@ export default function AdminSettings() {
       </div>
 
       {/* Change Password Form */}
-      <div className="bg-[#1A1A1A] p-6 sm:p-8 rounded-2xl border border-[rgba(245,158,11,0.15)]">
+      <div className="bg-[#0A1628] p-6 sm:p-8 rounded-2xl border border-[rgba(43,110,250,0.2)]">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-xl bg-[rgba(245,158,11,0.15)] flex items-center justify-center text-[#FCD34D]">
+          <div className="w-10 h-10 rounded-xl bg-[rgba(43,110,250,0.2)] flex items-center justify-center text-[#00D4FF]">
             <KeyRound className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="font-heading font-bold text-base text-[#FFFBEB]">
+            <h3 className="font-heading font-bold text-base text-[#FFFFFF]">
               Administrator Security Credentials
             </h3>
-            <p className="text-xs text-[#FDE68A]/60">
+            <p className="text-xs text-[#c4d7f5]/60">
               Update your master administrator password for JWT console access
             </p>
           </div>
@@ -211,33 +211,33 @@ export default function AdminSettings() {
         <form onSubmit={handlePasswordUpdate} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-medium text-[#FDE68A] mb-1">Current Password</label>
+              <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Current Password</label>
               <input
                 type="password"
                 required
                 value={passwordData.currentPassword}
                 onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+                className="w-full px-3.5 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-[#FDE68A] mb-1">New Password</label>
+              <label className="block text-xs font-medium text-[#c4d7f5] mb-1">New Password</label>
               <input
                 type="password"
                 required
                 value={passwordData.newPassword}
                 onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+                className="w-full px-3.5 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-[#FDE68A] mb-1">Confirm New Password</label>
+              <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Confirm New Password</label>
               <input
                 type="password"
                 required
                 value={passwordData.confirmPassword}
                 onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+                className="w-full px-3.5 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
               />
             </div>
           </div>
@@ -246,9 +246,9 @@ export default function AdminSettings() {
             <button
               type="submit"
               disabled={savingPassword}
-              className="px-6 py-2.5 rounded-xl text-xs font-semibold text-[#FFFBEB] bg-[#111111] hover:bg-white/5 border border-[rgba(245,158,11,0.3)] hover:border-[#F59E0B] transition-all flex items-center gap-2 cursor-pointer"
+              className="px-6 py-2.5 rounded-xl text-xs font-semibold text-[#FFFFFF] bg-[#050B1F] hover:bg-white/5 border border-[rgba(43,110,250,0.3)] hover:border-[#2B6EFA] transition-all flex items-center gap-2 cursor-pointer"
             >
-              <ShieldCheck className="w-4 h-4 text-[#F59E0B]" />
+              <ShieldCheck className="w-4 h-4 text-[#2B6EFA]" />
               <span>{savingPassword ? 'Updating...' : 'Update Password'}</span>
             </button>
           </div>

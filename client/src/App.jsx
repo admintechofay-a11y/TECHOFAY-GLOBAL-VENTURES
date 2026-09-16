@@ -32,8 +32,8 @@ const AdminSettings = lazy(() => import('./pages/admin/AdminSettings'));
 
 // Page fallback — shown while lazy chunks download
 const PageLoader = () => (
-  <div className="min-h-[70vh] bg-white flex items-center justify-center">
-    <div className="w-8 h-8 border-2 border-[#16A34A] border-t-transparent rounded-full animate-spin" />
+  <div className="min-h-[70vh] bg-[#050B1F] flex items-center justify-center">
+    <div className="w-8 h-8 border-2 border-[#2B6EFA] border-t-transparent rounded-full animate-spin" />
   </div>
 );
 
@@ -52,17 +52,17 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-white flex flex-col items-center justify-center text-center p-8">
-          <div className="w-16 h-16 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center mx-auto mb-4">
-            <span className="text-red-500 font-bold text-2xl">!</span>
+        <div className="min-h-screen bg-[#050B1F] flex flex-col items-center justify-center text-center p-8">
+          <div className="w-16 h-16 rounded-2xl bg-red-950/40 border border-red-500/30 flex items-center justify-center mx-auto mb-4">
+            <span className="text-red-400 font-bold text-2xl">!</span>
           </div>
-          <h2 className="font-heading font-bold text-xl text-gray-900 mb-2">Something went wrong</h2>
-          <p className="text-gray-500 text-sm mb-6 max-w-sm">
+          <h2 className="font-heading font-bold text-xl text-white mb-2">Something went wrong</h2>
+          <p className="text-[#8B9AB5] text-sm mb-6 max-w-sm">
             {this.state.error?.message || 'An unexpected error occurred while rendering this page.'}
           </p>
           <button
             onClick={() => (window.location.href = '/')}
-            className="px-6 py-3 bg-[#16A34A] hover:bg-[#166534] text-white rounded-lg text-sm font-medium transition-colors"
+            className="px-6 py-3 bg-[#2B6EFA] hover:bg-[#1E50C8] text-white rounded-lg text-sm font-semibold transition-colors shadow-lg shadow-[#2B6EFA]/20"
           >
             Return to Home
           </button>

@@ -40,9 +40,9 @@ export default function NetworkNodes3D() {
     const smallGeo = new THREE.SphereGeometry(0.06, 8, 8);
     const packetGeo = new THREE.SphereGeometry(0.04, 6, 6);
 
-    const hubMat = new THREE.MeshBasicMaterial({ color: 0xF59E0B, transparent: true, opacity: isLight ? 0.75 : 0.95 });
-    const smallMat = new THREE.MeshBasicMaterial({ color: 0xFCD34D, transparent: true, opacity: isLight ? 0.5 : 0.75 });
-    const packetMat = new THREE.MeshBasicMaterial({ color: 0xFFFBEB, transparent: true, opacity: 0.95 });
+    const hubMat = new THREE.MeshBasicMaterial({ color: 0x2B6EFA, transparent: true, opacity: isLight ? 0.75 : 0.95 });
+    const smallMat = new THREE.MeshBasicMaterial({ color: 0x00D4FF, transparent: true, opacity: isLight ? 0.5 : 0.85 });
+    const packetMat = new THREE.MeshBasicMaterial({ color: 0xFFFFFF, transparent: true, opacity: 0.95 });
 
     const nodes = [];
 
@@ -77,7 +77,7 @@ export default function NetworkNodes3D() {
     linesGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3).setUsage(THREE.DynamicDrawUsage));
 
     const lineMat = new THREE.LineBasicMaterial({
-      color: 0xF59E0B,
+      color: 0x2B6EFA,
       transparent: true,
       opacity: isLight ? 0.20 : 0.35
     });
@@ -91,9 +91,9 @@ export default function NetworkNodes3D() {
     hubLinesGeo.setAttribute('position', new THREE.BufferAttribute(hubLinePositions, 3).setUsage(THREE.DynamicDrawUsage));
 
     const hubLineMat = new THREE.LineBasicMaterial({
-      color: 0xFCD34D,
+      color: 0x00D4FF,
       transparent: true,
-      opacity: isLight ? 0.30 : 0.50
+      opacity: isLight ? 0.30 : 0.55
     });
     const hubLinesMesh = new THREE.LineSegments(hubLinesGeo, hubLineMat);
     scene.add(hubLinesMesh);

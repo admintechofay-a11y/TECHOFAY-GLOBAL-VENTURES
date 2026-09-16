@@ -31,11 +31,11 @@ export default function SoftwareStack3D() {
 
     const isLight = theme === 'light';
 
-    // Amber / Gold Theme
-    const amber = 0xF59E0B;
-    const gold = 0xFCD34D;
-    const deepAmber = 0xB45309;
-    const warmWhite = 0xFFFBEB;
+    // Electric Blue / Cyber Cyan Theme
+    const amber = 0x2B6EFA;
+    const gold = 0x00D4FF;
+    const deepAmber = 0x7B2FBE;
+    const warmWhite = 0xFFFFFF;
 
     const stackGroup = new THREE.Group();
     scene.add(stackGroup);

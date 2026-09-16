@@ -17,17 +17,17 @@ export default function ClientMarquee() {
   const marqueeItems = [...clients, ...clients];
 
   return (
-    <section className="py-14 bg-[#161616] border-y border-[rgba(245,158,11,0.15)] overflow-hidden">
+    <section className="py-14 bg-[#070E24] border-y border-[rgba(43,110,250,0.2)] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 text-center">
-        <span className="text-[11px] font-heading font-bold uppercase tracking-widest text-[#F59E0B]">
+        <span className="text-[11px] font-heading font-bold uppercase tracking-widest text-[#2B6EFA]">
           POWERING MISSION-CRITICAL SYSTEMS & GROWTH FOR GLOBAL ENTERPRISES
         </span>
       </div>
 
       <div className="relative w-full overflow-hidden">
         {/* Left & Right gradient fades */}
-        <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-[#161616] to-transparent z-10 pointer-events-none" />
-        <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-[#161616] to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-[#070E24] to-transparent z-10 pointer-events-none" />
+        <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-[#070E24] to-transparent z-10 pointer-events-none" />
 
         <div className="animate-marquee gap-6 py-2">
           {marqueeItems.map((item, idx) => {
@@ -35,16 +35,16 @@ export default function ClientMarquee() {
             return (
               <div
                 key={idx}
-                className="flex items-center gap-3 px-6 py-3 rounded-xl bg-[rgba(245,158,11,0.06)] border border-[rgba(245,158,11,0.15)] hover:border-[#F59E0B] hover:shadow-[0_8px_24px_rgba(245,158,11,0.15)] transition-all shrink-0 cursor-default group"
+                className="flex items-center gap-3 px-6 py-3 rounded-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(43,110,250,0.2)] hover:border-[#2B6EFA] hover:shadow-[0_8px_24px_rgba(43,110,250,0.2)] transition-all shrink-0 cursor-default group"
               >
-                <div className="w-8 h-8 rounded-lg bg-[rgba(245,158,11,0.15)] flex items-center justify-center text-[#F59E0B] group-hover:scale-105 transition-transform">
+                <div className="w-8 h-8 rounded-lg bg-[rgba(43,110,250,0.2)] flex items-center justify-center text-[#2B6EFA] group-hover:scale-105 transition-transform">
                   <Icon className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="font-heading font-semibold text-xs text-[#FFFBEB] group-hover:text-[#FCD34D] transition-colors">
+                  <div className="font-heading font-semibold text-xs text-[#FFFFFF] group-hover:text-[#00D4FF] transition-colors">
                     {item.name}
                   </div>
-                  <div className="text-[10px] text-[#FDE68A] font-mono">
+                  <div className="text-[10px] text-[#c4d7f5] font-mono">
                     {item.category}
                   </div>
                 </div>

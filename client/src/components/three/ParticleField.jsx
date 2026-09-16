@@ -39,9 +39,9 @@ export default function ParticleField() {
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const color1 = new THREE.Color('#F59E0B'); // Amber
-    const color2 = new THREE.Color('#FCD34D'); // Light Gold
-    const color3 = new THREE.Color('#B45309'); // Dark Amber
+    const color1 = new THREE.Color('#2B6EFA'); // Electric Blue
+    const color2 = new THREE.Color('#00D4FF'); // Cyber Cyan
+    const color3 = new THREE.Color('#7B2FBE'); // Radiant Violet
 
     for (let i = 0; i < particleCount; i++) {
       const x = (Math.random() - 0.5) * 550;
@@ -72,7 +72,7 @@ export default function ParticleField() {
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3).setUsage(THREE.DynamicDrawUsage));
     particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    // Particle Material - amber (#F59E0B) at opacity 0.15
+    // Particle Material - Electric Blue (#2B6EFA) at opacity 0.15
     const pMaterial = new THREE.PointsMaterial({
       size: 3.5,
       vertexColors: true,

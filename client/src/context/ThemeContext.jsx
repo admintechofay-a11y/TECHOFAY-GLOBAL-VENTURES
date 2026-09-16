@@ -12,8 +12,8 @@ export function ThemeProvider({ children }) {
 
     root.classList.remove('light');
     root.classList.add('dark');
-    body.classList.remove('bg-white', 'text-[#111827]', 'bg-[#0C0F0A]', 'text-[#F0FDF4]');
-    body.classList.add('bg-[#111111]', 'text-[#FFFBEB]');
+    body.classList.remove('bg-white', 'text-[#111827]', 'bg-[#0C0F0A]', 'text-[#F0FDF4]', 'bg-[#050B1F]', 'text-[#FFFFFF]');
+    body.classList.add('bg-[#050B1F]', 'text-[#FFFFFF]');
   }, [theme]);
 
   const toggleTheme = () => {

@@ -35,7 +35,7 @@ export default function WorldGlobe3D() {
     const globeGeo = new THREE.SphereGeometry(75, 28, 28);
     const globeMat = new THREE.MeshBasicMaterial({
       wireframe: true,
-      color: 0xF59E0B,
+      color: 0x2B6EFA,
       opacity: isLight ? 0.20 : 0.28,
       transparent: true
     });
@@ -51,7 +51,7 @@ export default function WorldGlobe3D() {
       const y = 75 * Math.sin((lat * Math.PI) / 180);
       const latGeo = new THREE.TorusGeometry(radAtLat, 0.4, 4, isMobile ? 36 : 60);
       const latMat = new THREE.MeshBasicMaterial({
-        color: 0xFCD34D,
+        color: 0x00D4FF,
         opacity: isLight ? 0.15 : 0.22,
         transparent: true
       });
@@ -76,11 +76,11 @@ export default function WorldGlobe3D() {
     };
 
     const pinCities = [
-      { name: 'Vadodara', lat: 22.3, lng: 73.2, color: 0xF59E0B, isHq: true },
-      { name: 'Mumbai', lat: 19.0, lng: 72.8, color: 0xFCD34D },
-      { name: 'Bangalore', lat: 12.9, lng: 77.6, color: 0xFCD34D },
-      { name: 'Dubai', lat: 25.2, lng: 55.3, color: 0xB45309 },
-      { name: 'London', lat: 51.5, lng: -0.1, color: 0xFFFBEB }
+      { name: 'Vadodara', lat: 22.3, lng: 73.2, color: 0x00D4FF, isHq: true },
+      { name: 'Mumbai', lat: 19.0, lng: 72.8, color: 0x2B6EFA },
+      { name: 'Bangalore', lat: 12.9, lng: 77.6, color: 0x2B6EFA },
+      { name: 'Dubai', lat: 25.2, lng: 55.3, color: 0x7B2FBE },
+      { name: 'London', lat: 51.5, lng: -0.1, color: 0xFFFFFF }
     ];
 
     const pinGeo = new THREE.SphereGeometry(2.5, 8, 8);

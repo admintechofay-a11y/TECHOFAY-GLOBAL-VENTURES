@@ -49,13 +49,13 @@ export default function ServiceIcon3D({ iconType = 'cybersecurity', className = 
     const rootGroup = new THREE.Group();
     scene.add(rootGroup);
 
-    // Palette (Charcoal + Amber Design System)
-    const C_AMBER = 0xF59E0B;   // Primary Amber
-    const C_GOLD = 0xFCD34D;    // Highlight Gold
-    const C_PALE = 0xFDE68A;    // Pale Gold
-    const C_BRONZE = 0xB45309;  // Deep Amber Bronze
-    const C_SLATE = 0x262626;   // Dark Charcoal Slate
-    const C_WHITE = 0xFFFBEB;   // Warm White
+    // Palette (Dark Navy + Electric Blue & Neon Cyan Design System)
+    const C_AMBER = 0x2B6EFA;   // Electric Blue Primary
+    const C_GOLD = 0x00D4FF;    // Cyber Neon Cyan Accent
+    const C_PALE = 0xc4d7f5;    // Ice Blue Accent
+    const C_BRONZE = 0x7B2FBE;  // Radiant Violet Accent
+    const C_SLATE = 0x0A1628;   // Dark Space Navy Panel
+    const C_WHITE = 0xFFFFFF;   // Pure White
 
     // Mouse Tracking for Interactive Parallax
     let mouseX = 0;

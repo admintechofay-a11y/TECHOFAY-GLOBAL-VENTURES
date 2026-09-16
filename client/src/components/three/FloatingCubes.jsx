@@ -46,7 +46,7 @@ export default function FloatingCubes() {
     activeConfigs.forEach((cfg) => {
       const boxGeo = new THREE.BoxGeometry(cfg.size, cfg.size, cfg.size);
       const edges = new THREE.EdgesGeometry(boxGeo);
-      const cubeColors = [0xF59E0B, 0xFCD34D, 0xF59E0B, 0xB45309];
+      const cubeColors = [0x2B6EFA, 0x00D4FF, 0x2B6EFA, 0x7B2FBE];
       const material = new THREE.LineBasicMaterial({
         color: cubeColors[cubes.length % cubeColors.length],
         opacity: isMobile ? baseOpacity * 0.5 : baseOpacity,

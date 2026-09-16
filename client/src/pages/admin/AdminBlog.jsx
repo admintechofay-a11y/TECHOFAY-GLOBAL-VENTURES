@@ -147,17 +147,17 @@ export default function AdminBlog() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-widest text-[#F59E0B]">
+          <span className="text-[10px] font-mono uppercase tracking-widest text-[#2B6EFA]">
             PUBLICATIONS & RESEARCH
           </span>
-          <h1 className="font-heading font-extrabold text-2xl text-[#FFFBEB]">
+          <h1 className="font-heading font-extrabold text-2xl text-[#FFFFFF]">
             Blog Post Management
           </h1>
         </div>
 
         <button
           onClick={handleOpenCreate}
-          className="px-4 py-2.5 rounded-xl text-xs font-semibold text-[#1c1400] bg-[#F59E0B] hover:bg-[#B45309] shadow-[0_0_12px_rgba(245,158,11,0.25)] transition-all flex items-center gap-2 self-start sm:self-auto cursor-pointer"
+          className="px-4 py-2.5 rounded-xl text-xs font-semibold text-white font-semibold bg-[#2B6EFA] hover:bg-[#1E50C8] shadow-[0_0_12px_rgba(0,212,255,0.3)] transition-all flex items-center gap-2 self-start sm:self-auto cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Author New Article</span>
@@ -165,10 +165,10 @@ export default function AdminBlog() {
       </div>
 
       {/* Posts Table */}
-      <div className="bg-[#1A1A1A] rounded-2xl border border-[rgba(245,158,11,0.15)] overflow-hidden">
+      <div className="bg-[#0A1628] rounded-2xl border border-[rgba(43,110,250,0.2)] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#111111] text-[#FDE68A]/70 uppercase font-mono text-[10px] border-b border-[rgba(245,158,11,0.1)]">
+            <thead className="bg-[#050B1F] text-[#c4d7f5]/70 uppercase font-mono text-[10px] border-b border-[rgba(43,110,250,0.1)]">
               <tr>
                 <th className="px-5 py-3.5">Title & Category</th>
                 <th className="px-5 py-3.5">Author</th>
@@ -177,10 +177,10 @@ export default function AdminBlog() {
                 <th className="px-5 py-3.5 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[rgba(245,158,11,0.08)]">
+            <tbody className="divide-y divide-[rgba(43,110,250,0.08)]">
               {loading ? (
                 <tr>
-                  <td colSpan={5} className="px-5 py-12 text-center text-xs font-mono text-[#F59E0B] animate-pulse">
+                  <td colSpan={5} className="px-5 py-12 text-center text-xs font-mono text-[#2B6EFA] animate-pulse">
                     LOADING ARTICLES...
                   </td>
                 </tr>
@@ -200,20 +200,20 @@ export default function AdminBlog() {
                 posts.map((post) => (
                   <tr key={post._id} className="hover:bg-white/5 transition-colors">
                     <td className="px-5 py-4 max-w-sm">
-                      <div className="font-semibold text-[#FFFBEB] text-xs line-clamp-1">{post.title}</div>
+                      <div className="font-semibold text-[#FFFFFF] text-xs line-clamp-1">{post.title}</div>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="text-[10px] font-mono text-[#F59E0B] px-2 py-0.5 rounded bg-[rgba(245,158,11,0.12)]">
+                        <span className="text-[10px] font-mono text-[#2B6EFA] px-2 py-0.5 rounded bg-[rgba(43,110,250,0.12)]">
                           {post.category}
                         </span>
-                        <span className="text-[10px] text-[#FDE68A]/50">{post.readTime}</span>
+                        <span className="text-[10px] text-[#c4d7f5]/50">{post.readTime}</span>
                       </div>
                     </td>
 
-                    <td className="px-5 py-4 text-[#FDE68A]">
+                    <td className="px-5 py-4 text-[#c4d7f5]">
                       {post.author?.name || 'Techofay Team'}
                     </td>
 
-                    <td className="px-5 py-4 font-mono text-[#F59E0B]">
+                    <td className="px-5 py-4 font-mono text-[#2B6EFA]">
                       {post.views || 0}
                     </td>
 
@@ -233,21 +233,21 @@ export default function AdminBlog() {
                           href={`/blog/${post.slug}`}
                           target="_blank"
                           rel="noreferrer"
-                          className="p-1.5 rounded-lg bg-white/5 hover:bg-[rgba(245,158,11,0.15)] text-[#F59E0B] transition-colors"
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-[rgba(43,110,250,0.2)] text-[#2B6EFA] transition-colors"
                           title="View Live Article"
                         >
                           <Eye className="w-4 h-4" />
                         </a>
                         <button
                           onClick={() => handleOpenEdit(post)}
-                          className="p-1.5 rounded-lg bg-white/5 hover:bg-[rgba(245,158,11,0.15)] text-[#FCD34D] hover:text-[#FFFBEB] transition-colors cursor-pointer"
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-[rgba(43,110,250,0.2)] text-[#00D4FF] hover:text-[#FFFFFF] transition-colors cursor-pointer"
                           title="Edit Article"
                         >
                           <Edit className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => handleDelete(post._id)}
-                          className="p-1.5 rounded-lg bg-white/5 hover:bg-red-500/20 text-[#FDE68A]/60 hover:text-red-400 transition-colors cursor-pointer"
+                          className="p-1.5 rounded-lg bg-white/5 hover:bg-red-500/20 text-[#c4d7f5]/60 hover:text-red-400 transition-colors cursor-pointer"
                           title="Delete Article"
                         >
                           <Trash2 className="w-4 h-4" />
@@ -272,24 +272,24 @@ export default function AdminBlog() {
       >
         <form onSubmit={handleSave} className="space-y-4">
           <div>
-            <label className="block text-xs font-medium text-[#FDE68A] mb-1">Article Title *</label>
+            <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Article Title *</label>
             <input
               type="text"
               required
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
               placeholder="e.g., Zero Trust Architecture in Enterprise Cloud Environments"
-              className="w-full px-3.5 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+              className="w-full px-3.5 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-medium text-[#FDE68A] mb-1">Category *</label>
+              <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Category *</label>
               <select
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+                className="w-full px-3 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
               >
                 {categories.map((c) => (
                   <option key={c} value={c}>{c}</option>
@@ -298,22 +298,22 @@ export default function AdminBlog() {
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#FDE68A] mb-1">Read Time</label>
+              <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Read Time</label>
               <input
                 type="text"
                 value={formData.readTime}
                 onChange={(e) => setFormData({ ...formData, readTime: e.target.value })}
                 placeholder="6 min read"
-                className="w-full px-3 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+                className="w-full px-3 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#FDE68A] mb-1">Status</label>
+              <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Status</label>
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                className="w-full px-3 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+                className="w-full px-3 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
               >
                 <option value="Published">Published</option>
                 <option value="Draft">Draft</option>
@@ -322,48 +322,48 @@ export default function AdminBlog() {
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-[#FDE68A] mb-1">Thumbnail URL</label>
+            <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Thumbnail URL</label>
             <input
               type="url"
               value={formData.thumbnail}
               onChange={(e) => setFormData({ ...formData, thumbnail: e.target.value })}
               placeholder="https://images.unsplash.com/..."
-              className="w-full px-3.5 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+              className="w-full px-3.5 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-[#FDE68A] mb-1">Excerpt / Summary *</label>
+            <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Excerpt / Summary *</label>
             <textarea
               required
               rows={2}
               value={formData.excerpt}
               onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
               placeholder="1-2 sentences summarizing the core takeaway of this article..."
-              className="w-full px-3.5 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+              className="w-full px-3.5 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-[#FDE68A] mb-1">Content (Supports HTML/Markdown) *</label>
+            <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Content (Supports HTML/Markdown) *</label>
             <textarea
               required
               rows={8}
               value={formData.content}
               onChange={(e) => setFormData({ ...formData, content: e.target.value })}
               placeholder="<h2>Heading</h2><p>Article body content here...</p>"
-              className="w-full px-3.5 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs font-mono focus:outline-none focus:border-[#F59E0B]"
+              className="w-full px-3.5 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs font-mono focus:outline-none focus:border-[#2B6EFA]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-[#FDE68A] mb-1">Tags (comma separated)</label>
+            <label className="block text-xs font-medium text-[#c4d7f5] mb-1">Tags (comma separated)</label>
             <input
               type="text"
               value={formData.tags}
               onChange={(e) => setFormData({ ...formData, tags: e.target.value })}
               placeholder="Cybersecurity, Zero Trust, Cloud"
-              className="w-full px-3.5 py-2 rounded-xl bg-[#111111] border border-[rgba(245,158,11,0.2)] text-[#FFFBEB] text-xs focus:outline-none focus:border-[#F59E0B]"
+              className="w-full px-3.5 py-2 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.2)] text-[#FFFFFF] text-xs focus:outline-none focus:border-[#2B6EFA]"
             />
           </div>
 
@@ -371,14 +371,14 @@ export default function AdminBlog() {
             <button
               type="button"
               onClick={() => setEditModalOpen(false)}
-              className="px-4 py-2 rounded-lg text-xs text-[#FDE68A]/60 hover:text-[#FFFBEB] cursor-pointer"
+              className="px-4 py-2 rounded-lg text-xs text-[#c4d7f5]/60 hover:text-[#FFFFFF] cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={saving}
-              className="px-6 py-2 rounded-lg text-xs font-semibold text-[#1c1400] bg-[#F59E0B] hover:bg-[#B45309] shadow-[0_0_12px_rgba(245,158,11,0.25)] transition-all flex items-center gap-2 cursor-pointer"
+              className="px-6 py-2 rounded-lg text-xs font-semibold text-white font-semibold bg-[#2B6EFA] hover:bg-[#1E50C8] shadow-[0_0_12px_rgba(0,212,255,0.3)] transition-all flex items-center gap-2 cursor-pointer"
             >
               <Save className="w-3.5 h-3.5" />
               {saving ? 'Saving Article...' : 'Publish Article'}

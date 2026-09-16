@@ -32,10 +32,10 @@ export default function TechGlobe() {
     const sphereRadius = 75;
     const sphereGeo = new THREE.SphereGeometry(sphereRadius, 36, 36);
     const sphereMat = new THREE.MeshBasicMaterial({
-      color: 0xf59e0b,
+      color: 0x2B6EFA,
       wireframe: true,
       transparent: true,
-      opacity: 0.22,
+      opacity: 0.25,
     });
     const sphere = new THREE.Mesh(sphereGeo, sphereMat);
     globeGroup.add(sphere);
@@ -45,9 +45,9 @@ export default function TechGlobe() {
     const pointsPositions = new Float32Array(pointsCount * 3);
     const pointsColors = new Float32Array(pointsCount * 3);
 
-    const amberColor = new THREE.Color('#F59E0B');
-    const goldColor = new THREE.Color('#FCD34D');
-    const darkAmberColor = new THREE.Color('#B45309');
+    const blueColor = new THREE.Color('#2B6EFA');
+    const cyanColor = new THREE.Color('#00D4FF');
+    const violetColor = new THREE.Color('#7B2FBE');
 
     for (let i = 0; i < pointsCount; i++) {
       // Golden spiral distribution on sphere
@@ -63,7 +63,7 @@ export default function TechGlobe() {
       pointsPositions[i * 3 + 1] = y;
       pointsPositions[i * 3 + 2] = z;
 
-      const col = Math.random() > 0.4 ? amberColor : (Math.random() > 0.5 ? goldColor : darkAmberColor);
+      const col = Math.random() > 0.4 ? blueColor : (Math.random() > 0.5 ? cyanColor : violetColor);
       pointsColors[i * 3] = col.r;
       pointsColors[i * 3 + 1] = col.g;
       pointsColors[i * 3 + 2] = col.b;
@@ -101,7 +101,7 @@ export default function TechGlobe() {
       // Add a satellite node on the ring
       const satGeo = new THREE.SphereGeometry(3, 16, 16);
       const satMat = new THREE.MeshBasicMaterial({ 
-        color: 0xf59e0b, 
+        color: 0x00D4FF, 
         blending: THREE.NormalBlending 
       });
       const sat = new THREE.Mesh(satGeo, satMat);
@@ -110,9 +110,9 @@ export default function TechGlobe() {
       return { ring, speed, sat, radius };
     };
 
-    const ring1 = createOrbitRing(102, Math.PI / 3, Math.PI / 6, 0xf59e0b, 0.015);
-    const ring2 = createOrbitRing(116, -Math.PI / 4, Math.PI / 4, 0xfcd34d, -0.01);
-    const ring3 = createOrbitRing(128, Math.PI / 2.2, -Math.PI / 5, 0xb45309, 0.008);
+    const ring1 = createOrbitRing(102, Math.PI / 3, Math.PI / 6, 0x2B6EFA, 0.015);
+    const ring2 = createOrbitRing(116, -Math.PI / 4, Math.PI / 4, 0x00D4FF, -0.01);
+    const ring3 = createOrbitRing(128, Math.PI / 2.2, -Math.PI / 5, 0x7B2FBE, 0.008);
 
     scene.add(ring1.ring);
     scene.add(ring2.ring);
@@ -121,7 +121,7 @@ export default function TechGlobe() {
     // 4. Subtle Inner Glow Core
     const coreGeo = new THREE.SphereGeometry(50, 24, 24);
     const coreMat = new THREE.MeshBasicMaterial({
-      color: 0x111111,
+      color: 0x050B1F,
       transparent: true,
       opacity: 0.95,
     });
@@ -209,7 +209,7 @@ export default function TechGlobe() {
   return (
     <div className="relative w-full h-[380px] sm:h-[450px] lg:h-[500px] flex items-center justify-center">
       {/* Background glow halo */}
-      <div className="absolute w-72 h-72 rounded-full bg-gradient-to-tr from-[#F59E0B]/20 via-[#FCD34D]/15 to-[#B45309]/20 blur-3xl pointer-events-none" />
+      <div className="absolute w-72 h-72 rounded-full bg-gradient-to-tr from-[#2B6EFA]/20 via-[#00D4FF]/15 to-[#7B2FBE]/20 blur-3xl pointer-events-none" />
       <div ref={containerRef} className="w-full h-full cursor-grab active:cursor-grabbing" />
     </div>
   );
