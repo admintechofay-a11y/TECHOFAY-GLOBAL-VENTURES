@@ -24,7 +24,7 @@ import { useRealtime } from '../../context/SocketContext';
 
 export default function AdminLayout() {
   const { user, isAuthenticated, loading, logout } = useAuth();
-  const { isConnected, syncMode, latency, telemetry, realtimeAlerts, unreadCount, markAllRead, clearAlerts, playLeadChime, triggerTestAlert } = useRealtime();
+  const { isConnected, syncMode, latency, telemetry, realtimeAlerts, unreadCount, markAllRead, clearAlerts, playLeadChime } = useRealtime();
   const location = useLocation();
   const navigate = useNavigate();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -261,23 +261,14 @@ export default function AdminLayout() {
                         {realtimeAlerts.length} Events
                       </span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    {realtimeAlerts.length > 0 && (
                       <button
-                        onClick={triggerTestAlert}
-                        title="Simulate incoming live lead"
-                        className="text-[10px] text-[#00D4FF] hover:text-white flex items-center gap-1 px-2 py-0.5 rounded-lg bg-[rgba(0,212,255,0.1)] border border-[rgba(0,212,255,0.3)] hover:bg-[rgba(0,212,255,0.25)] transition-all font-mono"
+                        onClick={clearAlerts}
+                        className="text-[10px] text-red-400 hover:text-red-300 flex items-center gap-1"
                       >
-                        + Simulate Lead
+                        <Trash2 className="w-3 h-3" /> Clear
                       </button>
-                      {realtimeAlerts.length > 0 && (
-                        <button
-                          onClick={clearAlerts}
-                          className="text-[10px] text-red-400 hover:text-red-300 flex items-center gap-1"
-                        >
-                          <Trash2 className="w-3 h-3" /> Clear
-                        </button>
-                      )}
-                    </div>
+                    )}
                   </div>
 
                   <div className="max-h-72 overflow-y-auto space-y-2 pr-1">
