@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-define( 'TECHOFAY_VERSION', '1.0.0' );
+define( 'TECHOFAY_VERSION', time() );
 define( 'TECHOFAY_DIR', get_template_directory() );
 define( 'TECHOFAY_URI', get_template_directory_uri() );
 

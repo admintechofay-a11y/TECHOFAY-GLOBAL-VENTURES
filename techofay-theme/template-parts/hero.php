@@ -21,11 +21,11 @@ $cta_p_text     = trim( get_field( 'hero_cta_primary_text' ) ?: 'Explore Our Ser
 $cta_p_url      = get_field( 'hero_cta_primary_url' ) ?: home_url( '/services' );
 ?>
 
-<section class="relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-[#0A1628]">
-    <!-- Subtle green gradient mesh on right side -->
+<section class="relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-[#050B1F]">
+    <!-- Subtle electric blue radial glow top-center -->
     <div 
-        class="absolute top-0 right-0 w-full lg:w-3/5 h-full pointer-events-none opacity-60"
-        style="background: radial-gradient(circle at 80% 30%, rgba(220, 252, 231, 0.7) 0%, rgba(240, 253, 244, 0.5) 45%, rgba(255, 255, 255, 0) 75%);"
+        class="absolute top-0 inset-x-0 h-[600px] pointer-events-none opacity-80"
+        style="background: radial-gradient(circle at 50% 0%, rgba(43, 110, 250, 0.15) 0%, rgba(5, 11, 31, 0.6) 45%, rgba(5, 11, 31, 0) 75%);"
     ></div>
 
     <!-- 3D Subtle Green Particle Field (opacity 0.3) -->
@@ -65,11 +65,11 @@ $cta_p_url      = get_field( 'hero_cta_primary_url' ) ?: home_url( '/services' )
                     <span><?php echo esc_html( $guarantee_text ); ?></span>
                 </div>
 
-                <!-- CTAs: Primary = #2B6EFA button, Secondary = white bg + green border + green text -->
+                <!-- CTAs: Primary = #2B6EFA button, Secondary = transparent bg + cyan text -->
                 <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
                     <a
                         href="<?php echo esc_url( $cta_p_url ); ?>"
-                        class="w-full sm:w-auto px-8 py-3.5 rounded-lg font-semibold text-sm text-[#1c1400] font-semibold bg-[#2B6EFA] hover:bg-[#1E50C8] transition-colors shadow-sm flex items-center justify-center gap-2 group cursor-pointer"
+                        class="w-full sm:w-auto px-8 py-3.5 rounded-lg font-semibold text-sm text-white bg-[#2B6EFA] hover:bg-[#1E50C8] transition-all shadow-sm flex items-center justify-center gap-2 group cursor-pointer"
                     >
                         <span><?php echo esc_html( $cta_p_text ); ?></span>
                         <svg class="w-4 h-4 group-hover:translate-x-1.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -78,7 +78,7 @@ $cta_p_url      = get_field( 'hero_cta_primary_url' ) ?: home_url( '/services' )
                     <button
                         type="button"
                         id="hero-watch-demo-btn"
-                        class="w-full sm:w-auto px-7 py-3.5 rounded-lg font-semibold text-sm text-[#2B6EFA] bg-[#0A1628] border border-[#2B6EFA] hover:bg-[rgba(255,255,255,0.05)] transition-colors flex items-center justify-center gap-2 group cursor-pointer"
+                        class="w-full sm:w-auto px-7 py-3.5 rounded-lg font-semibold text-sm text-[#00D4FF] bg-transparent border border-[#2B6EFA] hover:bg-[rgba(43,110,250,0.1)] transition-colors flex items-center justify-center gap-2 group cursor-pointer"
                     >
                         <div class="w-6 h-6 rounded-full bg-[rgba(43,110,250,0.2)] flex items-center justify-center">
                             <svg class="w-3 h-3 text-[#2B6EFA] fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -118,16 +118,16 @@ $cta_p_url      = get_field( 'hero_cta_primary_url' ) ?: home_url( '/services' )
             <div class="lg:col-span-5 flex items-center justify-center relative">
                 <div class="relative w-full h-[380px] sm:h-[450px] lg:h-[500px] flex items-center justify-center">
                     <!-- Background glow halo -->
-                    <div class="absolute w-72 h-72 rounded-full bg-gradient-to-tr from-green-300/30 via-emerald-200/40 to-teal-300/30 blur-3xl pointer-events-none"></div>
+                    <div class="absolute w-72 h-72 rounded-full bg-gradient-to-tr from-[#2B6EFA]/20 via-[#00D4FF]/15 to-[#7B2FBE]/20 blur-3xl pointer-events-none"></div>
                     <div id="tech-globe-container" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
                 </div>
 
                 <!-- Floating Live Telemetric Card 1 (Top-Right) -->
-                <div class="hidden sm:flex absolute -top-4 -right-4 bg-[#0A1628] px-4 py-3 rounded-xl border border-[rgba(43,110,250,0.2)] shadow-[0_8px_24px_rgba(22,163,74,0.08)] animate-float-slow items-center gap-2.5 z-20">
+                <div class="hidden sm:flex absolute -top-4 -right-4 bg-[#0A1628] px-4 py-3 rounded-xl border border-[rgba(43,110,250,0.2)] shadow-[0_8px_24px_rgba(43,110,250,0.15)] animate-float-slow items-center gap-2.5 z-20">
                     <div class="w-2.5 h-2.5 rounded-full bg-[#2B6EFA] animate-ping"></div>
                     <div>
                         <div class="text-[11px] font-bold text-[#FFFFFF]">SOC TELEMETRY: ACTIVE</div>
-                        <div class="text-[10px] text-[#2B6EFA] font-medium">4.8M+ Threats Blocked Daily</div>
+                        <div class="text-[10px] text-[#00D4FF] font-medium">4.8M+ Threats Blocked Daily</div>
                     </div>
                 </div>
 
