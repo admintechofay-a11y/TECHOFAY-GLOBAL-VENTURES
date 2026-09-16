@@ -24,7 +24,7 @@ import { useRealtime } from '../../context/SocketContext';
 
 export default function AdminLayout() {
   const { user, isAuthenticated, loading, logout } = useAuth();
-  const { isConnected, syncMode, latency, telemetry, realtimeAlerts, unreadCount, markAllRead, clearAlerts, playLeadChime } = useRealtime();
+  const { isConnected, syncMode, latency, telemetry, realtimeAlerts, unreadCount, markAllRead, clearAlerts, playLeadChime, triggerTestAlert } = useRealtime();
   const location = useLocation();
   const navigate = useNavigate();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -261,14 +261,23 @@ export default function AdminLayout() {
                         {realtimeAlerts.length} Events
                       </span>
                     </div>
-                    {realtimeAlerts.length > 0 && (
+                    <div className="flex items-center gap-2">
                       <button
-                        onClick={clearAlerts}
-                        className="text-[10px] text-red-400 hover:text-red-300 flex items-center gap-1"
+                        onClick={triggerTestAlert}
+                        title="Simulate incoming live lead"
+                        className="text-[10px] text-[#00D4FF] hover:text-white flex items-center gap-1 px-2 py-0.5 rounded-lg bg-[rgba(0,212,255,0.1)] border border-[rgba(0,212,255,0.3)] hover:bg-[rgba(0,212,255,0.25)] transition-all font-mono"
                       >
-                        <Trash2 className="w-3 h-3" /> Clear
+                        + Simulate Lead
                       </button>
-                    )}
+                      {realtimeAlerts.length > 0 && (
+                        <button
+                          onClick={clearAlerts}
+                          className="text-[10px] text-red-400 hover:text-red-300 flex items-center gap-1"
+                        >
+                          <Trash2 className="w-3 h-3" /> Clear
+                        </button>
+                      )}
+                    </div>
                   </div>
 
                   <div className="max-h-72 overflow-y-auto space-y-2 pr-1">
@@ -281,17 +290,18 @@ export default function AdminLayout() {
                       realtimeAlerts.map((alert) => (
                         <div
                           key={alert.id}
-                          className="p-3 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.1)] hover:border-[#2B6EFA]/30 transition-all text-left"
+                          className="p-3 rounded-xl bg-[#050B1F] border border-[rgba(43,110,250,0.15)] hover:border-[#00D4FF]/40 transition-all text-left"
                         >
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="text-xs font-bold text-[#FFFFFF]">
+                          <div className="flex items-center justify-between mb-1.5">
+                            <span className="text-xs font-bold text-[#FFFFFF] flex items-center gap-1.5">
+                              <span className={`w-1.5 h-1.5 rounded-full ${alert.type === 'demo' ? 'bg-[#00D4FF]' : alert.type === 'career' ? 'bg-purple-400' : 'bg-[#2B6EFA]'}`} />
                               {alert.title}
                             </span>
-                            <span className="text-[9px] font-mono text-[#2B6EFA]">
+                            <span className="text-[9px] font-mono text-[#00D4FF]">
                               {new Date(alert.receivedAt).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
                             </span>
                           </div>
-                          <p className="text-[11px] text-[#c4d7f5]/70 leading-relaxed">
+                          <p className="text-[11px] text-[#c4d7f5]/80 leading-relaxed">
                             {alert.description}
                           </p>
                         </div>

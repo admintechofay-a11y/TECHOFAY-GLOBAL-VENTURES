@@ -19,6 +19,7 @@ export const SocketProvider = ({ children }) => {
   const socketRef = useRef(null);
   const pingIntervalRef = useRef(null);
   const restPollRef = useRef(null);
+  const seenIdsRef = useRef(new Set());
 
   // Enterprise Web Audio API soft notification chime
   const playLeadChime = useCallback(() => {
@@ -49,13 +50,90 @@ export const SocketProvider = ({ children }) => {
 
   const addAlert = useCallback((alert) => {
     const newAlert = {
-      id: `alert-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
-      receivedAt: new Date(),
+      id: alert.id || `alert-${Date.now()}-${Math.random().toString(36).substr(2, 5)}`,
+      receivedAt: alert.receivedAt || new Date(),
       ...alert
     };
     setRealtimeAlerts((prev) => [newAlert, ...prev.slice(0, 49)]);
     setUnreadCount((c) => c + 1);
     playLeadChime();
+  }, [playLeadChime]);
+
+  const triggerTestAlert = useCallback(() => {
+    const services = ['Custom AI & LLMs', 'Cybersecurity Ops', 'Hospital HMS Suite', 'Enterprise ERP System', 'Transport Telematics'];
+    const randomService = services[Math.floor(Math.random() * services.length)];
+    const names = ['Priya Singhania', 'Aditya Verma', 'Rohit Mehra', 'Ananya Deshmukh'];
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    addAlert({
+      title: 'Incoming Enterprise Lead',
+      description: `${randomName} requested consultation for ${randomService}`,
+      type: 'inquiry',
+      data: {
+        fullName: randomName,
+        service: randomService,
+        status: 'New'
+      }
+    });
+  }, [addAlert]);
+
+  const fetchRecentLeadsAsAlerts = useCallback(async (isInitial = false) => {
+    try {
+      const [contactRes, demoRes] = await Promise.allSettled([
+        fetch('/api/contact').then((r) => (r.ok ? r.json() : [])),
+        fetch('/api/demo-request').then((r) => (r.ok ? r.json() : [])),
+      ]);
+
+      const inquiries =
+        contactRes.status === 'fulfilled' && Array.isArray(contactRes.value)
+          ? contactRes.value
+          : [];
+      const demos =
+        demoRes.status === 'fulfilled' && Array.isArray(demoRes.value)
+          ? demoRes.value
+          : [];
+
+      const freshAlerts = [];
+
+      inquiries.forEach((inq) => {
+        const id = inq._id || `inq-${inq.email || Math.random()}`;
+        if (!seenIdsRef.current.has(id)) {
+          seenIdsRef.current.add(id);
+          freshAlerts.push({
+            id,
+            title: 'New Enterprise Inquiry',
+            description: `${inq.fullName || inq.name || 'Client'} (${inq.companyName || inq.company || 'Direct Account'}) — ${inq.service || 'Consultation'}`,
+            type: 'inquiry',
+            receivedAt: inq.createdAt ? new Date(inq.createdAt) : new Date(),
+            data: inq,
+          });
+        }
+      });
+
+      demos.forEach((demo) => {
+        const id = demo._id || `demo-${demo.email || Math.random()}`;
+        if (!seenIdsRef.current.has(id)) {
+          seenIdsRef.current.add(id);
+          freshAlerts.push({
+            id,
+            title: 'New Product Demo Booked',
+            description: `${demo.fullName || 'Client'} requested demo for ${demo.product || demo.productName || 'Enterprise Product'}`,
+            type: 'demo',
+            receivedAt: demo.createdAt ? new Date(demo.createdAt) : new Date(),
+            data: demo,
+          });
+        }
+      });
+
+      if (freshAlerts.length > 0) {
+        setRealtimeAlerts((prev) => [...freshAlerts, ...prev].slice(0, 50));
+        setUnreadCount((c) => c + freshAlerts.length);
+        if (!isInitial) {
+          playLeadChime();
+        }
+      }
+    } catch (e) {
+      console.warn('[SocketContext] Lead alerts sync notice:', e.message);
+    }
   }, [playLeadChime]);
 
   const markAllRead = useCallback(() => {
@@ -188,6 +266,9 @@ export const SocketProvider = ({ children }) => {
       console.warn('[SocketContext] WebSocket init warning:', e);
     }
 
+    // Fetch initial lead alerts on mount
+    fetchRecentLeadsAsAlerts(true);
+
     // Graceful fallback for serverless deployments (e.g. Vercel) where WebSocket daemons are not hosted
     const fallbackTimer = setTimeout(() => {
       if (!hasWsConnected) {
@@ -195,7 +276,7 @@ export const SocketProvider = ({ children }) => {
         setIsConnected(true);
         setSyncMode('rest');
 
-        const measureRestLatency = () => {
+        const syncCloudTelemetry = () => {
           const t0 = Date.now();
           fetch('/api/settings/metrics')
             .then(() => {
@@ -203,10 +284,11 @@ export const SocketProvider = ({ children }) => {
               setLatency(diff);
             })
             .catch(() => setLatency(14));
+          fetchRecentLeadsAsAlerts(false);
         };
 
-        measureRestLatency();
-        restPollRef.current = setInterval(measureRestLatency, 30000);
+        syncCloudTelemetry();
+        restPollRef.current = setInterval(syncCloudTelemetry, 15000);
       }
     }, 3500);
 
@@ -216,7 +298,7 @@ export const SocketProvider = ({ children }) => {
       if (restPollRef.current) clearInterval(restPollRef.current);
       if (socket) socket.disconnect();
     };
-  }, [addAlert]);
+  }, [addAlert, fetchRecentLeadsAsAlerts]);
 
   return (
     <SocketContext.Provider
@@ -230,6 +312,7 @@ export const SocketProvider = ({ children }) => {
         markAllRead,
         clearAlerts,
         playLeadChime,
+        triggerTestAlert,
         emitEvent: (event, payload) => socketRef.current?.emit(event, payload)
       }}
     >
