@@ -14,6 +14,54 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
+  if (req.method === 'GET') {
+    return res.status(200).json([
+      {
+        _id: 'inq-01',
+        fullName: 'Vikram Malhotra',
+        companyName: 'Apex Healthtech',
+        email: 'vikram@apexhealth.in',
+        phone: '+91 98765 43210',
+        service: 'Hospital HMS',
+        budget: '$25,000+',
+        timeline: '1 - 3 Months',
+        message: 'Looking for a hospital management system for a 150-bed multi-speciality hospital.',
+        status: 'New',
+        createdAt: new Date().toISOString(),
+      },
+      {
+        _id: 'inq-02',
+        fullName: 'Sarah Jenkins',
+        companyName: 'Solaria Logistics',
+        email: 'sarah@solaria.co',
+        phone: '+1 415 555 0192',
+        service: 'Transport & Fleet',
+        budget: '$15,000 - $25,000',
+        timeline: 'Immediately',
+        message: 'Need real-time telematics and dispatch routing integration.',
+        status: 'In Progress',
+        createdAt: new Date(Date.now() - 3600000 * 24).toISOString(),
+      },
+      {
+        _id: 'inq-03',
+        fullName: 'Rahul Sharma',
+        companyName: 'Nexus AI Labs',
+        email: 'rahul@nexuslabs.io',
+        phone: '+91 91234 56789',
+        service: 'AI Systems',
+        budget: '$50,000+',
+        timeline: '3 - 6 Months',
+        message: 'Custom LLM fine-tuning and retrieval-augmented generation pipeline.',
+        status: 'Resolved',
+        createdAt: new Date(Date.now() - 3600000 * 48).toISOString(),
+      },
+    ]);
+  }
+
+  if (req.method === 'PATCH' || req.method === 'DELETE') {
+    return res.status(200).json({ success: true, message: 'Action completed' });
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
