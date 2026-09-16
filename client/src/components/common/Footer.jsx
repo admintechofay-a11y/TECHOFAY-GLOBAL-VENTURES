@@ -24,7 +24,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#0A0A0A] border-t border-[rgba(43,110,250,0.1)] text-[#FFFFFF] overflow-hidden pt-16 pb-10">
+    <footer className="relative bg-[#030712] border-t border-[rgba(43,110,250,0.2)] text-[#FFFFFF] overflow-hidden pt-16 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top Section: Brand + Newsletter */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 pb-14 border-b border-[rgba(43,110,250,0.1)]">
